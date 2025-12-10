@@ -1,0 +1,35 @@
+{
+  "maps": [
+    {
+      "name": "Koutoulou - Salle 1",
+      "image": "/maps/Koutoulou.png"
+    },
+    {
+      "name": "Meno - Salle 1",
+      "image": "/maps/Meno.png"
+    },
+    {
+      "name": "Dantinéa - Salle 1",
+      "image": "/maps/Dantinéa.png"
+    },
+    {
+      "name": "Bworker - Salle 1",
+      "image": "/maps/Bworker.png"
+    },
+    {
+      "name": "Shogun Tofugawa - Salle 1",
+      "image": "/maps/Shogun.png"
+    },
+    {
+      "name": "Kwakwa - Salle 1",
+      "image": "/maps/Koutoulou.png"
+    },
+    {
+      "name": "Korriandre - Salle 1",
+      "image": "/maps/Korriandre.png"
+    },
+    {
+      "name": "Damadrya - Salle 1",
+      "image": "/maps/Damadrya.png"
+    }
+  ]}

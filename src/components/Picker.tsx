@@ -1,89 +1,95 @@
-import { useState } from "react"
-import playersData from "../assets/players.json"
+import { useEffect, useState } from "react"
 
-export default function Picker() {
+type PickerProps = {
+    players: string[];
+    captainsAmount: number;
+    teamsHandler: (array: string[][]) => void;
+    phaseHandler: () => void;
+}
 
-    type optionsPickPhase = {
-        teams : number;
-        captains : boolean
-    }
+export default function Picker({ players, captainsAmount, teamsHandler, phaseHandler }: PickerProps) {
 
-    const players = playersData 
+    const captains = players.slice(0, captainsAmount)
 
-    const [playersParticipating, setPlayersParticipating] = useState<string[]>([]) 
-    const [phase, setPhase] = useState<number>(0)
+    const [freePlayers, setFreePlayers] = useState<string[]>(players.slice(captainsAmount))
+    const [pickTurn, setPickTurn] = useState(0)
+    const [teams, setTeams] = useState<string[][]>([])
 
-    const [options, setOptions] = useState<optionsPickPhase>({ teams: 2, captains: true})
+    useEffect(() => {
+        const initialTeams = Array.from(
+            { length: captainsAmount },
+            (_, i) => [captains[i]]
+        )
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setTeams(initialTeams)
+    }, [players, captainsAmount])
 
+    useEffect(() => {
+        if(freePlayers.length === 0) {
+            teamsHandler(teams)
+            phaseHandler()
+        }
+    }, [freePlayers])
 
-    const handleClick = (player: string) : void => {
-            setPlayersParticipating(prev => {
-            if (!prev.includes(player)) return [...prev, player]
+    useEffect(() => {
+        console.log(teams)
+    }, [teams])
 
-            return [...prev.filter(item => item !== player)]
+    const addToTeam = (player: string) => {
+
+        setTeams(prev => {
+            const newTeams = prev.map(team => [...team])
+            newTeams[pickTurn].push(player)
+            return newTeams
         })
-    }
 
-    const message = ((length: number) => {
-        if (length === 0) return "Aucun joueur n'a été sélectionné";
-        if (length === 1) return "1 joueur a été sélectionné";
-        return length + " joueurs ont été sélectionnés";
-    })
-
-    const messagePhase =() => {
-        if(phase === 0) return "Sélection des joueurs en cours"
-        if(phase === 1) return "Sélection du format"
-    }
-
-    const handleProceedPhases = () : void => {
-        if(phase === 0 && playersParticipating.length === 10) setPhase(1)
+        setFreePlayers(prev => prev.filter(p => p !== player))
+        setPickTurn(prev => prev < captainsAmount - 1 ? prev + 1 : 0)
     }
 
     return (
-    <>
+        <div className="p-6 space-y-6 w-1/2 mx-auto text-center">
 
-    <p className="px-4 py-4 text-center -translate-x-2">{messagePhase()}</p>
+            <div>
+                <h2 className="text-xl font-semibold mb-2 text-white">Joueurs sans équipe</h2>
 
-    { phase === 0 ? <>
-        <h2 className="text-center py-8 text-white">{message(playersParticipating.length)}</h2>
-        <ul className="grid grid-cols-3 gap-2 max-w-xl mx-auto">
-            {players.map((player) => 
-                <li className={`px-4 py-2 text-center cursor-pointer ${playersParticipating.includes(player.name) ? " bg-red-200" : "bg-white"}`} 
-                key={player.name} onClick={() => handleClick(player.name)}>
-                    {player.name}
-                </li> 
-            )}
-        </ul>
+                <ul className="bg-gray-800 text-white p-3 rounded-lg space-y-1">
+                    {freePlayers.map(player => (
+                        <li key={player} onClick={() => addToTeam(player)} className="p-2 cursor-pointer hover:bg-gray-700 rounded transition">
+                            {player}
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
-    </> : null}
+            <div>
+                <h2 className="text-xl font-semibold mb-2 text-white">Équipes</h2>
 
-        {playersParticipating.length === 10 ? 
-            <button onClick={handleProceedPhases} className={`px-6 py-3 rounded-xl font-semibold transition fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-500 text-white rounded-lg shadow-lg ${phase === 1 ? "bg-red-600 text-white " 
-                : "bg-green-600 text-white "}`}>
-                {phase === 1 
-                    ? "Annuler" 
-                    : "Valider"}
-            </button>
-        : null }
+                <div className="grid grid-cols-2 gap-4">
+                    {teams.map((team, i) => (
+                        <div key={i} className="bg-gray-700 p-3 rounded text-white">
+                            <h3 className="font-bold mb-2">
+                                🏅 Capitaine : {team[0]}
+                            </h3>
 
+                            <ul className="space-y-1">
+                                {team.slice(1).map(member => (
+                                    <li key={member} className="bg-gray-600 p-2 rounded">
+                                        {member}
+                                    </li>
+                                ))}
+                            </ul>
 
-        {playersParticipating.length === 10 ? 
-            <button onClick={handleProceedPhases} className={`px-6 py-3 rounded-xl font-semibold transition fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-500 text-white rounded-lg shadow-lg ${phase === 1 ? "bg-red-600 text-white " 
-                : "bg-green-600 text-white "}`}>
-                {phase === 1 
-                    ? "Annuler" 
-                    : "Valider"}
-            </button>
-        : null }
+                            {pickTurn === i && freePlayers.length > 0 && (
+                                <p className="mt-2 text-sm text-green-300 animate-pulse">
+                                    ➤ À toi de drafter ici
+                                </p>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
 
-            {phase === 1 && (
-                <select className="mt-4 max-w-sm px-4 py-3 border border-gray-300 bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-                >
-                    <option value="random">Composition aléatoire</option>
-                    <option value="captains">Composition par capitaines</option>
-                </select>
-            )}
-
-
-    </>)
+        </div>
+    );
 }

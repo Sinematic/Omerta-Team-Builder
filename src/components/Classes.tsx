@@ -1,5 +1,5 @@
-import playersData from "../assets/players.json"
-import classesData from "../assets/classes.json"
+import playersData from "../data/players.json"
+import classesData from "../data/classes.json"
 import type { DofusClasses, Player } from "../types/dofus";
 import PlayerCard from "./PlayerCard"
 
