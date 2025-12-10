@@ -8,9 +8,20 @@ type SummaryProps = {
     teams: string[][];
 };
 
-export default function Summary({ map, teams }: SummaryProps) {
+    const teamColors = [
+    "bg-red-900",
+    "bg-blue-700",
+    "bg-green-600",
+    "bg-yellow-600",
+    "bg-purple-600",
+    "bg-pink-900"
+    ]
 
-    console.log("teams : ", teams)
+    const shuffle = [...teamColors].sort(() => Math.random() -0.5)
+
+
+
+export default function Summary({ map, teams }: SummaryProps) {
 
     return (
         <div className="mx-auto mt-16 max-w-4xl text-white">
@@ -20,14 +31,23 @@ export default function Summary({ map, teams }: SummaryProps) {
             <div className="text-center mx-auto mt-4 mb-8 space-y-6">
 
                 {teams.map((team, teamIndex) => (
-                    <ol key={teamIndex} className="flex justify-center gap-6 flex-wrap">
-                        {team.map((member) => (
-                            <li key={member} className="bg-gray-800 p-4 my-1 rounded-lg shadow-md min-w-[150px]">
+                    <ol key={teamIndex} className="flex justify-center flex-wrap">
+
+                        {team.map((member, memberIndex) => (
+                            <li key={member} className={`${shuffle[teamIndex % shuffle.length]} 
+                                px-4 py-2 text-white shadow-md min-w-[150px] 
+                                ${memberIndex === 0 ? 'rounded-l-lg' : ''} 
+                                ${memberIndex === team.length - 1 ? 'rounded-r-lg' : ''} 
+                                ${memberIndex !== 0 ? '-ml-1' : ''} 
+                                border border-gray-700`}>
                                 {member}
                             </li>
                         ))}
                     </ol>
                 ))}
+
+                <span className="text-3xl font-bold text-yellow-400 select-none animate-pulse">VS</span>
+
             </div>
 
             <div className="flex justify-center mt-6">

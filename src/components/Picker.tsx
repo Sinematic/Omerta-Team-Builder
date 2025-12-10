@@ -50,10 +50,10 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
     return (
         <div className="p-6 space-y-6 w-1/2 mx-auto text-center">
 
-            <div>
-                <h2 className="text-xl font-semibold mb-2 text-white">Joueurs sans équipe</h2>
+            <div className="free-players">
+                <h2 className="text-xl font-semibold mb-8 text-white">Joueurs sans équipe</h2>
 
-                <ul className="bg-gray-800 text-white p-3 rounded-lg space-y-1">
+                <ul className="bg-gray-800 text-white p-3 rounded-lg space-y-1 w-2/5 mx-auto">
                     {freePlayers.map(player => (
                         <li key={player} onClick={() => addToTeam(player)} className="p-2 cursor-pointer hover:bg-gray-700 rounded transition">
                             {player}
@@ -62,7 +62,8 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                 </ul>
             </div>
 
-            <div>
+
+            <div className="player-in-teams">
                 <h2 className="text-xl font-semibold mb-2 text-white">Équipes</h2>
 
                 <div className="grid grid-cols-2 gap-4">

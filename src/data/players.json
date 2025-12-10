@@ -12,7 +12,7 @@
     { "name": "Sinematic", "classes": [ "Sram", "Steamer" ] },
     { "name": "Dixite", "classes": [ "Féca", "Pandawa" ] },
     { "name": "Vahalgrim", "classes": [ "Forgelance", "Iop" ] },
-    { "name": "Kirito", "classes": [ "Iop"] },
+    { "name": "Kirito", "classes": [ "Iop" ] },
     { "name": "Smoky", "classes": [ "Féca" ] },
     { "name": "Tykouette", "classes": [ "Forgelance" ] },
     { "name": "Agaleh", "classes": [ "Iop" ] },
