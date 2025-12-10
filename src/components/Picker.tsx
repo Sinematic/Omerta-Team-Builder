@@ -31,9 +31,6 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
         }
     }, [freePlayers])
 
-    useEffect(() => {
-        console.log(teams)
-    }, [teams])
 
     const addToTeam = (player: string) => {
 

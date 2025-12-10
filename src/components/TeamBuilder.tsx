@@ -76,9 +76,13 @@ export default function TeamBuilder() {
         })
     }
 
-    const handleSelectFormat = (event) : void => {
-        setUseCaptains(event.target.value)
-    }
+    const handleSelectFormat = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+        setUseCaptains(event.target.value === "true");
+    };
+/*
+    Argument of type 'Event | undefined' is not assignable to parameter of type 'ChangeEvent<HTMLInputElement>'.
+  Type 'undefined' is not assignable to type 'ChangeEvent<HTMLInputElement>'
+*/
 
     const handleMapClick = (name:string, image: string) : void => {
         if(mapUsed.name !== name)
@@ -101,7 +105,7 @@ export default function TeamBuilder() {
             : null}
 
             {phase === 1 ?
-                <select className="mt-24 max-w-sm px-4 py-3 mx-auto bg-white rounded-lg shadow-sm transition" onChange={() => handleSelectFormat(event)}>
+                <select className="mt-24 max-w-sm px-4 py-3 mx-auto bg-white rounded-lg shadow-sm transition" onChange={(event) => handleSelectFormat(event)}>
                     <option value="true">Capitaines</option>
                     <option value="false">Aléatoire</option>
                 </select>
