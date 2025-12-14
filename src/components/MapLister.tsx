@@ -12,9 +12,8 @@ export default function MapLister({ mapSelecter, randomMapButton } : MapListerPr
 
     const setRandomMap = () => {
             console.log(maps)
-            const randomMap = maps[(Math.floor(Math.random() * maps.length)) -1]
-            console.log(randomMap)
-            if(mapSelecter) mapSelecter(randomMap.name, randomMap.image)
+            const randomIndex = (Math.floor(Math.random() * maps.length) -1)
+            if(mapSelecter) mapSelecter(maps[randomIndex].name, maps[randomIndex].image)
     }
 
     return (
