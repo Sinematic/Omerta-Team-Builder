@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import playersData from "../data/players.json"
 import SelectPlayers from "./SelectPlayers"
 import MapLister from "./MapLister"
@@ -11,7 +11,7 @@ export default function TeamBuilder() {
 
     const [playersParticipating, setPlayersParticipating] = useState<string[]>([]) 
     const [phase, setPhase] = useState<number>(0)
-    const [useCaptains, setUseCaptains] = useState(true)
+    const [format, setFormat] = useState<"captains" | "random">()
     const [teams, setTeams] = useState<string[][]>([])
     const [mapUsed, setMapUsed] = useState({name: "", image: ""})
 
@@ -37,11 +37,14 @@ export default function TeamBuilder() {
         if(phase === 0) {
             setPlayersParticipating(shuffleArray(playersParticipating))
             setPhase(1)
+            return
         }
             
         if(phase === 1) {
-            if(useCaptains === true) setPhase(2) 
-            else {   
+            if(format === "captains") { 
+                setPhase(2)
+                return
+            } else {   
                 const numberOfTeams = countCaptains()
                 const teamsAssigned: string[][] = Array.from({ length: numberOfTeams }, () => []);
 
@@ -76,16 +79,8 @@ export default function TeamBuilder() {
         })
     }
 
-    const handleSelectFormat = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-        setUseCaptains(event.target.value === "true");
-    };
-/*
-    Argument of type 'Event | undefined' is not assignable to parameter of type 'ChangeEvent<HTMLInputElement>'.
-  Type 'undefined' is not assignable to type 'ChangeEvent<HTMLInputElement>'
-*/
-
     const handleMapClick = (name:string, image: string) : void => {
-        if(mapUsed.name !== name)
+        console.log(name, image)
         setMapUsed({ name, image})
         setPhase(4)
     }
@@ -93,6 +88,11 @@ export default function TeamBuilder() {
     const handleTeams = (teamsAssigned: string[][]) => setTeams(teamsAssigned)
 
     const isValidAmountOfPlayers = () : boolean => playersParticipating.length > 5 && (playersParticipating.length % 4 === 0 || playersParticipating.length % 5 === 0)
+
+    useEffect(() => { 
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        if(format) handleProceedPhases()
+    }, [format])
 
 
     return (
@@ -105,18 +105,23 @@ export default function TeamBuilder() {
             : null}
 
             {phase === 1 ?
-                <select className="mt-24 max-w-sm px-4 py-3 mx-auto bg-white rounded-lg shadow-sm transition" onChange={(event) => handleSelectFormat(event)}>
-                    <option value="true">Capitaines</option>
-                    <option value="false">Aléatoire</option>
-                </select>
+                <div className="mx-auto w-1/3 flex flex-cols justify-center gap-3 mt-24">
+                    <button onClick={() => setFormat("captains")} 
+                    className="bg-blue-600 text-white px-5 py-3 rounded-lg shadow-lg font-medium">
+                        Capitaines
+                    </button>
+                    <button onClick={() => setFormat("random")} 
+                    className="bg-blue-600 text-white px-5 py-3 rounded-lg shadow-lg font-medium">
+                        Aléatoire
+                    </button>
+                </div>
             : null}
 
             {phase === 2 ? <Picker players={playersParticipating} captainsAmount={countCaptains()} teamsHandler={handleTeams} phaseHandler={handleProceedPhases} /> : null}
 
-            {phase === 3 ? <MapLister mapSelecter={handleMapClick}/> : null }
+            {phase === 3 ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
 
-
-            {isValidAmountOfPlayers() && phase < 2 ? 
+            {isValidAmountOfPlayers() && phase === 0 ? 
                 <div className="flex justify-center gap-4 fixed bottom-4 text-white left-1/2 -translate-x-1/2 select-none font-medium ">
                     <button onClick={returnPreviousPhases} className="cursor-pointer transition bg-red-600 px-5 py-3 rounded-lg shadow-lg">
                         Annuler
@@ -126,7 +131,6 @@ export default function TeamBuilder() {
                     </button>             
                 </div>
             : null }
-
                 
             {phase === 4 ? <Summary map={mapUsed} teams={teams} /> : null}
 
