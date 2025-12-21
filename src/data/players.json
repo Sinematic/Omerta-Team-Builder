@@ -30,5 +30,6 @@
     { "name": "Korrai", "classes": [ "Iop" ] },
     { "name": "Sponge", "classes": ["Eniripsa", "Huppermage" ] },
     { "name": "Kulinaire", "classes": [ "Pandawa"] },
-    { "name": "Cullinan", "classes": [ "Iop" ] }
+    { "name": "Cullinan", "classes": [ "Iop" ] },
+    { "name": "Ospin", "classes": [ "Forge", "Eniripsa" ]}
 ]
