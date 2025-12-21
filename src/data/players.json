@@ -31,5 +31,5 @@
     { "name": "Sponge", "classes": ["Eniripsa", "Huppermage" ] },
     { "name": "Kulinaire", "classes": [ "Pandawa"] },
     { "name": "Cullinan", "classes": [ "Iop" ] },
-    { "name": "Ospin", "classes": [ "Forge", "Eniripsa" ]}
+    { "name": "Onnyps", "classes": [ "Pandawa", "Eniripsa" ] }
 ]

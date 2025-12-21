@@ -22,7 +22,7 @@
     },
     {
       "name": "Kwakwa - Salle 1",
-      "image": "/maps/Koutoulou.png"
+      "image": "/maps/Kwakwa.png"
     },
     {
       "name": "Korriandre - Salle 1",
@@ -32,4 +32,4 @@
       "name": "Damadrya - Salle 1",
       "image": "/maps/Damadrya.png"
     }
-  ]}
+]}
