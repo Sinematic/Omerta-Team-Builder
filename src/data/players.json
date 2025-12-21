@@ -9,7 +9,7 @@
     { "name": "Zenio", "classes": [ "Sacrieur", "Iop" ] },
     { "name": "Athanor", "classes": ["Féca", "Pandawa"] },
     { "name": "Bilbs", "classes": [ "Féca" ] },
-    { "name": "Sinematic", "classes": [ "Sram", "Steamer" ] },
+    { "name": "Sinematic", "classes": [ "Sram", "Steamer", "Forgelance" ] },
     { "name": "Dixite", "classes": [ "Féca", "Pandawa" ] },
     { "name": "Vahalgrim", "classes": [ "Forgelance", "Iop" ] },
     { "name": "Kirito", "classes": [ "Iop", "Féca" ] },
