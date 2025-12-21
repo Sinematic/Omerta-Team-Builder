@@ -18,7 +18,7 @@ export default function Classes() {
 						<PlayerCard key={player.name} playerInfo={player} classesInfo={classesInfo} />
 					))}
 				</div>
-			: "erreur"}
+			: null}
 		</div>
     )
 }
