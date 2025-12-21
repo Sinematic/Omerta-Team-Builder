@@ -5,9 +5,10 @@ import MapLister from "./MapLister"
 import Picker from "./Picker"
 import Summary from "./Summary"
 
+
 export default function TeamBuilder() {
 
-    const players = playersData 
+    const players = playersData
 
     const [playersParticipating, setPlayersParticipating] = useState<string[]>([]) 
     const [phase, setPhase] = useState<number>(0)
@@ -80,7 +81,6 @@ export default function TeamBuilder() {
     }
 
     const handleMapClick = (name:string, image: string) : void => {
-        console.log(name, image)
         setMapUsed({ name, image})
         setPhase(4)
     }

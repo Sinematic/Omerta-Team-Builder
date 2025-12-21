@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import snakePickOrder from "../data/snake-pick-order.json"
 
 type PickerProps = {
     players: string[];
@@ -12,8 +13,10 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
     const captains = players.slice(0, captainsAmount)
 
     const [freePlayers, setFreePlayers] = useState<string[]>(players.slice(captainsAmount))
-    const [pickTurn, setPickTurn] = useState(0)
     const [teams, setTeams] = useState<string[][]>([])
+    const [pickIndex, setPickIndex] = useState<number>(0)
+
+   const pickOrder = snakePickOrder[captainsAmount.toString() as "2" | "3" | "4"]?.[Number(players) % 4 === 0 ? '4' : '5']
 
     useEffect(() => {
         const initialTeams = Array.from(
@@ -31,17 +34,19 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
         }
     }, [freePlayers])
 
-
     const addToTeam = (player: string) => {
+        const currentTeamIndex = pickOrder
+            ? pickOrder[pickIndex]
+            : pickIndex % captainsAmount
 
         setTeams(prev => {
             const newTeams = prev.map(team => [...team])
-            newTeams[pickTurn].push(player)
+            newTeams[currentTeamIndex].push(player)
             return newTeams
-        })
+        });
 
         setFreePlayers(prev => prev.filter(p => p !== player))
-        setPickTurn(prev => prev < captainsAmount - 1 ? prev + 1 : 0)
+        setPickIndex(prev => prev + 1)
     }
 
     return (
@@ -78,7 +83,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                                 ))}
                             </ul>
 
-                            {pickTurn === i && freePlayers.length > 0 && (
+                            {pickOrder[pickIndex] === i && freePlayers.length > 0 && (
                                 <p className="mt-2 text-sm text-green-300 animate-pulse">
                                     ➤ À toi de drafter ici
                                 </p>
