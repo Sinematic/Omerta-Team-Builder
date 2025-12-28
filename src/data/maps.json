@@ -39,5 +39,9 @@
     {
       "name": "Nileza - Salle 1",
       "image": "/maps/Nileza.png"
+    },
+    {
+      "name": "Klime - Salle 1",
+      "image": "/maps/Klime.png"
     }
 ]}
