@@ -31,5 +31,13 @@
     {
       "name": "Damadrya - Salle 1",
       "image": "/maps/Damadrya.png"
+    },
+    {
+      "name": "Missiz - Salle 1",
+      "image": "/maps/Missiz.png"
+    },
+    {
+      "name": "Nileza - Salle 1",
+      "image": "/maps/Nileza.png"
     }
 ]}
