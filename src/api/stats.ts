@@ -17,10 +17,11 @@ export const fetchStats = async (sheet: string, range?: string) => {
         text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1)
     )
 
-    const rows: never[][] = json.table.rows.map((row: never) =>
-        (row.c ?? []).map((cell: never) => cell?.v ?? null)
+    // @ts-expect-error unkwown types
+    const rows = json.table.rows.map(row =>
+        // @ts-expect-error unkwown types
+        row.c.map(cell => cell?.v ?? null)
     )
-
 
 
     return rows
