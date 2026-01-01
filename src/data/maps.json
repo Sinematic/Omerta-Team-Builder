@@ -41,7 +41,31 @@
       "image": "/maps/Nileza.png"
     },
     {
-      "name": "Klime - Salle 1",
-      "image": "/maps/Klime.png"
+      "name": "Sylargh - Salle 1",
+      "image": "/maps/Sylargh.png"
+    },
+    {
+      "name": "Ben Le Ripate - Salle 1",
+      "image": "/maps/Ben.png"
+    },
+    {
+      "name": "Chêne Mou - Salle 1",
+      "image": "/maps/CM.png"
+    },
+    {
+      "name": "Fraktale - Salle 1",
+      "image": "/maps/Fraktale.png"
+    },
+    {
+      "name": "Nagate - Salle 1",
+      "image": "/maps/Nagate.png"
+    },
+    {
+      "name": "Nidas - Salle 1",
+      "image": "/maps/Nidas.png"
+    },
+    {
+      "name": "Royalmouth - Salle 1",
+      "image": "/maps/Royalmouth.png"
     }
 ]}
