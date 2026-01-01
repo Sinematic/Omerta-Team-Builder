@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import snakePickOrder from "../data/snake-pick-order.json"
+import snakePickOrder from "@/data/snake-pick-order.json"
 
 type PickerProps = {
     players: string[];
@@ -94,5 +94,5 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             </div>
 
         </div>
-    );
+    )
 }

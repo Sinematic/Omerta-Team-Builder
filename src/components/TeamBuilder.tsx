@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import playersData from "../data/players.json"
+import playersData from "@/data/players.json"
 import SelectPlayers from "./SelectPlayers"
 import MapLister from "./MapLister"
 import Picker from "./Picker"

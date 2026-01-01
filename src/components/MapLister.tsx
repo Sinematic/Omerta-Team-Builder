@@ -1,4 +1,4 @@
-import mapsData from "../data/maps.json"
+import mapsData from "@/data/maps.json"
 import MapCard from "./MapCard"
 
 type MapListerProps = {
