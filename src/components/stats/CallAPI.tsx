@@ -1,14 +1,14 @@
+import { useStats } from "@/hooks/useStats"
 
 
 export default function CallAPI() {
 
-
-
-
-
-    //console.log(stats)
+    const { data, isLoading } = useStats("Matchs", "")
 
     return (
-        <div>CallAPI</div>
+        <div>
+            {isLoading && <p>Chargement...</p>}
+            {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+        </div>
     )
 }
