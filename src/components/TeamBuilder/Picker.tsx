@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import snakePickOrder from "@/data/snake-pick-order.json"
+import PlayerCard from "../UI/PlayerCard";
+import playersData from "@/data/players.json"
 
 type PickerProps = {
     players: string[];
@@ -50,19 +52,20 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
         setPickIndex(prev => prev + 1)
     }
 
+    
     return (
-        <div className="p-6 space-y-6 w-1/2 mx-auto text-center">
+        <div className="p-6 space-y-6 w-3/5 mx-auto text-center">
 
             <div className="free-players">
                 <h2 className="text-xl font-semibold mb-8 text-white">Joueurs sans équipe</h2>
 
-                <ul className="bg-gray-800 text-white p-3 rounded-lg space-y-1 w-2/5 mx-auto select-none">
-                    {freePlayers.map(player => (
-                        <li key={player} onClick={() => addToTeam(player)} className="p-2 cursor-pointer hover:bg-gray-700 rounded transition">
-                            {player}
-                        </li>
+                <ul className="bg-gray-800 p-3 rounded-lg space-y-1 mx-auto select-none">
+                    {freePlayers.map(playerName => {
+                        const playerInfo = playersData.find(p => p.name === playerName)
+                        if (!playerInfo) return null
 
-                    ))}
+                        return <PlayerCard key={playerName} playerInfo={playerInfo} action={() => addToTeam(playerName)} />
+                    })}
 
                 </ul>                 
 

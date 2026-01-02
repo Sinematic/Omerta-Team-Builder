@@ -1,5 +1,4 @@
 import playersData from "@/data/players.json"
-import classesData from "@/data/classes.json"
 import type { Player } from "@/types/dofus"
 import PlayerCard from "@/components/UI/PlayerCard"
 
@@ -11,26 +10,27 @@ type ClassesType = {
 export default function Classes({ participants = [] } : ClassesType ) {
 
 
-	const players = playersData as Player[]
+	const data : Player[] = playersData as Player[]
 	/*
 	const players : Player[] = participants
 		? data.filter((player) => participants.includes(player.name)) 
 		: playersData
 	*/
 
-	let dataToUse
+	let players
 
-	if(participants.length) dataToUse = playersData.filter((player) => participants.includes(player.name))
-	else dataToUse = playersData
+	if(participants.length) players = data.filter((player) => participants.includes(player.name))
+	else players = playersData
+
 
     return (
 		<div className="block py-6 px-12 w-4/5 mx-auto">
-			{dataToUse ? 
-				<div className="flex flex-col gap-4">
+			{players ? 
+				<ul className="flex flex-col gap-4">
 					{players.map(player => (
-						<PlayerCard key={player.name} playerInfo={player} classesInfo={classesData} />
+						<PlayerCard key={player.name} playerInfo={player} />
 					))}
-				</div>
+				</ul>
 			: null}
 		</div>
     )

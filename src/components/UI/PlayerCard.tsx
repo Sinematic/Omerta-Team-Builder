@@ -1,11 +1,15 @@
 import type { DofusClasses, Player } from "@/types/dofus"
+import classesData from "@/data/classes.json"
 
+export default function PlayerCard({ playerInfo, action }: { playerInfo : Player, action ?: () => void }) {
 
-export default function PlayerCard({ playerInfo, classesInfo }: { playerInfo : Player, classesInfo : DofusClasses  }) {
+    const classesInfo : DofusClasses = classesData
+
 
     return (
 
-        <div className="flex flex-wrap items-center gap-4 px-4 py-2 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
+        <li onClick={action}
+        className="flex flex-wrap items-center gap-4 px-4 py-2 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
 
             <span className="font-semibold text-lg min-w-[80px]">{playerInfo.name}</span>
 
@@ -17,7 +21,7 @@ export default function PlayerCard({ playerInfo, classesInfo }: { playerInfo : P
                 ))}
             </div>
 
-        </div>
+        </li>
     )
 }
 

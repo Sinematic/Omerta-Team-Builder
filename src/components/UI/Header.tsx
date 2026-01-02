@@ -16,9 +16,9 @@ export default function Header() {
                 <li onClick={() => navigate("/maps")} className="cursor-pointer hover:text-gray-100 transition-colors duration-200">
                     Maps
                 </li>
-                <li onClick={() => navigate("/stats")} className="cursor-pointer hover:text-gray-1300 transition-colors duration-200">
+                {/* <li onClick={() => navigate("/stats")} className="cursor-pointer hover:text-gray-1300 transition-colors duration-200">
                     Stats
-                </li>
+                </li> */}
                 <li onClick={() => navigate("/classement")} className="cursor-pointer hover:text-gray-100 transition-colors duration-200">
                     Classement
                 </li>
