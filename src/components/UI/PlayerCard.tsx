@@ -21,7 +21,6 @@ export default function PlayerCard({ playerInfo, action, minified = false } : { 
                     </span>
                 ))}
             </div>
-
         </li>
     )
 }
