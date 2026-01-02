@@ -98,7 +98,7 @@ export default function TeamBuilder() {
     return (
         <div className="flex justify-center flex-col">
 
-            <p className="px-4 pt-7 text-center -translate-x-96 italic text-white animate-pulse">{messagePhase()}</p>
+            <p className="px-4 pt-7 text-center -translate-x-96 italic text-white animate-pulse text-lg">{messagePhase()}</p>
 
             { phase === 0 ? 
                 <SelectPlayers participants={playersParticipating} handleClickOnParticipants={handleClickOnParticipants} players={players} /> 

@@ -11,7 +11,7 @@ export default function MapCard({ name, image, mapSetter }: MapCardProps) {
     
     return (
         <li onClick={() => handleClick()}
-        className="cursor-pointer select-none flex flex-col items-center bg-gray-800 p-2 rounded-lg">
+        className="cursor-pointer select-none flex flex-col items-center bg-emerald-800 p-2 rounded-lg">
             <h3 className="text-white text-lg font-semibold mb-2">{name}</h3>
             <img src={image} alt={name} className="w-full h-48 object-cover rounded-lg shadow-md"/>
         </li>
