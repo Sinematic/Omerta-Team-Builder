@@ -17,20 +17,21 @@ export default function TeamBuilder() {
     const [teams, setTeams] = useState<string[][]>([])
     const [mapUsed, setMapUsed] = useState({name: "", image: ""})
 
-    const messagePhase =() => {
+
+    const messagePhase = () => {
         if(phase === 0) return "Sélection des joueurs en cours . . ."
         if(phase === 1) return "Sélection du format de composition d'équipes . . ."
         if(phase === 2) return "Sélection des joueurs par les capitaines . . ."
         if(phase === 3) return "Sélection de la carte . . ."
     }
 
-/** Phases
- * 0 Initialisation, inscription des joueurs
- * 1 Sélection du format (Capitaines / Random) 
- * 2 Sélection des équipiers par les capitaines (si Random, passer à 3)
- * 3 Sélection de la carte
- * 4 Résumé
- */
+    /** Phases
+     * 0 Initialisation, inscription des joueurs
+     * 1 Sélection du format (Capitaines / Random) 
+     * 2 Sélection des équipiers par les capitaines (si Random, passer à 3)
+     * 3 Sélection de la carte
+     * 4 Résumé
+     */
 
     const handleProceedPhases = () : void => {
 
@@ -58,6 +59,7 @@ export default function TeamBuilder() {
             }
             return
         }
+
         if(phase === 2) setPhase(3)
         if(phase === 3) setPhase(4)
     }
@@ -112,7 +114,7 @@ export default function TeamBuilder() {
             {phase === 3 ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
 
             {isValidAmountOfPlayers() && phase === 0 ? 
-                <div className="flex justify-center gap-4 fixed bottom-4 text-white left-1/2 -translate-x-1/2 select-none font-medium ">
+                <div className="flex justify-center gap-4 fixed bottom-8 text-white left-1/2 -translate-x-1/2 select-none font-medium ">
                     <Button text="Suivant" action={handleProceedPhases} />
                 </div>
             : null }

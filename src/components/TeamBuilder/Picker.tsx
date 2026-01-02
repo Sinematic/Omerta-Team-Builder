@@ -52,39 +52,42 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
         setPickIndex(prev => prev + 1)
     }
 
+    if(freePlayers.length === 1) addToTeam(freePlayers[0])
+        
     
     return (
-        <div className="p-6 space-y-6 w-3/5 mx-auto text-center">
+        <div className="p-6 space-y-6 w-2/3 mx-auto text-center select-none">
 
-            <div className="free-players">
-                <h2 className="text-xl font-semibold mb-8 text-white">Joueurs sans équipe</h2>
+            <div className="free-players w-2/3 mx-auto">
+                <h2 className="text-xl font-medium mb-4 text-white">
+                    Joueurs sans équipe
+                </h2>
 
-                <ul className="bg-gray-800 p-3 rounded-lg space-y-1 mx-auto select-none">
+                <ul className="p-3 rounded-lg mx-auto  ">
                     {freePlayers.map(playerName => {
                         const playerInfo = playersData.find(p => p.name === playerName)
                         if (!playerInfo) return null
 
-                        return <PlayerCard key={playerName} playerInfo={playerInfo} action={() => addToTeam(playerName)} />
+                        return <PlayerCard key={playerName} playerInfo={playerInfo} action={() => addToTeam(playerName)} minified={true} />
                     })}
 
                 </ul>                 
 
             </div>
 
-
             <div className="player-in-teams">
                 <h2 className="text-xl font-semibold mb-2 text-white">Équipes</h2>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className={`grid-cols-${captainsAmount} grid gap-4 ${captainsAmount === 2 ? "w-1/2" : ""} mx-auto`}>
                     {teams.map((team, i) => (
-                        <div key={i} className="bg-gray-700 p-3 rounded text-white">
+                        <div key={i} className="bg-stone-700 p-3 rounded text-white">
                             <h3 className="font-bold mb-2">
-                                🏅 Capitaine : {team[0]}
+                                💀 Capitaine : {team[0]}
                             </h3>
 
                             <ul className="space-y-1">
                                 {team.slice(1).map(member => (
-                                    <li key={member} className="bg-gray-600 p-2 rounded">
+                                    <li key={member} className="bg-stone-600 p-2 rounded">
                                         {member}
                                     </li>
                                 ))}

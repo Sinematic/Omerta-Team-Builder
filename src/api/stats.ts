@@ -23,6 +23,5 @@ export const fetchStats = async (sheet: string, range?: string) => {
         row.c.map(cell => cell?.v ?? null)
     )
 
-
     return rows
 }

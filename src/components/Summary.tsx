@@ -24,7 +24,7 @@ type SummaryProps = {
 export default function Summary({ map, teams }: SummaryProps) {
 
     return (
-        <div className="mx-auto mt-16 max-w-4xl text-white">
+        <div className="mx-auto mt-16 max-w-4xl text-white select-none">
 
             <h1 className="text-4xl font-bold text-center mb-6">Résumé</h1>
 
