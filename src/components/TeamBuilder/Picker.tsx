@@ -53,7 +53,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
     }
 
     if(freePlayers.length === 1) addToTeam(freePlayers[0])
-        
+
     
     return (
         <div className="p-6 space-y-6 w-2/3 mx-auto text-center select-none">
@@ -78,7 +78,9 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             <div className="player-in-teams">
                 <h2 className="text-xl font-semibold mb-2 text-white">Équipes</h2>
 
-                <div className={`grid-cols-${captainsAmount} grid gap-4 ${captainsAmount === 2 ? "w-1/2" : ""} mx-auto`}>
+                <div className="grid gap-4 mx-auto justify-center" 
+                style={{ gridTemplateColumns: `repeat(${captainsAmount}, minmax(0, 400px))` }}>
+
                     {teams.map((team, i) => (
                         <div key={i} className="bg-stone-700 p-3 rounded text-white">
                             <h3 className="font-bold mb-2">

@@ -17,10 +17,7 @@ export default function Classes({ participants = [] } : ClassesType ) {
 		: playersData
 	*/
 
-	let players
-
-	if(participants.length) players = data.filter((player) => participants.includes(player.name))
-	else players = playersData
+	const players = participants.length ? data.filter((player) => participants.includes(player.name)) : playersData
 
 
     return (
