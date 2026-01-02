@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import playersData from "@/data/players.json"
-import SelectPlayers from "./SelectPlayers"
-import MapLister from "./MapLister"
-import Picker from "./Picker"
-import Summary from "./Summary"
+import SelectPlayers from "@/components/TeamBuilder/SelectPlayers"
+import MapLister from "@/components/Maps/MapLister"
+import Picker from "@/components/TeamBuilder/Picker"
+import Summary from "@/components/Summary"
+import Button from "../UI/Button"
 
 
 export default function TeamBuilder() {
@@ -67,11 +68,6 @@ export default function TeamBuilder() {
         ? playersParticipating.length / 5 
         : playersParticipating.length / 4
 
-
-    const returnPreviousPhases = () : void => {
-        if(phase > 0) setPhase(prev => prev -1)
-    }
-
     const handleClickOnParticipants = (player: string) : void => {
 
         setPlayersParticipating(prev => {
@@ -90,8 +86,8 @@ export default function TeamBuilder() {
     const isValidAmountOfPlayers = () : boolean => playersParticipating.length > 5 && (playersParticipating.length % 4 === 0 || playersParticipating.length % 5 === 0)
 
     useEffect(() => { 
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         if(format) handleProceedPhases()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [format])
 
 
@@ -105,15 +101,9 @@ export default function TeamBuilder() {
             : null}
 
             {phase === 1 ?
-                <div className="mx-auto w-1/3 flex flex-cols justify-center gap-3 mt-24">
-                    <button onClick={() => setFormat("captains")} 
-                    className="bg-blue-600 text-white px-5 py-3 rounded-lg shadow-lg font-medium">
-                        Capitaines
-                    </button>
-                    <button onClick={() => setFormat("random")} 
-                    className="bg-blue-600 text-white px-5 py-3 rounded-lg shadow-lg font-medium">
-                        Aléatoire
-                    </button>
+                <div className="mx-auto w-1/3 flex flex-cols justify-center gap-8 mt-24">
+                    <Button text="Capitaines" action={() => setFormat("captains")} />
+                    <Button text="Aléatoire" action={() => setFormat("random")} />
                 </div>
             : null}
 
@@ -123,12 +113,7 @@ export default function TeamBuilder() {
 
             {isValidAmountOfPlayers() && phase === 0 ? 
                 <div className="flex justify-center gap-4 fixed bottom-4 text-white left-1/2 -translate-x-1/2 select-none font-medium ">
-                    <button onClick={returnPreviousPhases} className="cursor-pointer transition bg-red-600 px-5 py-3 rounded-lg shadow-lg">
-                        Annuler
-                    </button>
-                    <button onClick={handleProceedPhases} className="cursor-pointer transition bg-green-600 px-5 py-3 rounded-lg shadow-lg">
-                        Valider
-                    </button>             
+                    <Button text="Suivant" action={handleProceedPhases} />
                 </div>
             : null }
                 

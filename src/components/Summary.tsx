@@ -1,4 +1,4 @@
-import MapCard from "./MapCard";
+import MapCard from "@/components/Maps/MapCard";
 
 type SummaryProps = {
     map: {

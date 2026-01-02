@@ -1,5 +1,5 @@
 import mapsData from "@/data/maps.json"
-import MapCard from "./MapCard"
+import MapCard from "@/components/Maps/MapCard"
 
 type MapListerProps = {
     mapSelecter?: (name: string, image:string) => void;

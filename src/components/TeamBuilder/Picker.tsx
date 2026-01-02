@@ -23,8 +23,8 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             { length: captainsAmount },
             (_, i) => [captains[i]]
         )
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setTeams(initialTeams)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [players, captainsAmount])
 
     useEffect(() => {
@@ -32,6 +32,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             teamsHandler(teams)
             phaseHandler()
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [freePlayers])
 
     const addToTeam = (player: string) => {
@@ -60,8 +61,11 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                         <li key={player} onClick={() => addToTeam(player)} className="p-2 cursor-pointer hover:bg-gray-700 rounded transition">
                             {player}
                         </li>
+
                     ))}
-                </ul>
+
+                </ul>                 
+
             </div>
 
 
@@ -84,8 +88,8 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                             </ul>
 
                             {pickOrder[pickIndex] === i && freePlayers.length > 0 && (
-                                <p className="mt-2 text-sm text-green-300 animate-pulse">
-                                    ➤ À toi de drafter ici
+                                <p className="mt-2 text-sm text-emerald-300 animate-pulse">
+                                    ➤ Tour de pick en cours
                                 </p>
                             )}
                         </div>
