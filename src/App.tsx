@@ -15,7 +15,7 @@ export default function App() {
 			<Route path="/picker" element={<TeamBuilder />} />         
 			<Route path="/classes-des-joueurs" element={<Classes />} />    
 			<Route path="/maps" element={<MapLister />} />         
-			<Route path="/stats" element={<CallAPI />} />            
+			<Route path="/stats/:pseudo" element={<CallAPI />} />            
 			<Route path="/classement" element={<Rank />} />         
 		</Routes>
 	</>)

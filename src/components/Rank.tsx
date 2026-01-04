@@ -15,11 +15,11 @@ export default function Rank() {
 
                 {data.map((row: string[], index: number) => row[1] ?
 
-                    <li key={index} className={"text-lg py-2 mb-2 font-medium rounded-lg " + 
-                        (index >= 3 ? "bg-gray-100 " 
-                        : (index === 0 ? "bg-amber-300" 
-                        : (index === 1 ? "bg-zinc-300" 
-                        : "brown")))}>
+                    <li key={index} className={"text-lg py-2 mb-2 font-medium rounded-lg text-black " + 
+                        (index >= 3 ? "bg-white font-semibold" 
+                        : (index === 0 ? "gold text-stone-800 font-semibold" 
+                        : (index === 1 ? "bg-neutral-400 text-white font-semibold" 
+                        : "brown text-white")))}>
                         <span className="px-4 text-beginning font-bold">{index < 9 ? '0' + (index + 1) : index + 1}</span>
                         <span className="pl-16">{row[1]} </span>
                         <span className="text-small font-thin">({row[0]})</span>         

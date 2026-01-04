@@ -63,7 +63,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                     Joueurs sans équipe
                 </h2>
 
-                <ul className="p-3 rounded-lg mx-auto  ">
+                <ul className="rounded-lg mx-auto  ">
                     {freePlayers.map(playerName => {
                         const playerInfo = playersData.find(p => p.name === playerName)
                         if (!playerInfo) return null
@@ -76,7 +76,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             </div>
 
             <div className="player-in-teams">
-                <h2 className="text-xl font-semibold mb-2 text-white">Équipes</h2>
+                <h2 className="text-xl font-semibold mb-4 text-white">Équipes</h2>
 
                 <div className="grid gap-4 mx-auto justify-center" 
                 style={{ gridTemplateColumns: `repeat(${captainsAmount}, minmax(0, 400px))` }}>

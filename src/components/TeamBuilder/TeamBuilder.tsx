@@ -11,19 +11,29 @@ export default function TeamBuilder() {
 
     const players = playersData
 
+    const phases = {
+        1: "registration",
+        2: "format selection",
+        3: "team allocation",
+        4: "map selection",
+        5: "summary"
+    }
+
+
     const [playersParticipating, setPlayersParticipating] = useState<string[]>([]) 
-    const [phase, setPhase] = useState<number>(0)
+    const [phase, setPhase] = useState<string>(phases[1])
     const [format, setFormat] = useState<"captains" | "random">()
     const [teams, setTeams] = useState<string[][]>([])
     const [mapUsed, setMapUsed] = useState({name: "", image: ""})
 
 
     const messagePhase = () => {
-        if(phase === 0) return "Sélection des joueurs en cours . . ."
-        if(phase === 1) return "Sélection du format de composition d'équipes . . ."
-        if(phase === 2) return "Sélection des joueurs par les capitaines . . ."
-        if(phase === 3) return "Sélection de la carte . . ."
+        if(phase === phases[1]) return "Sélection des joueurs en cours . . ."
+        if(phase === phases[2]) return "Sélection du format de composition d'équipes . . ."
+        if(phase === phases[3]) return "Sélection des joueurs par les capitaines . . ."
+        if(phase === phases[4]) return "Sélection de la carte . . ."
     }
+
 
     /** Phases
      * 0 Initialisation, inscription des joueurs
@@ -37,15 +47,15 @@ export default function TeamBuilder() {
 
         if(!isValidAmountOfPlayers) return 
 
-        if(phase === 0) {
+        if(phase === "registration") {
             setPlayersParticipating(shuffleArray(playersParticipating))
-            setPhase(1)
+            setPhase("format selection")
             return
         }
             
-        if(phase === 1) {
+        if(phase === "format selection" ) {
             if(format === "captains") { 
-                setPhase(2)
+                setPhase(phases[3])
                 return
             } else {   
                 const numberOfTeams = countCaptains()
@@ -55,13 +65,13 @@ export default function TeamBuilder() {
                     teamsAssigned[index % numberOfTeams].push(participant)
                 });
                 setTeams(teamsAssigned)
-                setPhase(3)
+                setPhase(phases[4])
             }
             return
         }
 
-        if(phase === 2) setPhase(3)
-        if(phase === 3) setPhase(4)
+        if(phase === "team allocation") setPhase(phases[4])
+        if(phase === "map selection") setPhase(phases[5])
     }
 
     const shuffleArray = (array:string[]): string[] => [...array].sort(() => Math.random() - 0.5) 
@@ -80,7 +90,7 @@ export default function TeamBuilder() {
 
     const handleMapClick = (name:string, image: string) : void => {
         setMapUsed({ name, image})
-        setPhase(4)
+        setPhase(phases[5])
     }
 
     const handleTeams = (teamsAssigned: string[][]) => setTeams(teamsAssigned)
@@ -98,28 +108,28 @@ export default function TeamBuilder() {
 
             <p className="px-4 pt-7 text-center -translate-x-96 italic text-white animate-pulse text-lg">{messagePhase()}</p>
 
-            { phase === 0 ? 
+            { phase === "registration" ? 
                 <SelectPlayers participants={playersParticipating} handleClickOnParticipants={handleClickOnParticipants} players={players} /> 
             : null}
 
-            {phase === 1 ?
+            {phase === "format selection" ?
                 <div className="mx-auto w-1/3 flex flex-cols justify-center gap-8 mt-24">
                     <Button text="Capitaines" action={() => setFormat("captains")} />
                     <Button text="Aléatoire" action={() => setFormat("random")} />
                 </div>
             : null}
 
-            {phase === 2 ? <Picker players={playersParticipating} captainsAmount={countCaptains()} teamsHandler={handleTeams} phaseHandler={handleProceedPhases} /> : null}
+            {phase === "team allocation" ? <Picker players={playersParticipating} captainsAmount={countCaptains()} teamsHandler={handleTeams} phaseHandler={handleProceedPhases} /> : null}
 
-            {phase === 3 ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
+            {phase === "map selection" ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
 
-            {isValidAmountOfPlayers() && phase === 0 ? 
+            {isValidAmountOfPlayers() && phase === "registration" ? 
                 <div className="flex justify-center gap-4 fixed bottom-8 text-white left-1/2 -translate-x-1/2 select-none font-medium ">
                     <Button text="Suivant" action={handleProceedPhases} />
                 </div>
             : null }
                 
-            {phase === 4 ? <Summary map={mapUsed} teams={teams} /> : null}
+            {phase === "summary" ? <Summary map={mapUsed} teams={teams} /> : null}
 
         </div>)
 }
