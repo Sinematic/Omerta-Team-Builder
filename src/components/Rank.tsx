@@ -2,7 +2,7 @@ import { useStats } from "@/hooks/useStats"
 
 export default function Rank() {
 
-    const { data, isLoading } = useStats("Classement", "B2:C25")
+    const { data, isLoading } = useStats("Classement", "B2:G25")
 
     return (
         <div className="py-12 justify-center mx-auto w-[370px] hover:cursor-pointer select-none">
