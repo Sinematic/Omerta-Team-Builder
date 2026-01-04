@@ -34,5 +34,6 @@
     { "name": "Kulinaire", "classes": [ "Pandawa"] },
     { "name": "Cullinan", "classes": [ "Iop" ] },
     { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Crâ", "Pandawa", "Steamer", "Ecaflip", "Iop", "Zobal", "Huppermage" ] },
-    { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa", "Forgelance", "Iop", "Pandawa", "Xélor", "Ecaflip" ] }
+    { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa", "Forgelance", "Iop", "Pandawa", "Xélor", "Ecaflip" ] },
+    { "name": "Raaz-Algoul", "classes": [ "Pandawa" ] }
 ]
