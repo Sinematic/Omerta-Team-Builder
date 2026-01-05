@@ -70,7 +70,7 @@ export default function PlayerHistory() {
     const matchesPlayedByPlayer : MatchDataType[] = indexOfGamesPlayed.map(index => {
 
         const participants = players
-            .filter(player => player.matches [index] !== null)
+            .filter(player => player.matches[index] !== null)
             .map(player => ({
                 name: player.name,
                 match: player.matches[index]
