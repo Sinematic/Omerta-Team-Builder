@@ -3,8 +3,9 @@ import Header from "@/components/UI/Header";
 import Classes from "@/components/Classes";
 import MapLister from "@/components/Maps/MapLister";
 import TeamBuilder from "@/components/TeamBuilder/TeamBuilder";
-import CallAPI from "@/components/stats/CallAPI";
-import Rank from "@/components/Rank";
+import PlayerHistory from "@/components/Stats/PlayerHistory";
+import Rank from "@/components/Stats/Rank";
+import NotFound from "./components/UI/NotFound";
 
 export default function App() {
 	
@@ -15,8 +16,9 @@ export default function App() {
 			<Route path="/picker" element={<TeamBuilder />} />         
 			<Route path="/classes-des-joueurs" element={<Classes />} />    
 			<Route path="/maps" element={<MapLister />} />         
-			<Route path="/stats/:pseudo" element={<CallAPI />} />            
-			<Route path="/classement" element={<Rank />} />         
+			<Route path="/stats/:pseudo" element={<PlayerHistory />} />            
+			<Route path="/classement" element={<Rank />} />                    
+			<Route path="/*" element={<NotFound message="Page non trouvée!" />} />         
 		</Routes>
 	</>)
 }

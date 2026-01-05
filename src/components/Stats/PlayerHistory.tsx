@@ -1,0 +1,104 @@
+import { useStats } from "@/hooks/useStats"
+import { useParams } from "react-router"
+import playersData from "@/data/players.json"
+import NotFound from "../UI/NotFound"
+import GameCard from "./GameCard"
+
+
+type PlayerInfoType = [ string, ...string[] ]
+
+type Match = ({
+    result: string;
+    side: string;
+    classPlayed: string;
+    points: number;
+    details: string[];
+} | null)
+
+type PlayerDataType = {
+    name: string;
+    matches : Match[];
+}
+
+export type MatchDataType = {
+    index: number;
+    participants: { name: string; match: Match }[]
+}
+
+
+export default function PlayerHistory() {
+
+    const { pseudo } = useParams<{ pseudo: string}>()
+    const pseudoInGame = pseudo ? pseudo.charAt(0).toUpperCase() + pseudo.slice(1) : ""
+    const playersList = playersData
+    const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
+
+    const { data, isLoading } = useStats("Matchs", "A2:K33")
+
+    if (!data) return
+
+    const parseMatch = (rawMatch: string) : Match => {
+
+        if(!rawMatch) return null
+
+        const [ side, result, classPlayed,points, details] = rawMatch.split("-")
+        return { side, result, classPlayed, points: Number(points), details: details ? details.split('') : [] }
+        
+    }
+  
+    const players: PlayerDataType[] = data.map(([name, ...rawMatches] : PlayerInfoType) => ({
+        name,
+        matches: rawMatches.map(match => parseMatch(match))
+    }))
+
+    //console.log("filter", playersMatches.filter(player => player.name === originalPseudo))
+
+    const matches = players[0].matches.map((_, matchIndex) => ({
+        id: matchIndex,
+        participants: 
+            players
+                .filter(player => player.matches[matchIndex])
+                .map(player => ({ name: player.name, raw: player.matches[matchIndex]}))
+    }))
+
+    const playerHistory = players.find(player => player.name === pseudoInGame) 
+
+    const indexOfGamesPlayed : number[] = playerHistory?.matches
+        .map((match, index) => match !== null ? index : -1)
+        .filter(index => index !== -1) ?? []
+
+
+    const matchesPlayedByPlayer : MatchDataType[] = indexOfGamesPlayed.map(index => {
+
+        const participants = players
+            .filter(player => player.matches [index] !== null)
+            .map(player => ({
+                name: player.name,
+                match: player.matches[index]
+            }))
+
+        participants.sort((a, b) => a.name === pseudoInGame ? -1 : b.name === pseudoInGame ? 1 : 0)
+
+        return { index, participants }
+    })
+
+    const matchesToDisplay = matchesPlayedByPlayer.reverse()
+
+
+    return (
+
+        <div>
+            {playerFound ? 
+                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-8 text-white text-center gap-8 bg-gray-200">
+                    <h1 className="text-3xl font-semibold mb-6 text-gray-900">Historique de {pseudoInGame}</h1>
+                    {isLoading && <h2>Chargement...</h2>} 
+                    {matchesPlayedByPlayer 
+                    ? matchesToDisplay.map(match => <GameCard matchData={match} />) 
+                    : <h2>Aucune partie trouvée !</h2>}
+                    
+                </div>
+            : <NotFound message={"Joueur introuvable !"} />}
+        </div>
+
+    )
+}

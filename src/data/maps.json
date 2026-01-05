@@ -2,71 +2,71 @@
   "maps": [
     {
       "name": "Koutoulou - Salle 1",
-      "image": "/maps/Koutoulou.png"
+      "image": "/images/maps/Koutoulou.png"
     },
     {
       "name": "Meno - Salle 1",
-      "image": "/maps/Meno.png"
+      "image": "/images/maps/Meno.png"
     },
     {
       "name": "Dantinéa - Salle 1",
-      "image": "/maps/Dantinéa.png"
+      "image": "/images/maps/Dantinéa.png"
     },
     {
       "name": "Bworker - Salle 1",
-      "image": "/maps/Bworker.png"
+      "image": "/images/maps/Bworker.png"
     },
     {
       "name": "Shogun Tofugawa - Salle 1",
-      "image": "/maps/Shogun.png"
+      "image": "/images/maps/Shogun.png"
     },
     {
       "name": "Kwakwa - Salle 1",
-      "image": "/maps/Kwakwa.png"
+      "image": "/images/maps/Kwakwa.png"
     },
     {
       "name": "Korriandre - Salle 1",
-      "image": "/maps/Korriandre.png"
+      "image": "/images/maps/Korriandre.png"
     },
     {
       "name": "Damadrya - Salle 1",
-      "image": "/maps/Damadrya.png"
+      "image": "/images/maps/Damadrya.png"
     },
     {
       "name": "Missiz - Salle 1",
-      "image": "/maps/Missiz.png"
+      "image": "/images/maps/Missiz.png"
     },
     {
       "name": "Nileza - Salle 1",
-      "image": "/maps/Nileza.png"
+      "image": "/images/maps/Nileza.png"
     },
     {
       "name": "Sylargh - Salle 1",
-      "image": "/maps/Sylargh.png"
+      "image": "/images/maps/Sylargh.png"
     },
     {
       "name": "Ben Le Ripate - Salle 1",
-      "image": "/maps/Ben.png"
+      "image": "/images/maps/Ben.png"
     },
     {
       "name": "Chêne Mou - Salle 1",
-      "image": "/maps/CM.png"
+      "image": "/images/maps/CM.png"
     },
     {
       "name": "Salle de Fraktale",
-      "image": "/maps/Fraktale.png"
+      "image": "/images/maps/Fraktale.png"
     },
     {
       "name": "Nagate - Salle 1",
-      "image": "/maps/Nagate.png"
+      "image": "/images/maps/Nagate.png"
     },
     {
       "name": "Salle du Nidas",
-      "image": "/maps/Nidas.png"
+      "image": "/images/maps/Nidas.png"
     },
     {
       "name": "Royalmouth - Salle 1",
-      "image": "/maps/Royalmouth.png"
+      "image": "/images/maps/Royalmouth.png"
     }
   ]
 }
