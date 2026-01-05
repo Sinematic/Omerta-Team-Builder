@@ -78,6 +78,18 @@ export default function PlayerHistory() {
 
         //participants.sort((a, b) => a.name === pseudoInGame ? -1 : b.name === pseudoInGame ? 1 : 0)
 
+        participants.forEach(p => {
+  console.log(
+    p.name,
+    p.name === pseudoInGame,
+    p.name.length,
+    pseudoInGame.length,
+    [...p.name].map(c => c.charCodeAt(0)),
+    [...pseudoInGame].map(c => c.charCodeAt(0))
+  );
+});
+
+
         const indexP = participants.findIndex(p => p.name === pseudoInGame);
 
         if (indexP > 0) {
