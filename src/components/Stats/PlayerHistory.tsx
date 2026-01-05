@@ -76,15 +76,17 @@ export default function PlayerHistory() {
                 match: player.matches[index]
             }))
 
-        const indexOfPlayer = participants.findIndex(p => p.name === pseudoInGame);
-
-        if (index > 0) {
-            const [player] = participants.splice(indexOfPlayer, 1);
-            participants.unshift(player);
-        }
+        participants.sort((a, b) => a.name === pseudoInGame ? -1 : b.name === pseudoInGame ? 1 : 0)
 
         return { index, participants }
+        
     })
+
+    console.log({
+  pseudoInGame,
+  players: players.map(p => p.name)
+});
+
 
     const matchesToDisplay = matchesPlayedByPlayer.reverse()
 
