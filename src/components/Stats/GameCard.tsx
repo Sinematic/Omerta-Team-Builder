@@ -1,60 +1,51 @@
-import classesData from "@/data/classes.json"
-import type { MatchDataType } from "./PlayerHistory"
-import { useNavigate } from "react-router"
+import type { MatchDataType, ParticipantType } from "./PlayerHistory"
+import { useMemo } from "react"
+import PlayerElement from "../UI/PlayerElement"
 
-type ClassInDofusType = keyof typeof classesData
 
-export default function GameCard({ matchData } : MatchDataType) {
 
-    const classesInfo = classesData
+export default function GameCard({ matchData} : { matchData : MatchDataType }) {
 
-    const navigate = useNavigate()
+    const { teams, targetData } = useMemo(() => {
 
-    const getClassData = (classInDofus: ClassInDofusType ) => classesInfo[classInDofus]
+        const sorted = matchData.participants.sort((a : ParticipantType, ) => a.match!.side === matchData.participants[0].match!.side ? -1 : 1)
+        const mid = Math.floor(sorted.length / 2)
 
-    const sortedParticipants = matchData.participants.sort((a) => a.match.side === matchData.participants[0].match.side ? -1 : 1)
-    const mid = Math.floor(sortedParticipants.length / 2)
+        const teams = {
+            playerSide: sorted.slice(0, mid),
+            ennemiesSide: sorted.slice(mid)
+        }
 
-    const teams = {
-        playerSide: sortedParticipants.slice(0, mid),
-        ennemiesSide: sortedParticipants.slice(mid)
-    }
+        return {
+            teams,
+            targetData: teams.playerSide[0].match
+        }
+    }, [matchData])
 
-    const targetData = teams.playerSide[0].match
+        console.log(targetData)
+
+    if (!targetData) return
 
     
     return (
-    <div className={"w-full px-8 py-4 flex rounded-xl justify-between items-center border-solid border-3 select-none " +
-    (targetData.result === "W" ? "bg-gray-800 border-blue-500" : "bg-gray-900 border-red-600")}>
-        <ul className="flex-1">
-            {teams.playerSide.map(player => (
-                <li key={player.name} className="text-xl flex gap-4 cursor-pointer" 
-                onClick={() => navigate("/stats/" + player.name.toLowerCase())}>
-                <p className="min-w-[120px]">{player.name}</p>
-                    <div className="w-[1lh] h-[1lh] rounded-full overflow-hidden">
-                        <img src={getClassData(player.match.classPlayed).image} className="w-full h-full object-cover" />
-                    </div>
+        <div className={"w-full px-8 py-4 flex rounded-xl justify-between items-center border-solid border-3 select-none shadow-lg  " +
+        (targetData.result === "W" ? "bg-gray-800 border-blue-500" : "bg-gray-900 border-red-600")}>
+            <ul className="flex-1">
+                {teams.playerSide.map(player => (
+                    <PlayerElement player={player} target={teams.playerSide[0].name === player.name} /> 
+                ))}
+            </ul>
 
-                </li>
-            ))}
-        </ul>
+            <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.result === "W" ? "text-blue-500" : "text-red-600")}>
+                {targetData.result === "W" ? "VICTOIRE" : "DÉFAITE"}
+                <p className="text-xl">{"+" + targetData.points}</p>
+            </h3>
 
-        <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.result === "W" ? "text-blue-500" : "text-red-600")}>
-            {targetData.result === "W" ? "VICTOIRE" : "DÉFAITE"}
-        </h3>
-
-        <ul className="flex-1 flex flex-col items-end ">
-            {teams.ennemiesSide.map(player => (
-                <li key={player.name} className="text-xl flex gap-4 cursor-pointer" 
-                onClick={() => navigate("/stats/" + player.name.toLowerCase())}>
-                    <div className="w-[1lh] h-[1lh] rounded-full overflow-hidden">
-                        <img src={getClassData(player.match.classPlayed).image} className="w-full h-full object-cover" />
-                    </div>
-                    <p className="min-w-[120px] text-end">{player.name}</p>
-                </li>
-            ))}
-        </ul>
-    </div>
-
+            <ul className="flex-1 flex flex-col items-end ">
+                {teams.ennemiesSide.map(player => (
+                    <PlayerElement player={player} target={teams.playerSide[0].name === player.name} reverse={true} /> 
+                ))}
+            </ul>
+        </div>
     )
 }

@@ -22,14 +22,21 @@ type PlayerDataType = {
 
 export type MatchDataType = {
     index: number;
-    participants: { name: string; match: Match }[]
+    participants: ParticipantType[]
 }
+
+export type ParticipantType = { name: string; match: Match }
 
 
 export default function PlayerHistory() {
 
-    const { pseudo } = useParams<{ pseudo: string}>()
-    const pseudoInGame = pseudo ? pseudo.charAt(0).toUpperCase() + pseudo.slice(1) : ""
+    const { pseudo } = useParams<{ pseudo: string }>()
+
+    const pseudoInGame = pseudo ? pseudo.split("-")
+        .map(s => s.charAt(0).toUpperCase() + s.slice(1))
+        .join("-")
+    : ""
+
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
 
@@ -49,16 +56,6 @@ export default function PlayerHistory() {
     const players: PlayerDataType[] = data.map(([name, ...rawMatches] : PlayerInfoType) => ({
         name,
         matches: rawMatches.map(match => parseMatch(match))
-    }))
-
-    //console.log("filter", playersMatches.filter(player => player.name === originalPseudo))
-
-    const matches = players[0].matches.map((_, matchIndex) => ({
-        id: matchIndex,
-        participants: 
-            players
-                .filter(player => player.matches[matchIndex])
-                .map(player => ({ name: player.name, raw: player.matches[matchIndex]}))
     }))
 
     const playerHistory = players.find(player => player.name === pseudoInGame) 
@@ -89,8 +86,8 @@ export default function PlayerHistory() {
 
         <div>
             {playerFound ? 
-                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-8 text-white text-center gap-8 bg-gray-200">
-                    <h1 className="text-3xl font-semibold mb-6 text-gray-900">Historique de {pseudoInGame}</h1>
+                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-16 text-white text-center gap-8 bg-gray-700 relative rounded-lg">
+                    <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">Historique de {pseudoInGame}</h1>
                     {isLoading && <h2>Chargement...</h2>} 
                     {matchesPlayedByPlayer 
                     ? matchesToDisplay.map(match => <GameCard matchData={match} />) 
