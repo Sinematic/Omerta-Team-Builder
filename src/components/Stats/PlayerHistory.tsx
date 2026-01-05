@@ -76,7 +76,15 @@ export default function PlayerHistory() {
                 match: player.matches[index]
             }))
 
-        participants.sort((a, b) => a.name === pseudoInGame ? -1 : b.name === pseudoInGame ? 1 : 0)
+        //participants.sort((a, b) => a.name === pseudoInGame ? -1 : b.name === pseudoInGame ? 1 : 0)
+
+        const indexP = participants.findIndex(p => p.name === pseudoInGame);
+
+        if (indexP > 0) {
+        const [player] = participants.splice(indexP, 1);
+        participants.unshift(player);
+        }
+
 
         return { index, participants }
         
