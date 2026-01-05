@@ -77,8 +77,8 @@ export default function PlayerHistory() {
             }))
 
         participants.sort((a, b) => {
-            if (a.name === pseudoInGame) return -1
-            if (b.name === pseudoInGame) return 1
+            if (a.name === pseudoInGame) return 1
+            if (b.name === pseudoInGame) return -1
             return 0
         })
 
