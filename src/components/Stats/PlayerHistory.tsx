@@ -108,7 +108,7 @@ export default function PlayerHistory() {
 });
 
 
-    const matchesToDisplay = matchesPlayedByPlayer.reverse()
+   // const matchesToDisplay = matchesPlayedByPlayer.reverse()
 
 
     return (
