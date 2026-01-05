@@ -107,7 +107,7 @@ export default function PlayerHistory() {
   players: players.map(p => p.name)
 });
 
-
+const matchesToDisplay = matchesPlayedByPlayer
    // const matchesToDisplay = matchesPlayedByPlayer.reverse()
 
 
