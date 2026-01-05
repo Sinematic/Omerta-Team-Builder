@@ -89,9 +89,9 @@ export default function PlayerHistory() {
                 <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-16 text-white text-center gap-8 bg-gray-700 relative rounded-lg">
                     <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">Historique de {pseudoInGame}</h1>
                     {isLoading && <h2>Chargement...</h2>} 
-                    {matchesPlayedByPlayer 
+                    {matchesPlayedByPlayer.length 
                     ? matchesToDisplay.map(match => <GameCard matchData={match} />) 
-                    : <h2>Aucune partie trouvée !</h2>}
+                    : <h2 className="text-xl p-4">Aucune partie trouvée !</h2>}
                     
                 </div>
             : <NotFound message={"Joueur introuvable !"} />}
