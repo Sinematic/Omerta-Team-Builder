@@ -37,6 +37,8 @@ export default function PlayerHistory() {
         .join("-")
     : ""
 
+    console.log(pseudoInGame)
+
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
 
@@ -90,7 +92,7 @@ export default function PlayerHistory() {
                     <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">Historique de {pseudoInGame}</h1>
                     {isLoading && <h2>Chargement...</h2>} 
                     {matchesPlayedByPlayer.length 
-                    ? matchesToDisplay.map(match => <GameCard matchData={match} />) 
+                    ? matchesToDisplay.map(match => <GameCard matchData={match} key={match.index} />) 
                     : <h2 className="text-xl p-4">Aucune partie trouvée !</h2>}
                     
                 </div>

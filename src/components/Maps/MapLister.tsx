@@ -15,7 +15,6 @@ export default function MapLister({ mapSelecter, randomMapButton } : MapListerPr
         if(mapSelecter) mapSelecter(maps[randomIndex].name, maps[randomIndex].image)
     }
 
-    console.log(maps)
 
     return (
         <div className="relative">
