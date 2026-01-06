@@ -30,6 +30,9 @@ export default function Header() {
                 <li onClick={() => navigate("/classement")} className="cursor-pointer hover:text-gray-100 transition-colors duration-200">
                     Classement
                 </li>
+                <li onClick={() => navigate("/test")} className="cursor-pointer hover:text-gray-100 transition-colors duration-200">
+                    Classement
+                </li>
 
                 <input type="text" className="bg-white rounded-lg text-black px-3 py-2 focus:outline-none focus:ring-0" 
                 placeholder="Chercher un joueur" onChange={(e) => setPseudoSearched(e.target.value)} value={pseudoSearched} 
