@@ -8,8 +8,6 @@ export default function GameCard({ matchData} : { matchData : MatchDataType }) {
 
     const { teams, targetData } = useMemo(() => {
 
-
-
         const sorted = matchData.participants.sort((a : ParticipantType, ) => a.match!.side === matchData.participants[0].match!.side ? -1 : 1)
         const mid = Math.floor(sorted.length / 2)
 
@@ -17,13 +15,12 @@ export default function GameCard({ matchData} : { matchData : MatchDataType }) {
             playerSide: sorted.slice(0, mid),
             ennemiesSide: sorted.slice(mid)
         }
-
-        console.log(teams.playerSide[0].match)
         
         return {
             teams,
             targetData: teams.playerSide[0]
         }
+
     }, [matchData])
 
     if (!targetData) return
@@ -36,6 +33,8 @@ export default function GameCard({ matchData} : { matchData : MatchDataType }) {
                 {teams.playerSide.map(player => (
                     <PlayerElement player={player} target={targetData.name === player.name} key={player.name} /> 
                 ))}
+
+                {targetData.name}
             </ul>
 
             <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.match!.result === "W" ? "text-blue-500" : "text-red-600")}>
