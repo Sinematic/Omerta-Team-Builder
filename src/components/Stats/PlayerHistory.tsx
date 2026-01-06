@@ -76,11 +76,15 @@ export default function PlayerHistory() {
                 match: player.matches[index]
             }))
 
+        console.log("avant", JSON.stringify(participants))
+
         participants.sort((a, b) => {
             if (a.name === pseudoInGame) return -1
             if (b.name === pseudoInGame) return 1
             return 0
         })
+
+        console.log("après", JSON.stringify(participants))
 
         return { index, participants }
         
