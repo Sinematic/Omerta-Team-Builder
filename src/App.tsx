@@ -17,7 +17,8 @@ export default function App() {
 			<Route path="/classes-des-joueurs" element={<Classes />} />    
 			<Route path="/maps" element={<MapLister />} />
 			<Route path="/stats/:pseudo" element={<PlayerHistory />} />            
-			<Route path="/classement" element={<Rank title="Classement" range="B2:G25" />} />                    
+			<Route path="/classement" element={<Rank title="Classement" range="B2:G25" />} />
+			<Route path="/" element={<Rank title="Classement" range="B2:G25" />} />
 			<Route path="/*" element={<NotFound message="Page non trouvée!" />} />
 		</Routes>
 	</>

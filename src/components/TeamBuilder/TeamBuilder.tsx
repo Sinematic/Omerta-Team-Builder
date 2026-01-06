@@ -11,29 +11,22 @@ export default function TeamBuilder() {
 
     const players = playersData
 
-    const phases = {
-        1: "registration",
-        2: "format selection",
-        3: "team allocation",
-        4: "map selection",
-        5: "summary"
-    }
-
+    const phases = [
+        { name : "registration", message: "Sélection des joueurs en cours ..." },
+        { name : "format selection", message: "Sélection du format de composition d'équipes ..." },
+        { name : "team allocation", message: "Sélection des joueurs par les capitaines ..." },
+        { name : "map selection", message: "Sélection de la carte ..." },
+        { name : "summary", message: "" }
+    ]
 
     const [playersParticipating, setPlayersParticipating] = useState<string[]>([]) 
-    const [phase, setPhase] = useState<string>(phases[1])
+    const [phase, setPhase] = useState<string>(phases[0].name)
     const [format, setFormat] = useState<"captains" | "random">()
     const [teams, setTeams] = useState<string[][]>([])
     const [mapUsed, setMapUsed] = useState({name: "", image: ""})
 
 
-    const messagePhase = () => {
-        if(phase === phases[1]) return "Sélection des joueurs en cours . . ."
-        if(phase === phases[2]) return "Sélection du format de composition d'équipes . . ."
-        if(phase === phases[3]) return "Sélection des joueurs par les capitaines . . ."
-        if(phase === phases[4]) return "Sélection de la carte . . ."
-    }
-
+    const messagePhase = () => phases.find(p => p.name === phase)?.message
 
     /** Phases
      * 0 Initialisation, inscription des joueurs
@@ -55,7 +48,7 @@ export default function TeamBuilder() {
             
         if(phase === "format selection" ) {
             if(format === "captains") { 
-                setPhase(phases[3])
+                setPhase(phases[2].name)
                 return
             } else {   
                 const numberOfTeams = countCaptains()
@@ -65,13 +58,13 @@ export default function TeamBuilder() {
                     teamsAssigned[index % numberOfTeams].push(participant)
                 });
                 setTeams(teamsAssigned)
-                setPhase(phases[4])
+                setPhase(phases[3].name)
             }
             return
         }
 
-        if(phase === "team allocation") setPhase(phases[4])
-        if(phase === "map selection") setPhase(phases[5])
+        if(phase === "team allocation") setPhase(phases[3].name)
+        if(phase === "map selection") setPhase(phases[4].name)
     }
 
     const shuffleArray = (array:string[]): string[] => [...array].sort(() => Math.random() - 0.5) 
@@ -90,7 +83,7 @@ export default function TeamBuilder() {
 
     const handleMapClick = (name:string, image: string) : void => {
         setMapUsed({ name, image})
-        setPhase(phases[5])
+        setPhase(phases[4].name)
     }
 
     const handleTeams = (teamsAssigned: string[][]) => setTeams(teamsAssigned)
@@ -128,7 +121,7 @@ export default function TeamBuilder() {
                     <Button text="Suivant" action={handleProceedPhases} />
                 </div>
             : null }
-                
+
             {phase === "summary" ? <Summary map={mapUsed} teams={teams} /> : null}
 
         </div>)
