@@ -93,12 +93,7 @@ export default function PlayerHistory() {
             {playerFound ? 
                 <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-16 text-white text-center gap-8 bg-gray-700 relative rounded-lg">
                     <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">
-                        { (pseudoInGame.charAt(0) === "A" 
-                        || pseudoInGame.charAt(0) === "E" 
-                        || pseudoInGame.charAt(0) === "I" 
-                        || pseudoInGame.charAt(0) === "O" 
-                        || pseudoInGame.charAt(0) === "U" 
-                        || pseudoInGame.charAt(0) === "Y" 
+                        {(["a", "e", "i", "o", "u", "y"].includes(pseudoInGame[0].toLowerCase())
                         ? "Historique d'" : "Historique de ") + pseudoInGame}</h1>
                     {isLoading && <h2>Chargement...</h2>} 
                     {matchesPlayedByPlayer.length 

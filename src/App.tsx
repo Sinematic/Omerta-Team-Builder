@@ -6,6 +6,7 @@ import TeamBuilder from "@/components/TeamBuilder/TeamBuilder";
 import PlayerHistory from "@/components/Stats/PlayerHistory";
 import Rank from "@/components/Stats/Rank";
 import NotFound from "@/components/UI/NotFound";
+import Test from "./components/Stats/Test";
 
 export default function App() {
 	
@@ -19,7 +20,8 @@ export default function App() {
 			<Route path="/maps" element={<MapLister />} />
 			<Route path="/stats/:pseudo" element={<PlayerHistory />} />            
 			<Route path="/classement" element={<Rank />} />                    
-			<Route path="/*" element={<NotFound message="Page non trouvée!" />} />         
+			<Route path="/*" element={<NotFound message="Page non trouvée!" />} /> 
+			<Route path="/test" element={<Test title="Test" />} />         
 		</Routes>
 	</>
 	)

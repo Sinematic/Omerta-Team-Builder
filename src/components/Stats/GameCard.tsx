@@ -2,17 +2,7 @@ import type { MatchDataType, ParticipantType, } from "./PlayerHistory"
 import PlayerElement from "../UI/PlayerElement"
 
 
-
 export default function GameCard({ matchData, pseudo } : { matchData : MatchDataType, pseudo : string }) {
-
-/*
-    const sorted = [...matchData.participants].sort((a, b) =>
-        a.match!.side === matchData.participants[0].match!.side ? -1 : 1
-    )
-
-    const mid = Math.floor(sorted.length / 2)
-
-*/
 
     if(!matchData) return
 
@@ -21,10 +11,7 @@ export default function GameCard({ matchData, pseudo } : { matchData : MatchData
     const playerSide = matchData.participants.filter(p => p.match!.side === targetData.match!.side)
     const ennemiesSide = matchData.participants.filter(p => p.match!.side !== targetData.match!.side)
 
-    const teams = {
-        playerSide,
-        ennemiesSide
-    }
+    const teams = { playerSide, ennemiesSide }
 
     
     return (
