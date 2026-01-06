@@ -31,7 +31,7 @@ export default function Header() {
                     Classement
                 </li>
                 <li onClick={() => navigate("/test")} className="cursor-pointer hover:text-gray-100 transition-colors duration-200">
-                    Classement
+                    Test
                 </li>
 
                 <input type="text" className="bg-white rounded-lg text-black px-3 py-2 focus:outline-none focus:ring-0" 
