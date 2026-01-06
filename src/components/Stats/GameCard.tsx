@@ -1,29 +1,30 @@
-import type { MatchDataType, ParticipantType } from "./PlayerHistory"
-import { useMemo } from "react"
+import type { MatchDataType, ParticipantType, } from "./PlayerHistory"
 import PlayerElement from "../UI/PlayerElement"
 
 
 
-export default function GameCard({ matchData} : { matchData : MatchDataType }) {
+export default function GameCard({ matchData, pseudo } : { matchData : MatchDataType, pseudo : string }) {
 
-    const { teams, targetData } = useMemo(() => {
+/*
+    const sorted = [...matchData.participants].sort((a, b) =>
+        a.match!.side === matchData.participants[0].match!.side ? -1 : 1
+    )
 
-        const sorted = matchData.participants.sort((a : ParticipantType, ) => a.match!.side === matchData.participants[0].match!.side ? -1 : 1)
-        const mid = Math.floor(sorted.length / 2)
+    const mid = Math.floor(sorted.length / 2)
 
-        const teams = {
-            playerSide: sorted.slice(0, mid),
-            ennemiesSide: sorted.slice(mid)
-        }
-        
-        return {
-            teams,
-            targetData: teams.playerSide[0]
-        }
+*/
 
-    }, [matchData])
+    if(!matchData) return
 
-    if (!targetData) return
+    const targetData = matchData.participants.find(p => p.name === pseudo) as ParticipantType
+
+    const playerSide = matchData.participants.filter(p => p.match!.side === targetData.match!.side)
+    const ennemiesSide = matchData.participants.filter(p => p.match!.side !== targetData.match!.side)
+
+    const teams = {
+        playerSide,
+        ennemiesSide
+    }
 
     
     return (
@@ -33,8 +34,6 @@ export default function GameCard({ matchData} : { matchData : MatchDataType }) {
                 {teams.playerSide.map(player => (
                     <PlayerElement player={player} target={targetData.name === player.name} key={player.name} /> 
                 ))}
-
-                {targetData.name}
             </ul>
 
             <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.match!.result === "W" ? "text-blue-500" : "text-red-600")}>

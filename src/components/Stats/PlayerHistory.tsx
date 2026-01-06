@@ -15,7 +15,7 @@ type Match = ({
     details: string[];
 } | null)
 
-type PlayerDataType = {
+export type PlayerDataType = {
     name: string;
     matches : Match[];
 }
@@ -49,10 +49,8 @@ export default function PlayerHistory() {
     const parseMatch = (rawMatch: string) : Match => {
 
         if(!rawMatch) return null
-
         const [ side, result, classPlayed,points, details] = rawMatch.split("-")
-        return { side, result, classPlayed, points: Number(points), details: details ? details.split('') : [] }
-        
+        return { side, result, classPlayed, points: Number(points), details: details ? details.split('') : [] }     
     }
   
     const players: PlayerDataType[] = data.map(([name, ...rawMatches] : PlayerInfoType) => ({
@@ -75,6 +73,7 @@ export default function PlayerHistory() {
                 match: player.matches[index]
             }))
 
+            
         participants.sort((a, b) => {
             if (a.name === pseudoInGame) return -1
             if (b.name === pseudoInGame) return 1
@@ -94,8 +93,8 @@ export default function PlayerHistory() {
             {playerFound ? 
                 <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-16 text-white text-center gap-8 bg-gray-700 relative rounded-lg">
                     <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">
-                        {(pseudoInGame.charAt(0) === "A" 
-                        || pseudoInGame.charAt(0) ===  "E" 
+                        { (pseudoInGame.charAt(0) === "A" 
+                        || pseudoInGame.charAt(0) === "E" 
                         || pseudoInGame.charAt(0) === "I" 
                         || pseudoInGame.charAt(0) === "O" 
                         || pseudoInGame.charAt(0) === "U" 
@@ -103,7 +102,7 @@ export default function PlayerHistory() {
                         ? "Historique d'" : "Historique de ") + pseudoInGame}</h1>
                     {isLoading && <h2>Chargement...</h2>} 
                     {matchesPlayedByPlayer.length 
-                    ? matchesToDisplay.map(match => <GameCard matchData={match} key={match.index} />) 
+                    ? matchesToDisplay.map(match => <GameCard matchData={match} pseudo={pseudoInGame} key={match.index} />) 
                     : <h2 className="text-xl p-4">Aucune partie trouvée !</h2>}
                     
                 </div>
