@@ -8,16 +8,16 @@ type SummaryProps = {
     teams: string[][];
 };
 
-    const teamColors = [
+const teamColors = [
     "bg-red-900",
     "bg-blue-700",
     "bg-green-600",
     "bg-yellow-600",
     "bg-purple-600",
     "bg-pink-900"
-    ]
+]
 
-    const shuffle = [...teamColors].sort(() => Math.random() -0.5)
+const shuffle = [...teamColors].sort(() => Math.random() -0.5)
 
 
 

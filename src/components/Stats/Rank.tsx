@@ -1,13 +1,13 @@
 import { useStats } from "@/hooks/useStats"
 
-export default function Rank() {
+export default function Rank({ title, range } : { title : string, range : string }) {
 
-    const { data, isLoading } = useStats("Classement", "B2:G25")
+    const { data, isLoading } = useStats(title, range)
 
     return (
         <div className="py-12 justify-center mx-auto w-[370px] hover:cursor-pointer select-none">
 
-            <h1 className="text-white font-semibold text-center text-3xl mb-8 ">Classement</h1>
+            <h1 className="text-white font-semibold text-center text-3xl mb-8 ">{title}</h1>
 
             {isLoading && <p className="text-white font-semibold text-center text-xl mb-8">Chargement...</p>}
 

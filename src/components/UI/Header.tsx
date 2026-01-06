@@ -12,6 +12,7 @@ export default function Header() {
 
     const [pseudoSearched, setPseudoSearched] = useState("")
 
+    
     return (
         <nav className="bg-emerald-900 h-16 flex items-center px-8">
             <ol className="flex gap-48 justify-center w-full text-white font-semibold items-center">
@@ -24,9 +25,6 @@ export default function Header() {
                 <li onClick={() => navigate("/maps")} className="cursor-pointer hover:text-gray-100 transition-colors duration-200">
                     Maps
                 </li>
-                {/* <li onClick={() => navigate("/stats")} className="cursor-pointer hover:text-gray-1300 transition-colors duration-200">
-                    Stats
-                </li> */}
                 <li onClick={() => navigate("/classement")} className="cursor-pointer hover:text-gray-100 transition-colors duration-200">
                     Classement
                 </li>

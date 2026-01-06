@@ -37,8 +37,6 @@ export default function PlayerHistory() {
         .join("-")
     : ""
 
-    console.log(pseudoInGame)
-
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
 
