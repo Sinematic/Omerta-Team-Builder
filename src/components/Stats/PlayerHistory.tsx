@@ -66,7 +66,6 @@ export default function PlayerHistory() {
         .map((match, index) => match !== null ? index : -1)
         .filter(index => index !== -1) ?? []
 
-
     const matchesPlayedByPlayer : MatchDataType[] = indexOfGamesPlayed.map(index => {
 
         const participants = players
@@ -76,21 +75,17 @@ export default function PlayerHistory() {
                 match: player.matches[index]
             }))
 
-        console.log("avant", JSON.stringify(participants))
-
         participants.sort((a, b) => {
             if (a.name === pseudoInGame) return -1
             if (b.name === pseudoInGame) return 1
             return 0
         })
 
-        console.log("après", JSON.stringify(participants))
-
         return { index, participants }
         
     })
 
-    const matchesToDisplay = matchesPlayedByPlayer.reverse()
+    const matchesToDisplay = [...matchesPlayedByPlayer].reverse()
 
 
     return (
