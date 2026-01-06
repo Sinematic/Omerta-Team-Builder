@@ -18,9 +18,11 @@ export default function GameCard({ matchData} : { matchData : MatchDataType }) {
             ennemiesSide: sorted.slice(mid)
         }
 
+        console.log(teams.playerSide[0].match)
+        
         return {
             teams,
-            targetData: teams.playerSide[0].match
+            targetData: teams.playerSide[0]
         }
     }, [matchData])
 
@@ -29,16 +31,16 @@ export default function GameCard({ matchData} : { matchData : MatchDataType }) {
     
     return (
         <div className={"w-full px-8 py-4 flex rounded-xl justify-between items-center border-solid border-3 select-none shadow-lg  " +
-        (targetData.result === "W" ? "bg-gray-800 border-blue-500" : "bg-gray-900 border-red-600")}>
+        (targetData.match!.result === "W" ? "bg-gray-800 border-blue-500" : "bg-gray-900 border-red-600")}>
             <ul className="flex-1">
                 {teams.playerSide.map(player => (
-                    <PlayerElement player={player} target={teams.playerSide[0].name === player.name} key={player.name} /> 
+                    <PlayerElement player={player} target={targetData.name === player.name} key={player.name} /> 
                 ))}
             </ul>
 
-            <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.result === "W" ? "text-blue-500" : "text-red-600")}>
-                {targetData.result === "W" ? "VICTOIRE" : "DÉFAITE"}
-                <p className="text-xl">{"+" + targetData.points}</p>
+            <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.match!.result === "W" ? "text-blue-500" : "text-red-600")}>
+                {targetData.match!.result === "W" ? "VICTOIRE" : "DÉFAITE"}
+                <p className="text-xl">{"+" + targetData.match!.points}</p>
             </h3>
 
             <ul className="flex-1 flex flex-col items-end ">
