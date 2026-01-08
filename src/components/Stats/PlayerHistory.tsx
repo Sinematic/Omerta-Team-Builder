@@ -46,7 +46,7 @@ export default function PlayerHistory() {
 
     const parseMatch = (rawMatch: string) : Match => {
 
-        if (typeof rawMatch !== "string") return null
+        if(!rawMatch || typeof rawMatch !== "string" ) return null
         const [ side, result, classPlayed,points, details] = rawMatch.split("-")
         return { side, result, classPlayed, points: Number(points), details: details ? details.split('') : [] }     
     }
