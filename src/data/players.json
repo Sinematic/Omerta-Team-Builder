@@ -1,6 +1,6 @@
 [
     { "name": "Atalyah", "classes": [ "Huppermage", "Forgelance", "Sacrieur", "Féca", "Eniripsa", "Iop", "Pandawa" ] },
-    { "name": "Jardi", "classes": [ "Forgelance", "Féca", "Iop", "Sadida", "Xélor" ] },
+    { "name": "Jardi", "classes": [ "Forgelance", "Féca", "Iop", "Sadida", "Xélor", "Pandawa", "Eniripsa" ] },
     { "name": "Zelenox", "classes": [ "Iop", "Eniripsa", "Ecaflip", "Pandawa", "Forgelance", "Féca", "Sacrieur"] },
     { "name": "Titoyy", "classes": [ "Iop", "Féca", "Pandawa", "Forgelance" ] },
     { "name": "Idhao", "classes": [ "Féca", "Eniripsa", "Ouginak" ] },
@@ -14,7 +14,7 @@
     { "name": "Agaleh", "classes": [ "Iop" ] },
     { "name": "Athanor", "classes": ["Féca", "Pandawa"] },
     { "name": "Quasar", "classes": [ "Zobal", "Pandawa" ] },
-    { "name": "Fecafe", "classes": [ "Féca", "Iop", "Xélor", "Huppermage" ] }, 
+    { "name": "Fecafe", "classes": [ "Féca", "Iop", "Xélor", "Huppermage" ] },
     { "name": "Dixite", "classes": [ "Féca", "Pandawa" ] },
     { "name": "Vahalgrim", "classes": [ "Forgelance", "Iop" ] },
     { "name": "Kirito", "classes": [ "Iop", "Féca" ] },

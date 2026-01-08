@@ -45,7 +45,6 @@ export default function Header() {
                     placeholder="Chercher un joueur" onChange={(e) => setPseudoSearched(e.target.value)} value={pseudoSearched} 
                     onKeyDown={(e) => e.key === "Enter" ? search(pseudoSearched) : ""}/>
                 </li>
-
             </ul>
         </nav>
     )
