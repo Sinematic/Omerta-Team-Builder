@@ -1,5 +1,5 @@
 import type { MatchDataType, ParticipantType, } from "./PlayerHistory"
-import PlayerElement from "../UI/PlayerElement"
+import PlayerElement from "@/components/UI/PlayerElement"
 
 
 export default function GameCard({ matchData, pseudo } : { matchData : MatchDataType, pseudo : string }) {

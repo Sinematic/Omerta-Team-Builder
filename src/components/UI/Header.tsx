@@ -16,7 +16,7 @@ export default function Header() {
 
     
     return (
-        <nav className="bg-emerald-900 h-16 flex items-center px-8">
+        <nav className="bg-emerald-900 h-16 flex items-center px-8" aria-label="Navigation principale">
             <ul className="flex gap-48 justify-center w-full text-white font-semibold items-center">
 
                 <li>
@@ -33,8 +33,9 @@ export default function Header() {
                     <NavLink to="/classement" className={linksClasses}>Classement</NavLink>
                 </li>
                 <li>
-                    <input type="text" className="bg-white rounded-lg text-black px-3 py-2 focus:outline-none focus:ring-0" 
-                    placeholder="Chercher un joueur" onChange={(e) => setPseudoSearched(e.target.value)} value={pseudoSearched} 
+                    <input type="text" className="bg-white rounded-lg text-black px-3 py-1 focus:outline-none focus:ring-0" 
+                    placeholder="Rechercher un joueur" aria-label="Rechercher un joueur"
+                    onChange={(e) => setPseudoSearched(e.target.value)} value={pseudoSearched} 
                     onKeyDown={(e) => e.key === "Enter" ? search(pseudoSearched) : ""}/>
                 </li>
             </ul>

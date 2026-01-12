@@ -11,11 +11,11 @@ export default function PlayerElement({ player, target, reverse } : { player : P
     const navigate = useNavigate()
     const getClassData = (classInDofus: ClassInDofusType) => classesData[classInDofus]
 
-    return (
-        <li role="button" key={player.name} className={"text-xl flex gap-4 cursor-pointer" 
-        + (reverse ? " flex-row-reverse" : "")}
-        onClick={() => navigate("/stats/" + player.name.toLowerCase())}>
 
+    return (
+        
+        <li role="button" key={player.name} onClick={() => navigate("/stats/" + player.name.toLowerCase())}
+        className={"text-lg flex gap-2 cursor-pointer" + (reverse ? " flex-row-reverse" : "")}>
             <p className={"min-w-[120px] text-center " 
             + (target ? " font-semibold " : "")
                 }>{player.name}</p>
@@ -24,7 +24,9 @@ export default function PlayerElement({ player, target, reverse } : { player : P
                 <img src={getClassData(player.match!.classPlayed as ClassInDofusType).image} alt={"La classe " + player.match!.classPlayed}
                 className="w-full h-full object-cover" />
             </div>
-            <p>{player.match?.details}</p>
+            
+            <p className="inline-block align-text-bottom text-xl">{player.match?.details}</p>
+
         </li>
     )
 }

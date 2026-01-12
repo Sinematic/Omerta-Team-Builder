@@ -133,7 +133,7 @@ export default function TeamBuilder() {
     return (
         <div className="flex justify-center flex-col">
 
-            <p className="px-4 pt-7 text-center -translate-x-96 italic text-white animate-pulse text-lg">{messagePhase()}</p>
+            {phase !== "summary" ? <p className="px-4 pt-7 text-center -translate-x-96 italic text-white animate-pulse text-lg">{messagePhase()}</p> : null}
 
             { phase === "registration" ? 
                 <SelectPlayers participants={playersParticipating} handleClickOnParticipants={handleClickOnParticipants} players={players} /> 

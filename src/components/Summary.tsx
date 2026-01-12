@@ -22,20 +22,21 @@ const shuffle = [...teamColors].sort(() => Math.random() -0.5)
 
 
 export default function Summary({ map, teams }: SummaryProps) {
+    console.log(teams.length)
 
     return (
-        <div className="mx-auto mt-16 max-w-4xl text-white select-none">
+        <div className="mx-auto mt-16 max-w-4xl text-white select-none mb-12">
 
             <h1 className="text-4xl font-bold text-center mb-6">Résumé</h1>
 
-            <div className="text-center mx-auto mt-4 mb-8 space-y-6">
+            <div className="text-center mx-auto my-8 space-y-4">
 
-                {teams.map((team, teamIndex) => (
+                {teams.map((team, teamIndex) => ( <>
                     <ol key={teamIndex} className="flex justify-center flex-wrap">
 
                         {team.map((member, memberIndex) => (
                             <li key={member} className={`${shuffle[teamIndex % shuffle.length]} 
-                                px-4 py-2 text-white shadow-md min-w-[150px] 
+                                px-4 py-2 text-white shadow-md min-w-[150px] font-semibold 
                                 ${memberIndex === 0 ? 'rounded-l-lg' : ''} 
                                 ${memberIndex === team.length - 1 ? 'rounded-r-lg' : ''} 
                                 ${memberIndex !== 0 ? '-ml-1' : ''} 
@@ -44,9 +45,12 @@ export default function Summary({ map, teams }: SummaryProps) {
                             </li>
                         ))}
                     </ol>
-                ))}
 
-                <span className="text-3xl font-bold text-yellow-400 select-none animate-pulse">VS</span>
+                    {teamIndex < teams.length - 1 ? <p className="text-3xl font-bold text-yellow-400 animate-pulse">VS</p> : null}
+
+                </>))}
+
+                
 
             </div>
 
