@@ -1,8 +1,14 @@
 import type { DofusClasses, Player } from "@/types/dofus"
 import classesData from "@/data/classes.json"
 
+type PlayerCardProps = {
+    playerInfo : Player;
+    action ?: () => void;
+    minified?: boolean;
+}
 
-export default function PlayerCard({ playerInfo, action, minified=false } : { playerInfo : Player, action ?: () => void, minified?: boolean }) {
+
+export default function PlayerCard({ playerInfo, action, minified=false } : PlayerCardProps) {
 
     const classesInfo = classesData as unknown as DofusClasses
 

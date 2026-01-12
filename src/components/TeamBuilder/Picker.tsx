@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import snakePickOrder from "@/data/snake-pick-order.json"
-import PlayerCard from "../UI/PlayerCard";
+import PlayerCard from "@/components/UI/PlayerCard";
 import playersData from "@/data/players.json"
+import type { Player } from "@/types/dofus";
 
 type PickerProps = {
     players: string[];
@@ -68,7 +69,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                         const playerInfo = playersData.find(p => p.name === playerName)
                         if (!playerInfo) return null
 
-                        return <PlayerCard key={playerName} playerInfo={playerInfo} action={() => addToTeam(playerName)} minified={true} />
+                        return <PlayerCard key={playerName} playerInfo={playerInfo as Player} action={() => addToTeam(playerName)} minified={true} />
                     })}
 
                 </ul>                 

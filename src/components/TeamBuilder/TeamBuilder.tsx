@@ -5,13 +5,18 @@ import MapLister from "@/components/Maps/MapLister"
 import Picker from "@/components/TeamBuilder/Picker"
 import Summary from "@/components/Summary"
 import Button from "../UI/Button"
+import { isDofusClassName, type Player, type DofusClassName } from "@/types/dofus"
+
 
 type PhaseName = "registration" | "format selection" | "team allocation" | "map selection" | "summary"
 
 
 export default function TeamBuilder() {
 
-    const players = playersData
+    const players : Player[] = playersData.map(player => ({
+        name: player.name,
+        classes: player.classes.filter(isDofusClassName) as DofusClassName[]
+    }))
 
     const phases : { name : PhaseName, message : string }[] = [
         { name : "registration", message: "Sélection des joueurs en cours ..." },
@@ -28,39 +33,8 @@ export default function TeamBuilder() {
     const [mapUsed, setMapUsed] = useState({name: "", image: ""})
 
     const messagePhase = () => phases.find(p => p.name === phase)?.message
-/*
+
     const handlePhases = () : void => {
-
-        if(!isValidAmountOfPlayers) return 
-
-        if(phase === "registration") {
-            setPlayersParticipating(prev => shuffleArray(prev))
-            setPhase("format selection")
-            return
-        }
-            
-        if(phase === "format selection" ) {
-            if(format === "captains") { 
-                setPhase(phases[2].name)
-                return
-            } else {   
-                const numberOfTeams = countCaptains()
-                const teamsAssigned: string[][] = Array.from({ length: numberOfTeams }, () => []);
-
-                playersParticipating.forEach((participant, index) => {
-                    teamsAssigned[index % numberOfTeams].push(participant)
-                });
-                setTeams(teamsAssigned)
-                setPhase(phases[3].name)
-            }
-            return
-        }
-
-        if(phase === "team allocation") setPhase(phases[3].name)
-        if(phase === "map selection") setPhase(phases[4].name)
-    }*/
-
-        const handlePhases = () : void => {
 
         if(!isValidAmountOfPlayers) return 
 
@@ -99,7 +73,6 @@ export default function TeamBuilder() {
 
         }
     }
-
 
     const shuffleArray = (array:string[]): string[] => [...array].sort(() => Math.random() - 0.5) 
 
