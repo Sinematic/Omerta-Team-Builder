@@ -20,25 +20,17 @@ export default function Header() {
             <ul className="flex gap-48 justify-center w-full text-white font-semibold items-center">
 
                 <li>
-                    <NavLink to="/picker" className={linksClasses}>
-                        Composition d'équipes
-                    </NavLink>
+                    <NavLink to="/picker" className={linksClasses}>Composition d'équipes</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/classes-des-joueurs" className={linksClasses}>
-                        Classes des joueurs
-                    </NavLink>
+                    <NavLink to="/classes-des-joueurs" className={linksClasses}>Classes des joueurs</NavLink>
                 </li>
 
                 <li>
-                    <NavLink to="/maps" className={linksClasses}>
-                        Maps
-                    </NavLink>
+                    <NavLink to="/maps" className={linksClasses}>Maps</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/classement" className={linksClasses}>
-                        Classement
-                    </NavLink>
+                    <NavLink to="/classement" className={linksClasses}>Classement</NavLink>
                 </li>
                 <li>
                     <input type="text" className="bg-white rounded-lg text-black px-3 py-2 focus:outline-none focus:ring-0" 

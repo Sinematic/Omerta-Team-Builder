@@ -10,7 +10,7 @@
     { "name": "Zenio", "classes": [ "Sacrieur", "Iop" ] },
     { "name": "Shambala", "classes": [ "Ecaflip" ] },
     { "name": "Mojo", "classes": [ "Roublard", "Forgelance"] },
-    { "name": "Sinematic", "classes": [ "Sram", "Steamer", "Forgelance" ] },
+    { "name": "Sinematic", "classes": [ "Sram", "Steamer", "Forgelance", "Féca" ] },
     { "name": "Agaleh", "classes": [ "Iop" ] },
     { "name": "Athanor", "classes": ["Féca", "Pandawa"] },
     { "name": "Quasar", "classes": [ "Zobal", "Pandawa" ] },
@@ -35,5 +35,7 @@
     { "name": "Cullinan", "classes": [ "Iop" ] },
     { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Crâ", "Pandawa", "Steamer", "Ecaflip", "Iop", "Zobal", "Huppermage" ] },
     { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa", "Forgelance", "Iop", "Pandawa", "Xélor", "Ecaflip" ] },
-    { "name": "Raaz-Algoul", "classes": [ "Pandawa" ] }
+    { "name": "Raaz-Algoul", "classes": [ "Pandawa" ] },
+    { "name": "Saiyan", "classes": [ "Forgelance" ] },
+    { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas" ] }
 ]

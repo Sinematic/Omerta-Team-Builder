@@ -6,12 +6,14 @@ import Picker from "@/components/TeamBuilder/Picker"
 import Summary from "@/components/Summary"
 import Button from "../UI/Button"
 
+type PhaseName = "registration" | "format selection" | "team allocation" | "map selection" | "summary"
+
 
 export default function TeamBuilder() {
 
     const players = playersData
 
-    const phases = [
+    const phases : { name : PhaseName, message : string }[] = [
         { name : "registration", message: "Sélection des joueurs en cours ..." },
         { name : "format selection", message: "Sélection du format de composition d'équipes ..." },
         { name : "team allocation", message: "Sélection des joueurs par les capitaines ..." },
@@ -20,28 +22,19 @@ export default function TeamBuilder() {
     ]
 
     const [playersParticipating, setPlayersParticipating] = useState<string[]>([]) 
-    const [phase, setPhase] = useState<string>(phases[0].name)
+    const [phase, setPhase] = useState<PhaseName>(phases[0].name)
     const [format, setFormat] = useState<"captains" | "random">()
     const [teams, setTeams] = useState<string[][]>([])
     const [mapUsed, setMapUsed] = useState({name: "", image: ""})
 
-
     const messagePhase = () => phases.find(p => p.name === phase)?.message
-
-    /** Phases
-     * 0 Initialisation, inscription des joueurs
-     * 1 Sélection du format (Capitaines / Random) 
-     * 2 Sélection des équipiers par les capitaines (si Random, passer à 3)
-     * 3 Sélection de la carte
-     * 4 Résumé
-     */
-
-    const handleProceedPhases = () : void => {
+/*
+    const handlePhases = () : void => {
 
         if(!isValidAmountOfPlayers) return 
 
         if(phase === "registration") {
-            setPlayersParticipating(shuffleArray(playersParticipating))
+            setPlayersParticipating(prev => shuffleArray(prev))
             setPhase("format selection")
             return
         }
@@ -65,7 +58,48 @@ export default function TeamBuilder() {
 
         if(phase === "team allocation") setPhase(phases[3].name)
         if(phase === "map selection") setPhase(phases[4].name)
+    }*/
+
+        const handlePhases = () : void => {
+
+        if(!isValidAmountOfPlayers) return 
+
+        switch(phase) {
+            case ("registration") : {
+                setPlayersParticipating(prev => shuffleArray(prev))
+                setPhase("format selection")
+                break
+            }
+            case ("format selection") : {
+                if(format === "captains") { 
+                    setPhase(phases[2].name)
+                    break
+                } else {   
+                    const numberOfTeams = countCaptains()
+                    const teamsAssigned: string[][] = Array.from({ length: numberOfTeams }, () => []);
+
+                    playersParticipating.forEach((participant, index) => {
+                        teamsAssigned[index % numberOfTeams].push(participant)
+                    });
+                    setTeams(teamsAssigned)
+                    setPhase(phases[3].name)
+                }
+                    break
+            }
+            
+            case ("team allocation") : {
+                setPhase(phases[3].name)
+                break
+            }
+            
+            case ("map selection") : {
+                setPhase(phases[4].name)
+                break
+            }
+
+        }
     }
+
 
     const shuffleArray = (array:string[]): string[] => [...array].sort(() => Math.random() - 0.5) 
 
@@ -91,7 +125,7 @@ export default function TeamBuilder() {
     const isValidAmountOfPlayers = () : boolean => playersParticipating.length > 5 && (playersParticipating.length % 4 === 0 || playersParticipating.length % 5 === 0)
 
     useEffect(() => { 
-        if(format) handleProceedPhases()
+        if(format) handlePhases()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [format])
 
@@ -112,13 +146,13 @@ export default function TeamBuilder() {
                 </div>
             : null}
 
-            {phase === "team allocation" ? <Picker players={playersParticipating} captainsAmount={countCaptains()} teamsHandler={handleTeams} phaseHandler={handleProceedPhases} /> : null}
+            {phase === "team allocation" ? <Picker players={playersParticipating} captainsAmount={countCaptains()} teamsHandler={handleTeams} phaseHandler={handlePhases} /> : null}
 
             {phase === "map selection" ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
 
             {isValidAmountOfPlayers() && phase === "registration" ? 
                 <div className="flex justify-center gap-4 fixed bottom-8 text-white left-1/2 -translate-x-1/2 select-none font-medium ">
-                    <Button text="Suivant" action={handleProceedPhases} />
+                    <Button text="Suivant" action={handlePhases} />
                 </div>
             : null }
 

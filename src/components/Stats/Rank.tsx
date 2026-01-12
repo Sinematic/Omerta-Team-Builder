@@ -7,7 +7,7 @@ export default function Rank({ title, range } : { title : string, range : string
     return (
         <div className="py-12 justify-center mx-auto w-[370px] hover:cursor-pointer select-none">
 
-            <h1 className="text-white font-semibold text-center text-3xl mb-8 ">{title}</h1>
+            <h1 className="text-white font-semibold text-center text-3xl mb-8">{title}</h1>
 
             {isLoading && <p className="text-white font-semibold text-center text-xl mb-8">Chargement...</p>}
 
