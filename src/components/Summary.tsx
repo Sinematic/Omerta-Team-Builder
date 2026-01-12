@@ -22,7 +22,7 @@ const shuffle = [...teamColors].sort(() => Math.random() -0.5)
 
 
 export default function Summary({ map, teams }: SummaryProps) {
-    console.log(teams.length)
+
 
     return (
         <div className="mx-auto mt-16 max-w-4xl text-white select-none mb-12">

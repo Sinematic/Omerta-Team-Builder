@@ -4,7 +4,7 @@ import classesData from "@/data/classes.json"
 
 export default function PlayerCard({ playerInfo, action, minified=false } : { playerInfo : Player, action ?: () => void, minified?: boolean }) {
 
-    const classesInfo : DofusClasses = classesData
+    const classesInfo = classesData as unknown as DofusClasses
 
 
     return (
