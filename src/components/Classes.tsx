@@ -1,5 +1,5 @@
 import playersData from "@/data/players.json"
-import { isDofusClassName, type Player } from "@/types/dofus"
+import { type Player } from "@/types/dofus"
 import PlayerCard from "@/components/UI/PlayerCard"
 import { useNavigate } from "react-router"
 
@@ -14,8 +14,9 @@ export default function Classes({ participants = [] } : ClassesType ) {
 
 	const data : Player[] = playersData.map((player) => ({
 		name: player.name,
-		classes: player.classes.filter(isDofusClassName)
+		classes: player.classes
 	}))
+	
 	const players = participants.length ? data.filter((player) => participants.includes(player.name)) : data
 
 	const navigate = useNavigate()

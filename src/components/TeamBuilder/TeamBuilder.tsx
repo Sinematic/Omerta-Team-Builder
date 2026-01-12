@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react"
-import playersData from "@/data/players.json"
 import SelectPlayers from "@/components/TeamBuilder/SelectPlayers"
 import MapLister from "@/components/Maps/MapLister"
 import Picker from "@/components/TeamBuilder/Picker"
-import Summary from "@/components/Summary"
-import Button from "../UI/Button"
-import { isDofusClassName, type Player, type DofusClassName } from "@/types/dofus"
+import Summary from "@/components/TeamBuilder/Summary"
+import Button from "@/components/UI/Button"
+import { getAllPlayers } from "@/utils/players"
 
 
 type PhaseName = "registration" | "format selection" | "team allocation" | "map selection" | "summary"
 
 
 export default function TeamBuilder() {
-
+/*
     const players : Player[] = playersData.map(player => ({
         name: player.name,
         classes: player.classes.filter(isDofusClassName) as DofusClassName[]
-    }))
+    }))*/
+
+    const players = getAllPlayers()
 
     const phases : { name : PhaseName, message : string }[] = [
         { name : "registration", message: "Sélection des joueurs en cours ..." },

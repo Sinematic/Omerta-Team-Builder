@@ -1,5 +1,5 @@
 import classesData from "@/data/classes.json"
-import type { ParticipantType } from "../Stats/PlayerHistory";
+import type { ParticipantType } from "@/components/Stats/PlayerHistory";
 import { useNavigate } from "react-router";
 
 
@@ -13,7 +13,7 @@ export default function PlayerElement({ player, target, reverse } : { player : P
 
 
     return (
-        
+
         <li role="button" key={player.name} onClick={() => navigate("/stats/" + player.name.toLowerCase())}
         className={"text-lg flex gap-2 cursor-pointer" + (reverse ? " flex-row-reverse" : "")}>
             <p className={"min-w-[120px] text-center " 

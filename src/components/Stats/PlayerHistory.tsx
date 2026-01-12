@@ -3,7 +3,6 @@ import { useParams } from "react-router"
 import playersData from "@/data/players.json"
 import NotFound from "@/components/UI/NotFound"
 import GameCard from "@/components/Stats/GameCard"
-import { isDofusClassName } from "@/types/dofus"
 
 
 type PlayerInfoType = [ string, ...string[] ]
@@ -54,7 +53,7 @@ export default function PlayerHistory() {
   */
 
     const parseMatch = (rawMatch: unknown): Match | null => {
-        if (typeof rawMatch !== "string") return null;
+        if (typeof rawMatch !== "string") return null
 
         const parts = rawMatch.split("-")
         if (parts.length < 4) return null
@@ -65,8 +64,6 @@ export default function PlayerHistory() {
 
         const parsedPoints = Number(points)
         if (!Number.isFinite(parsedPoints)) return null
-
-        if(!isDofusClassName(classPlayed)) return null
 
         return { side, result, classPlayed, points: parsedPoints, details: details ? details.split("") : [] }
     }

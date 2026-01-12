@@ -1,22 +1,30 @@
-/*import { useEffect, useState } from "react"
+import { useEffect,/* useState */} from "react"
 import playersData from "@/data/players.json"
+//import type SelectPlayers from "../TeamBuilder/SelectPlayers"
 
 
-const players = playersData as const
-type Player = typeof players[number];
+type Player = typeof playersData[number];
 type PlayerName = Player["name"];
+
+type Profile = { name: PlayerName | "", mainClass:  string }
 
 
 export default function Profile() {
 
     const whoAmI = localStorage.getItem("whoAmI")
 
-    const [profile, setProfile] = useState<{ name:  }>({})
+    //const [profile, setProfile] = useState<Profile>({ name: "", mainClass: ""})
 
-    useEffect(() => {  },[whoAmI])
+    useEffect(() => {  
+        
+    },[whoAmI])
+
+    //const setAsProfile = () => { setProfile({ name: playersData}) }
 
     return (
-        <div></div>
+        <>
+            {/*whoAmI ? <SelectPlayers participants={[] players={} handleClickOnParticipants={}} /> : <p className="text-white text-xl">toto</p> */}
+        
+        </>
     )
 }
-*/
