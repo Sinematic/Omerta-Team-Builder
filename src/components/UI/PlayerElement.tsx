@@ -17,8 +17,9 @@ export default function PlayerElement({ player, target, reverse } : { player : P
         <li role="button" key={player.name} onClick={() => navigate("/stats/" + player.name.toLowerCase())}
         className={"text-lg flex gap-2 cursor-pointer" + (reverse ? " flex-row-reverse" : "")}>
             <p className={"min-w-[120px] text-center " 
-            + (target ? " font-semibold " : "")
-                }>{player.name}</p>
+            + (target ? " font-semibold " : "")}>
+                {player.name}
+            </p>
             
             <div className="w-[1lh] h-[1lh] rounded-full overflow-hidden">
                 <img src={getClassData(player.match!.classPlayed as ClassInDofusType).image} alt={"La classe " + player.match!.classPlayed}

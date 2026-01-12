@@ -43,14 +43,6 @@ export default function PlayerHistory() {
     const { data, isLoading } = useStats("Matchs", "A2:K33")
 
     if (!data) return
-/*
-    const parseMatch = (rawMatch: string) : Match => {
-
-        if(!rawMatch || typeof rawMatch !== "string" ) return null
-        const [ side, result, classPlayed,points, details] = rawMatch.split("-")
-        return { side, result, classPlayed, points: Number(points), details: details ? details.split('') : [] }     
-    }
-  */
 
     const parseMatch = (rawMatch: unknown): Match | null => {
         if (typeof rawMatch !== "string") return null
