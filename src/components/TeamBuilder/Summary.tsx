@@ -19,8 +19,6 @@ const teamColors = [
 
 const shuffle = [...teamColors].sort(() => Math.random() -0.5)
 
-
-
 export default function Summary({ map, teams }: SummaryProps) {
 
 
@@ -49,8 +47,6 @@ export default function Summary({ map, teams }: SummaryProps) {
                     {teamIndex < teams.length - 1 ? <p className="text-3xl font-bold text-yellow-400 animate-pulse">VS</p> : null}
 
                 </>))}
-
-                
 
             </div>
 
