@@ -46,10 +46,9 @@ export default function Profile() {
     }
 
 
-
     return (
-        <div className="p-6 space-y-6 w-2/3 mx-auto text-center select-none">
-            {/*!profile ? <>
+        <div className="w-full p-3 mx-auto text-center select-none md:p-6 md:space-y-6 md:w-2/3">
+            {!profile ? <>
                 <SelectPlayers participants={[]} players={players} action={handleClick} message="Clique sur ton nom" /> 
                 {openConfirm ? <div className="mx-auto text-white bg-amber-700">
                     <p>Définir {temporaryIdentity} comme profil ?</p>
@@ -63,7 +62,7 @@ export default function Profile() {
             : <>
                 <p className="text-white text-xl">{whoAmI}</p>
                 <Button text="Supprimer données de profil" action={handleDeleProfile} />
-            </>*/}
+            </>}
         
         </div>
     )
