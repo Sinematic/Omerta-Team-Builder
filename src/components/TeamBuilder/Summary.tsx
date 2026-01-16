@@ -17,7 +17,7 @@ const teamColors = [
     "bg-pink-900"
 ]
 
-const shuffle = [...teamColors].sort(() => Math.random() -0.5)
+const shuffle = [...teamColors].sort(() => Math.random() - 0.5)
 
 export default function Summary({ map, teams }: SummaryProps) {
 

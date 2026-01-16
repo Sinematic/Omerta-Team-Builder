@@ -6,6 +6,14 @@ export default function Rank({ title, range } : { title : string, range : string
     const { data, isLoading } = useStats(title, range)
     const navigate = useNavigate()
 
+
+    let sortedRows
+    
+    if (data) sortedRows = [...data].sort((a, b) => a[0] + b[0])
+
+    console.log(sortedRows)
+
+
     return (
         <div className="pt-8 justify-center font-semibold mx-auto w-[370px] hover:cursor-pointer select-none md:py-12">
 
@@ -13,9 +21,9 @@ export default function Rank({ title, range } : { title : string, range : string
 
             {isLoading && <p className="text-white text-center text-xl mb-8">Chargement...</p>}
 
-            {data ? <ol className="text-black px-4 py-4 text-left">
+            {sortedRows ? <ol className="text-black px-4 py-4 text-left">
 
-                {data.map((row: string[], index: number) => row[1] ?
+                {sortedRows.map((row: string[], index: number) => row[1] ?
 
                     <li key={index} onClick={() => navigate("/stats/" + row[1].toLowerCase())}
                     className={"relative bg-white py-2 mb-2 text-lg rounded-lg text-black border-solid " + (index >= 3 ? "" 
