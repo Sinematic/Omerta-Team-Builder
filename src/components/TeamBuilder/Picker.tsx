@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import snakePickOrder from "@/data/snake-pick-order.json"
-import PlayerCard from "@/components/UI/PlayerCard";
+import PlayerCard from "@/components/Classes/PlayerCard";
 import playersData from "@/data/players.json"
 import type { Player } from "@/types/dofus";
 

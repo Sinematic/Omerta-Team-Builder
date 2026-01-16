@@ -1,6 +1,6 @@
 import playersData from "@/data/players.json"
 import { type Player } from "@/types/dofus"
-import PlayerCard from "@/components/UI/PlayerCard"
+import PlayerCard from "@/components/Classes/PlayerCard"
 import { useNavigate } from "react-router"
 import { sortPlayersByName } from "@/utils/players"
 
@@ -11,7 +11,6 @@ type ClassesType = {
 
 
 export default function Classes({ participants = [] } : ClassesType ) {
-
 
 	const data : Player[] = playersData.map((player) => ({
 		name: player.name,

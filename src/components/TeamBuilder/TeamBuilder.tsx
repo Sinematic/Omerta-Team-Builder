@@ -4,8 +4,7 @@ import MapLister from "@/components/Maps/MapLister"
 import Picker from "@/components/TeamBuilder/Picker"
 import Summary from "@/components/TeamBuilder/Summary"
 import Button from "@/components/UI/Button"
-//import { getAllPlayers } from "@/utils/players"
-import playersData from "@/data/players.json"
+import { getAllPlayers } from "@/utils/players"
 import { type Player } from "@/types/dofus"
 
 
@@ -14,12 +13,8 @@ type PhaseName = "registration" | "format selection" | "team allocation" | "map 
 
 export default function TeamBuilder() {
 
-    const players : Player[] = playersData.map(player => ({
-        name: player.name,
-        classes: player.classes
-    }))
 
-    //const players = getAllPlayers()
+    const players : Player[] = getAllPlayers()
 
     const phases : { name : PhaseName, message : string }[] = [
         { name : "registration", message: "Sélection des joueurs en cours ..." },

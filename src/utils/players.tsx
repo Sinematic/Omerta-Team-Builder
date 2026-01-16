@@ -9,3 +9,7 @@ export const getAllPlayers = (): Player[] => playersData.map(player => ({
 export const sortPlayersByName = (players=playersData): Player[] => (
     players.sort((a, b) => a.name.localeCompare(b.name, "fr", { sensitivity: "base" }))
 )
+
+export const isSmallScreen = () : boolean => {
+  return window.innerWidth <= 640
+}
