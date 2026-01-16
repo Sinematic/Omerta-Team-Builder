@@ -1,6 +1,7 @@
 export interface DofusClass {
     name: string;
     emoji: string;
+    short: string;
 }
 
 export type DofusClasses = Record<string, DofusClass>

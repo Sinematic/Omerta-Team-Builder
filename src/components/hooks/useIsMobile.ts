@@ -1,3 +1,3 @@
-export default function useIsSmallScreen() {
+export default function useIsSmallScreen() : boolean {
   return window.innerWidth <= 640
 }

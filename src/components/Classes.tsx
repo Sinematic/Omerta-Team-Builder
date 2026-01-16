@@ -2,6 +2,7 @@ import playersData from "@/data/players.json"
 import { type Player } from "@/types/dofus"
 import PlayerCard from "@/components/UI/PlayerCard"
 import { useNavigate } from "react-router"
+import { sortPlayersByName } from "@/utils/players"
 
 
 type ClassesType = {
@@ -17,15 +18,17 @@ export default function Classes({ participants = [] } : ClassesType ) {
 		classes: player.classes
 	}))
 	
-	const players = participants.length ? data.filter((player) => participants.includes(player.name)) : data
+	const players = participants.length 
+	? data.filter((player) => participants.includes(player.name)) 
+	: sortPlayersByName()
 
 	const navigate = useNavigate()
 
 
     return (
-		<div className="block py-6 px-12 w-4/5 mx-auto select-none cursor-pointer">
+		<div className="block w-full p-4 md:py-6 md:px-12 md:w-4/5 mx-auto select-none cursor-pointer">
 			{players ? 
-				<ul className="flex flex-col gap-4">
+				<ul className="flex flex-col gap-1 md:gap-4">
 					{players.map(player => (
 						<PlayerCard key={player.name} playerInfo={player} action={() => navigate("/stats/" + player.name.toLowerCase())} />
 					))}

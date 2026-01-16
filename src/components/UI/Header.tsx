@@ -16,7 +16,7 @@ export default function Header() {
 
     
     return (
-        <nav className="w-full bg-emerald-900 h-16 flex items-center px:3 md:px-8" aria-label="Navigation principale">
+        <nav className="w-full bg-emerald-900 h-16 flex items-center px:3 md:px-8 overflow-hidden" aria-label="Navigation principale">
             <ul className="flex gap-4 justify-center w-full text-white font-semibold items-center md:gap-48">
 
                 <li>
