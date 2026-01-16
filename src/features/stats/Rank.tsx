@@ -26,7 +26,7 @@ export default function Rank({ title, range } : { title : string, range : string
                 {sortedRows.map((row: string[], index: number) => row[1] ?
 
                     <li key={index} onClick={() => navigate("/stats/" + row[1].toLowerCase())}
-                    className={"relative bg-white py-2 mb-2 text-lg rounded-lg text-black border-solid " + (index >= 3 ? "" 
+                    className={"relative bg-white py-2 mb-2 text-lg rounded-lg text-black border-solid overflow-hidden " + (index >= 3 ? "" 
                         : (index === 0 ? "border-3 border-[#d1aa2a]" 
                         : (index === 1 ? "border-3 border-neutral-400" 
                         : "border-3 border-[#a86828]")))}>
