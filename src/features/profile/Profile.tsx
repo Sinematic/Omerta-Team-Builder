@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import playersData from "@/data/players.json"
 import SelectPlayers from "@/features/teamBuilder/SelectPlayers"
 import { getAllPlayers } from "@/utils/players"
-import Button from "../../components/UI/Button"
+import Button from "@/components/UI/Button"
 
 
 type Player = typeof playersData[number]
