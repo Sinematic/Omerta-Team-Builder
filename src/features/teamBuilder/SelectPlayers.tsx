@@ -1,4 +1,5 @@
 import { sortPlayersByName } from "@/utils/players"
+//import { useState } from "react"
 
 type SelectPlayersProps = {
     participants: string[]
@@ -16,6 +17,8 @@ export default function SelectPlayers({ participants, action, players, message }
         if (length === 1) return "1 joueur a été sélectionné";
         return length + " joueurs ont été sélectionnés";
     })
+
+    //const [query, setQuery] = useState<string>("")
 
 
     return (<>

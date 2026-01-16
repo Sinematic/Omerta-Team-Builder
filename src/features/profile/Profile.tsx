@@ -50,10 +50,13 @@ export default function Profile() {
         <div className="w-full p-3 mx-auto text-center select-none md:p-6 md:space-y-6 md:w-2/3">
             {!profile ? <>
                 <SelectPlayers participants={[]} players={players} action={handleClick} message="Clique sur ton nom" /> 
-                {openConfirm ? <div className="mx-auto text-white bg-amber-700">
-                    <p>Définir {temporaryIdentity} comme profil ?</p>
-                    <Button text={"Valider"} action={() => setAsProfile()} />
-                    <Button text={"Annuler"} action={() => setOpenConfirm(false)} />
+                {openConfirm ? <div className="m-4 px-4 py-2 mx-auto text-white bg-neutral-700 rounded-xl w-fit">
+                    <p className="pb-2 md:text-lg">Tu es <span className="font-semibold">{temporaryIdentity}</span>, c'est ça ?</p>
+                    <div className="flex flex-cols justify-center gap-3">
+                        <Button text={"Oui"} action={() => setAsProfile()} />
+                        <Button text={"Non"} action={() => setOpenConfirm(false)} color="bg-amber-700" />
+                    </div>
+                    
                 </div>
                 
                 : null}
