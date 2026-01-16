@@ -8,8 +8,8 @@ export default function Rank({ title, range } : { title : string, range : string
 
 
     let sortedRows
-    
-    if (data) sortedRows = [...data].sort((a, b) => a[0] + b[0])
+
+    if (data) sortedRows = [...data].sort((a, b) => b[0] - a[0])
 
     console.log(sortedRows)
 
