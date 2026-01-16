@@ -1,6 +1,6 @@
 import classesData from "@/data/classes.json"
-import type { ParticipantType } from "@/components/Stats/PlayerHistory";
-import { useNavigate } from "react-router";
+import type { ParticipantType } from "@/features/stats/PlayerHistory"
+import { useNavigate } from "react-router"
 
 
 type ClassInDofusType = keyof typeof classesData

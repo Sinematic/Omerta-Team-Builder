@@ -1,4 +1,5 @@
-import MapCard from "@/components/Maps/MapCard";
+import React from "react"
+import MapCard from "@/features/maps/MapCard"
 
 type SummaryProps = {
     map: {
@@ -29,11 +30,11 @@ export default function Summary({ map, teams }: SummaryProps) {
 
             <div className="text-center mx-auto my-8 space-y-4">
 
-                {teams.map((team, teamIndex) => ( <>
-                    <ol key={teamIndex} className="flex justify-center flex-wrap">
+                {teams.map((team, teamIndex) => ( <React.Fragment key={teamIndex}>
+                    <ol className="flex justify-center flex-wrap">
 
                         {team.map((member, memberIndex) => (
-                            <li key={member} className={`${shuffle[teamIndex % shuffle.length]} 
+                            <li key={member + "-" + memberIndex} className={`${shuffle[teamIndex % shuffle.length]} 
                                 px-4 py-2 text-white shadow-md min-w-[150px] font-semibold 
                                 ${memberIndex === 0 ? 'rounded-l-lg' : ''} 
                                 ${memberIndex === team.length - 1 ? 'rounded-r-lg' : ''} 
@@ -46,7 +47,7 @@ export default function Summary({ map, teams }: SummaryProps) {
 
                     {teamIndex < teams.length - 1 ? <p className="text-3xl font-bold text-yellow-400 animate-pulse">VS</p> : null}
 
-                </>))}
+                </React.Fragment>))}
 
             </div>
 

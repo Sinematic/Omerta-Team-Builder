@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { fetchStats } from "@/api/stats"
+import { fetchStats } from "@/services/stats.service"
 
 export const useStats = (sheet: string, range?: string) => {
     return useQuery({

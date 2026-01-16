@@ -1,6 +1,6 @@
 import playersData from "@/data/players.json"
 import { type Player } from "@/types/dofus"
-import PlayerCard from "@/components/Classes/PlayerCard"
+import PlayerCard from "@/features/classesOfPlayers/PlayerCard"
 import { useNavigate } from "react-router"
 import { sortPlayersByName } from "@/utils/players"
 

@@ -2,7 +2,7 @@ import { useStats } from "@/hooks/useStats"
 import { useParams } from "react-router"
 import playersData from "@/data/players.json"
 import NotFound from "@/components/UI/NotFound"
-import GameCard from "@/components/Stats/GameCard"
+import GameCard from "@/features/stats/GameCard"
 
 
 type PlayerInfoType = [ string, ...string[] ]

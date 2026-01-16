@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router"
 import Header from "@/components/UI/Header"
-import MapLister from "@/components/Maps/MapLister"
-import TeamBuilder from "@/components/TeamBuilder/TeamBuilder"
-import PlayerHistory from "@/components/Stats/PlayerHistory"
-import Rank from "@/components/Stats/Rank"
+import MapLister from "@/features/maps/MapLister"
+import TeamBuilder from "@/features/teamBuilder/TeamBuilder"
+import PlayerHistory from "@/features/stats/PlayerHistory"
+import Rank from "@/features/stats/Rank"
 import NotFound from "@/components/UI/NotFound"
-import Profile from "@/components/Profile/Profile"
-import ClassesOfPlayers from "./components/Classes/ClassesOfPlayers"
+import Profile from "@/features/profile/Profile"
+import ClassesOfPlayers from "./features/classesOfPlayers/ClassesOfPlayers"
 
 export default function App() {
 	

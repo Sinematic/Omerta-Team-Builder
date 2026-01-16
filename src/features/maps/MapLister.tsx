@@ -1,6 +1,6 @@
 import mapsData from "@/data/maps.json"
-import MapCard from "@/components/Maps/MapCard"
-import Button from "../UI/Button";
+import MapCard from "@/features/maps/MapCard"
+import Button from "@/components/UI/Button";
 import { isSmallScreen } from "@/utils/players";
 
 type MapListerProps = {
