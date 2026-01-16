@@ -10,7 +10,7 @@ type ClassesType = {
 }
 
 
-export default function Classes({ participants = [] } : ClassesType ) {
+export default function ClassesOfPlayers({ participants = [] } : ClassesType ) {
 
 	const data : Player[] = playersData.map((player) => ({
 		name: player.name,
