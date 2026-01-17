@@ -24,11 +24,11 @@ export default function Summary({ map, teams }: SummaryProps) {
 
 
     return (
-        <div className="mx-auto mt-16 max-w-4xl text-white select-none mb-12">
+        <div className="md:h-[80vh] mx-auto mt-16 max-w-4xl text-white select-none mb-12 md:grid md:place-items-center ">
 
-            <h1 className="text-4xl font-bold text-center mb-6">Résumé</h1>
+            <h1 className="text-3xl font-semibold text-center">Résumé</h1>
 
-            <div className="text-center mx-auto my-8 space-y-4">
+            <div className="text-center mx-auto space-y-4">
 
                 {teams.map((team, teamIndex) => ( <React.Fragment key={teamIndex}>
                     <ol className="flex justify-center flex-wrap">
@@ -45,7 +45,7 @@ export default function Summary({ map, teams }: SummaryProps) {
                         ))}
                     </ol>
 
-                    {teamIndex < teams.length - 1 ? <p className="text-3xl font-bold text-yellow-400 animate-pulse">VS</p> : null}
+                    {teamIndex < teams.length - 1 ? <p className="text-4xl font-bold text-yellow-400 animate-pulse">VS</p> : null}
 
                 </React.Fragment>))}
 

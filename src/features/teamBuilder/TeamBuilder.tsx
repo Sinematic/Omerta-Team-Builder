@@ -34,7 +34,7 @@ export default function TeamBuilder() {
 
     const handlePhases = () : void => {
 
-        if(!isValidAmountOfPlayers) return 
+        if(!validPlayers) return 
 
         switch(phase) {
             case ("registration") : {
@@ -94,6 +94,8 @@ export default function TeamBuilder() {
     const handleTeams = (teamsAssigned: string[][]) => setTeams(teamsAssigned)
 
     const isValidAmountOfPlayers = () : boolean => playersParticipating.length > 5 && (playersParticipating.length % 4 === 0 || playersParticipating.length % 5 === 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const validPlayers = useMemo(() => isValidAmountOfPlayers(), [playersParticipating])
 
     useEffect(() => { 
         if(format) handlePhases()
@@ -104,28 +106,28 @@ export default function TeamBuilder() {
     return (
         <div className="flex justify-center flex-col">
 
-            {phase !== "summary" ? <p className="px-4 pt-7 text-center -translate-x-96 italic text-white animate-pulse text-lg">{messagePhase()}</p> : null}
+            { phase !== "summary" ? <p className="px-4 pt-7 text-center -translate-x-96 italic text-white animate-pulse text-lg">{messagePhase()}</p> : null}
 
             { phase === "registration" ? 
                 <SelectPlayers participants={playersParticipating} action={handleClickOnParticipants} players={players} /> 
             : null}
 
-            {phase === "format selection" ?
-                <div className="mx-auto w-1/3 flex flex-cols justify-center gap-8 mt-24">
+            { phase === "format selection" ?
+                <div className="h-[80vh] w-fit mx-auto grid grid-cols-2 place-items-center gap-4">
                     <Button text="Capitaines" action={() => setFormat("captains")} />
                     <Button text="Aléatoire" action={() => setFormat("random")} />
                 </div>
             : null}
 
-            {phase === "team allocation" ? <Picker players={playersParticipating} captainsAmount={countCaptains()} teamsHandler={handleTeams} phaseHandler={handlePhases} /> : null}
+            { phase === "team allocation" ? <Picker players={playersParticipating} captainsAmount={countCaptains()} teamsHandler={handleTeams} phaseHandler={handlePhases} /> : null}
 
-            {phase === "map selection" ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
+            { phase === "map selection" ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
 
-            {isValidAmountOfPlayers() && phase === "registration" ? 
+            { validPlayers && phase === "registration" ? 
                 <Button text="Suivant" action={handlePhases} specifiedClasses="w-fit mx-auto my-8" />
             : null }
 
-            {phase === "summary" ? <Summary map={mapUsed} teams={teams} /> : null}
+            { phase === "summary" ? <Summary map={mapUsed} teams={teams} /> : null}
 
         </div>)
 }

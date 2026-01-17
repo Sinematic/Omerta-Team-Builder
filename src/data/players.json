@@ -10,7 +10,7 @@
     { "name": "Zenio", "classes": [ "Sacrieur", "Iop" ] },
     { "name": "Shambala", "classes": [ "Ecaflip" ] },
     { "name": "Mojo", "classes": [ "Roublard", "Forgelance"] },
-    { "name": "Sinematic", "classes": [ "Sram", "Steamer", "Forgelance", "Féca" ] },
+    { "name": "Sinematic", "classes": [ "Sram", "Steamer", "Forgelance", "Féca", "Iop" ] },
     { "name": "Agaleh", "classes": [ "Iop" ] },
     { "name": "Athanor", "classes": ["Féca", "Pandawa"] },
     { "name": "Quasar", "classes": [ "Zobal", "Pandawa" ] },
