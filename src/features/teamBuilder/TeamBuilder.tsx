@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import SelectPlayers from "@/features/teamBuilder/SelectPlayers"
 import MapLister from "@/features/maps/MapLister"
 import Picker from "@/features/teamBuilder/Picker"
@@ -14,7 +14,7 @@ type PhaseName = "registration" | "format selection" | "team allocation" | "map 
 export default function TeamBuilder() {
 
 
-    const players : Player[] = getAllPlayers()
+    const players : Player[] = useMemo(() => getAllPlayers(), [])
 
     const phases : { name : PhaseName, message : string }[] = [
         { name : "registration", message: "Sélection des joueurs en cours ..." },
@@ -122,9 +122,7 @@ export default function TeamBuilder() {
             {phase === "map selection" ? <MapLister mapSelecter={handleMapClick} randomMapButton={true} /> : null }
 
             {isValidAmountOfPlayers() && phase === "registration" ? 
-                <div className="flex justify-center gap-4 fixed bottom-8 text-white left-1/2 -translate-x-1/2 select-none font-medium ">
-                    <Button text="Suivant" action={handlePhases} />
-                </div>
+                <Button text="Suivant" action={handlePhases} specifiedClasses="w-fit mx-auto my-8" />
             : null }
 
             {phase === "summary" ? <Summary map={mapUsed} teams={teams} /> : null}
