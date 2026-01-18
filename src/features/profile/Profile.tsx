@@ -32,6 +32,7 @@ export default function Profile() {
 
     const setAsProfile  = () => {
         localStorage.setItem("whoAmI", temporaryIdentity)
+        setOpenConfirm(false)
         setProfile(temporaryIdentity)
     }
 
@@ -62,7 +63,7 @@ export default function Profile() {
                     <div className="m-4 px-4 py-2 mx-auto text-[rgb(var(--text))] bg-[rgb(var(--bg-lighter))] rounded-xl w-fit">
                         <p className="pb-2 md:text-lg">Tu es <span className="font-semibold">{temporaryIdentity}</span>, c'est ça ?</p>
                         <div className="flex justify-center gap-3">
-                            <Button text={"Oui"} action={() => setAsProfile()} />
+                            <Button text={"Oui"} action={setAsProfile} />
                             <Button text={"Non"} action={() => setOpenConfirm(false)} color="bg-[rgb(var(--warning))]" />
                         </div>    
                     </div>
