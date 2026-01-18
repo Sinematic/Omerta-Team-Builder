@@ -40,7 +40,7 @@ export default function PlayerHistory() {
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
 
-    const { data, isLoading } = useStats("Matchs", "A2:K33")
+    const { data, isLoading } = useStats("Matchs", "A2:Z33")
 
     if (!data) return
 

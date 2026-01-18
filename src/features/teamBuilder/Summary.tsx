@@ -7,7 +7,7 @@ type SummaryProps = {
         image: string;
     };
     teams: string[][];
-};
+}
 
 const teamColors = [
     "bg-red-900",
@@ -56,5 +56,5 @@ export default function Summary({ map, teams }: SummaryProps) {
             </div>
 
         </div>
-    );
+    )
 }
