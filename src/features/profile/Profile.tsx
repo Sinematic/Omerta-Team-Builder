@@ -53,7 +53,7 @@ export default function Profile() {
 
 
     return (
-        <div className="h-[80vh] w-full p-3 mx-auto text-center select-none md:p-6 md:space-y-6 md:w-2/3 grid place-items-center">
+        <div className="h-[90vh] w-full p-3 mx-auto text-center select-none md:p-6 md:space-y-6 md:w-2/3 grid place-items-center">
             {profile && profileData ? <ProfileView profileData={profileData} deleteProfile={handleDeleProfile} /> 
             : <>
                 <SelectPlayers participants={[]} players={players} action={handleClick} message="Qui es-tu ?" /> 0
