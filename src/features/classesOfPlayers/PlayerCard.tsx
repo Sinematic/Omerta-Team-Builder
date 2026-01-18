@@ -1,6 +1,7 @@
 import { type DofusClasses, type Player } from "@/types/dofus"
 import classesData from "@/data/classes.json"
 import { isSmallScreen } from "@/utils/players"
+import clsx from "clsx";
 
 type PlayerCardProps = {
     playerInfo : Player;
@@ -19,14 +20,18 @@ export default function PlayerCard({ playerInfo, action, minified=false } : Play
 
     return (
 
-        <li onClick={action} className={(minified ? "py-1 bg-neutral-700 text-white mb-2 cursor-pointer hover:bg-amber-700" : "py-2 bg-white") 
-        + " flex items-center px-2 gap-2 rounded-lg shadow-sm hover:shadow-md transition-shadow md:gap-4 md:px-4"}>
+        <li onClick={action} className={(minified ? "py-1 mb-2 cursor-pointer hover:bg-[rgb(var(--warning))]" : "py-2") 
+        + "  bg-[rgb(var(--bg-lighter))] text-[rgb(var(--text))] flex items-center px-2 gap-2 rounded-lg shadow-sm hover:shadow-md transition-shadow md:gap-4 md:px-4"}>
 
-            <span className={minified ? "text-medium font-medium text-right" : "text-lg font-semibold min-w-[80px]"}>{playerInfo.name}</span>
+            <span className={minified ? "text-medium text-right" : "text-lg font-semibold md:min-w-[90px]"}>{playerInfo.name}</span>
 
-            <div className={(smallScreen ? "gap-1" : (minified ? "gap-2" : "gap-4")) + " flex flex-wrap"}>
+            <div className={clsx(
+                smallScreen ? "gap-1" : (minified ? "gap-2" : "gap-4")
+                ," flex flex-wrap"
+            )}>
                 {playerInfo.classes.map((cls) => (
-                    <span key={cls} className={(minified ? "bg-transparent text-stone-400 text-sm" : "bg-gray-100 text-black px-3 text-medium") 
+                    <span key={cls} className={(minified ? "text-sm" 
+                    : "bg-[rgb(var(--bg))] text-[rgb(var(--text))] px-3 text-medium") 
                     + " flex items-center gap-1 py-1 rounded-full font-medium leading-none"}>
                         {!smallScreen ? <>{classesInfo[cls].emoji} {classesInfo[cls].name}</> 
                         :  <>{classesInfo[cls].short}</>}

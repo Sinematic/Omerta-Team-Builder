@@ -98,7 +98,7 @@ export default function PlayerHistory() {
 
         <div>
             {playerFound ? 
-                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-16 text-white text-center gap-8 bg-gray-700 relative rounded-lg">
+                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-16 bg-[rgb(var(--surface))] text-[rgb(var(--text))] text-center gap-8 relative rounded-lg">
                     <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">
                         {(["a", "e", "i", "o", "u", "y"].includes(pseudoInGame[0].toLowerCase())
                         ? "Historique d'" : "Historique de ") + pseudoInGame}</h1>

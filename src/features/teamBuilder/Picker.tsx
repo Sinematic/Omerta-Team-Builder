@@ -60,7 +60,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
         <div className="p-6 space-y-6 w-2/3 mx-auto text-center select-none">
 
             <div className="free-players w-2/3 mx-auto">
-                <h2 className="text-xl font-medium mb-4 text-white">
+                <h2 className="text-xl font-medium mb-4 text-[rgb(var(--text))]">
                     Joueurs sans équipe
                 </h2>
 
@@ -77,13 +77,13 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             </div>
 
             <div className="player-in-teams">
-                <h2 className="text-xl font-semibold mb-4 text-white">Équipes</h2>
+                <h2 className="text-xl font-semibold mb-4 text-[rgb(var(--text))]">Équipes</h2>
 
                 <div className="grid gap-4 mx-auto justify-center" 
                 style={{ gridTemplateColumns: `repeat(${captainsAmount}, minmax(0, 400px))` }}>
 
                     {teams.map((team, i) => (
-                        <div key={i} className="bg-stone-700 p-3 rounded text-white">
+                        <div key={i} className="bg-stone-700 p-3 rounded text-[rgb(var(--text))]">
                             <h3 className="font-bold mb-2">
                                 💀 Capitaine : {team[0]}
                             </h3>
@@ -97,7 +97,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                             </ul>
 
                             {pickOrder[pickIndex] === i && freePlayers.length > 0 && (
-                                <p className="mt-2 text-sm text-emerald-300 animate-pulse">
+                                <p className="mt-2 text-sm text-[rgb(var(--lighter-green))] animate-pulse">
                                     ➤ Tour de pick en cours
                                 </p>
                             )}

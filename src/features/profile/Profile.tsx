@@ -59,11 +59,11 @@ export default function Profile() {
                 <SelectPlayers participants={[]} players={players} action={handleClick} message="Qui es-tu ?" /> 0
 
                 {openConfirm && 
-                    <div className="m-4 px-4 py-2 mx-auto text-white bg-neutral-700 rounded-xl w-fit">
+                    <div className="m-4 px-4 py-2 mx-auto text-[rgb(var(--text))] bg-[rgb(var(--bg-lighter))] rounded-xl w-fit">
                         <p className="pb-2 md:text-lg">Tu es <span className="font-semibold">{temporaryIdentity}</span>, c'est ça ?</p>
                         <div className="flex justify-center gap-3">
                             <Button text={"Oui"} action={() => setAsProfile()} />
-                            <Button text={"Non"} action={() => setOpenConfirm(false)} color="bg-amber-700" />
+                            <Button text={"Non"} action={() => setOpenConfirm(false)} color="bg-[rgb(var(--warning))]" />
                         </div>    
                     </div>
                 }

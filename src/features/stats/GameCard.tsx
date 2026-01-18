@@ -16,14 +16,16 @@ export default function GameCard({ matchData, pseudo } : { matchData : MatchData
     
     return (
         <div className={"w-full px-8 py-4 flex rounded-xl justify-between items-center border-solid border-3 select-none shadow-lg  " +
-        (targetData.match!.result === "W" ? "bg-gray-800 border-blue-500" : "bg-gray-900 border-red-600")}>
+        (targetData.match!.result === "W" 
+        ? "bg-[rgb(var(--bg))] border-[rgb(var(--primary-blue))]" 
+        : "bg-gray-900 border-[rgb(var(--danger))]")}>
             <ul className="flex-1">
                 {teams.playerSide.map(player => (
                     <PlayerElement player={player} target={targetData.name === player.name} key={player.name} /> 
                 ))}
             </ul>
 
-            <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.match!.result === "W" ? "text-blue-500" : "text-red-600")}>
+            <h3 className={"text-3xl flex-shrink-0 font-bold " + (targetData.match!.result === "W" ? "text-[rgb(var(--primary-blue))]" : "text-red-600")}>
                 {targetData.match!.result === "W" ? "VICTOIRE" : "DÉFAITE"}
                 <p className="text-xl">{"+" + targetData.match!.points}</p>
             </h3>

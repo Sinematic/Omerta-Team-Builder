@@ -24,7 +24,7 @@ export default function Summary({ map, teams }: SummaryProps) {
 
 
     return (
-        <div className="md:h-[80vh] mx-auto mt-16 max-w-4xl text-white select-none mb-12 md:grid md:place-items-center ">
+        <div className="md:h-[80vh] mx-auto mt-16 max-w-4xl text-[rgb(var(--text))] select-none mb-12 md:grid md:place-items-center ">
 
             <h1 className="text-3xl font-semibold text-center">Résumé</h1>
 
@@ -35,7 +35,7 @@ export default function Summary({ map, teams }: SummaryProps) {
 
                         {team.map((member, memberIndex) => (
                             <li key={member + "-" + memberIndex} className={`${shuffle[teamIndex % shuffle.length]} 
-                                px-4 py-2 text-white shadow-md min-w-[150px] font-semibold 
+                                px-4 py-2 text-[rgb(var(--text))] shadow-md min-w-[150px] font-semibold 
                                 ${memberIndex === 0 ? 'rounded-l-lg' : ''} 
                                 ${memberIndex === team.length - 1 ? 'rounded-r-lg' : ''} 
                                 ${memberIndex !== 0 ? '-ml-1' : ''} 

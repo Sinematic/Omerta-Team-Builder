@@ -22,11 +22,11 @@ export default function SelectPlayers({ participants, action, players, message }
 
 
     return (<>
-        <h2 className="select-none text-center text-white py-4 md:py-8">{message ? message : defaultMessage(participants.length)}</h2>
+        <h2 className="select-none text-center text-[rgb(var(--text))] py-4 md:py-8">{message ? message : defaultMessage(participants.length)}</h2>
         <ul className="grid grid-cols-3 gap-1 max-w-xl mx-auto select-none
         md:grid-cols-4 md:gap-2">
             {sortedPlayers.map((player) => 
-                <li className={`py-2 md:px-4 md:py-2 text-center whitespace-nowrap cursor-pointer ${participants.includes(player.name) ? " bg-amber-700 text-white" : "bg-stone-600 text-white"}`} 
+                <li className={`py-2 md:px-4 md:py-2 text-center whitespace-nowrap cursor-pointer ${participants.includes(player.name) ? " bg-[rgb(var(--warning))] text-[rgb(var(--text))]" : "bg-stone-600 text-[rgb(var(--text))]"}`} 
                 key={player.name} onClick={() => action(player.name)}>
                     {player.name}
                 </li> 

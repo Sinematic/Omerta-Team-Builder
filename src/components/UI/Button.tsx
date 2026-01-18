@@ -9,11 +9,18 @@ type ButtonType = {
     specifiedClasses?: string;
 }
 
-export default function Button({ text, action, color="bg-emerald-600", textColor="text-white", padding="px-5 py-3", specifiedClasses } : ButtonType ) {
+export default function Button({ text, action, color, textColor, padding, specifiedClasses } : ButtonType ) {
+
 
     return (
-        <button onClick={action} className={clsx(color, textColor, specifiedClasses, padding,
-        "w-fit rounded-lg shadow-lg font-medium cursor-pointer select-none")}>
+        <button onClick={action} className={
+        clsx(
+            color || "bg-[rgb(var(--success))]",
+            textColor || "text-[rgb(var(--text))]",
+            padding || "px-5 py-3",
+            specifiedClasses, 
+            "w-fit rounded-lg shadow-lg font-medium cursor-pointer select-none"
+        )}>
             {text}
         </button>
     )

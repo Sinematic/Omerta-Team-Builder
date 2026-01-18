@@ -7,6 +7,10 @@ import Rank from "@/features/stats/Rank"
 import NotFound from "@/components/UI/NotFound"
 import Profile from "@/features/profile/Profile"
 import ClassesOfPlayers from "./features/classesOfPlayers/ClassesOfPlayers"
+import { handleTheme } from "./utils/theme"
+
+handleTheme()
+
 
 export default function App() {
 	
