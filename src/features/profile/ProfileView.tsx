@@ -22,8 +22,8 @@ export default function ProfileView({ profileData, deleteProfile } : { profileDa
             <div className="flex flex-col justify-center gap-1 mx-auto mb-4 relative">
                 <div className="rounded-lg overflow-hidden">
                     <img alt={"Profil de " + whoAmI} src={classesData[profileData.classes[0]].image} />
-                    <Button text={smallScreen ? "🔧" : "Modifier 🔧"} color="bg-[rgb(var(--bg))]" action={console.log} 
-                    specifiedClasses="absolute top-2 right-2 text-lg" padding="p-2" />
+                    {/* <Button text={smallScreen ? "🔧" : "Modifier 🔧"} color="bg-[rgb(var(--bg))]" action={console.log} 
+                    specifiedClasses="absolute top-2 right-2 text-lg" padding="p-2" /> */}
                 </div>
                 
                 <h1 className="text-3xl font-semibold">{whoAmI}</h1>

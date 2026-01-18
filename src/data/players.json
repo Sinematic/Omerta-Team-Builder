@@ -25,7 +25,7 @@
     { "name": "Vodar", "classes": [ "Forgelance" ] },
     { "name": "Coucougnou", "classes": [ "Steamer" ] },
     { "name": "Bilbs", "classes": [ "Féca" ] },
-    { "name": "Harbat", "classes": [ "Huppermage", "Forgelance", "Iop", "Pandawa", "Ouginak", "Sacrieur", "Zobal" ] },
+    { "name": "Harbat", "classes": [ "Huppermage", "Forgelance", "Iop", "Pandawa", "Ouginak", "Sacrieur", "Zobal","Eniripsa", "Féca", "Ecaflip", "Roublard" ] },
     { "name": "Eragorn", "classes": [ "Eniripsa" ] },
     { "name": "Yougovitch", "classes": [ "Forgelance" ] },
     { "name": "Zobalcolique", "classes": [ "Zobal" ] },
