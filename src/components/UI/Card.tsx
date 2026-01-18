@@ -15,7 +15,7 @@ export default function Card({ description, image, text, width, height, action }
     return (
         <button onClick={action}
         className={clsx(
-            "group relative flex flex-col justify-center bg-red-600 overflow-hidden rounded-xl cursor-pointer select-none border-solid border-2 border-[rgb(var(--lightest-gray))]", 
+            "group relative flex flex-col justify-center bg-[rgb(var(--warning))] overflow-hidden rounded-xl cursor-pointer select-none border-solid border-3 border-[rgb(var(--warning))]", 
             width || "w-[32vh]",
             height || "h-[54vh]",
             
@@ -23,7 +23,7 @@ export default function Card({ description, image, text, width, height, action }
             <img alt={description} src={image} className="w-full h-full object-cover grayscale saturate-0 brightness-75 transition-all duration-300 ease-out 
             group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100" />
 
-            <p className="absolute bottom-3 w-full text-center text-lg font-bold text-[rgb(var(--text))] shadow-lg">
+            <p className="absolute bottom-3 w-full text-center text-xl font-bold text-[rgb(var(--text))] shadow-lg">
                 {text}
             </p>
         </button>
