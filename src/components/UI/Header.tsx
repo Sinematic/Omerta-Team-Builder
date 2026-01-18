@@ -1,6 +1,5 @@
 import { isSmallScreen } from "@/utils/players"
-import { handleTheme } from "@/utils/theme"
-import clsx from "clsx"
+//import { handleTheme } from "@/utils/theme"
 import { useState } from "react"
 import { useNavigate } from "react-router"
 import { NavLink } from "react-router-dom"
@@ -19,11 +18,9 @@ export default function Header() {
 
     const smallScreen = isSmallScreen()
 
-    const theme = handleTheme()
+    //const theme = handleTheme()
 
-    const [toggleTheme, setToggleTheme ] = useState(theme)
-
-    const handleToggleTheme = () => { setToggleTheme(prev => prev === "dark" ? "" : "dark") }
+    //const [toggleTheme, setToggleTheme ] = useState(theme)
 
     
     return (
@@ -50,10 +47,10 @@ export default function Header() {
                     onKeyDown={(e) => e.key === "Enter" ? search(pseudoSearched) : ""}/>
                 </li>
 
-                <li className={clsx(toggleTheme === "dark"? "justify-end" : "justify-start" ,"w-[50px] h-[25px] bg-[rgb(var(--text))] rounded-xl flex align-center p-[2px]")}>
+                {/* <li className={clsx(toggleTheme === "dark"? "justify-end" : "justify-start" ,"w-[50px] h-[25px] bg-[rgb(var(--text))] rounded-xl flex align-center p-[2px]")}>
                     <p onClick={() => handleToggleTheme()}
                     className="w-[21px] h-[21px] bg-[rgb(var(--text))] border-solid border-1 border-[rgb(var(--surface))] rounded-full"></p>
-                </li>
+                </li> */}
             </ul>
         </nav>
     )
