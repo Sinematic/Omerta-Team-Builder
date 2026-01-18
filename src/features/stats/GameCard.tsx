@@ -4,7 +4,7 @@ import PlayerElement from "@/components/UI/PlayerElement"
 
 export default function GameCard({ matchData, pseudo } : { matchData : MatchDataType, pseudo : string }) {
 
-    if(!matchData) return
+    if (!matchData) return
 
     const targetData = matchData.participants.find(p => p.name === pseudo) as ParticipantType
 

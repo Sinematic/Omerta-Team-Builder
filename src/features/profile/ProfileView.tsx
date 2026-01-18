@@ -17,7 +17,7 @@ export default function ProfileView({ profileData, deleteProfile } : { profileDa
 
 
     return (
-        <div className="w-full h-full rounded-xl bg-[rgb(var(--text-muted))] p-2 md:w-1/2 md:h-auto relative flex flex-col justify-between">
+        <div className="w-full h-full rounded-xl bg-[rgb(var(--text))] p-2 md:w-1/3 md:h-auto relative flex flex-col justify-between">
             
             <div className="flex flex-col justify-center gap-1 mx-auto mb-4 relative">
                 <div className="rounded-lg overflow-hidden">
@@ -29,7 +29,7 @@ export default function ProfileView({ profileData, deleteProfile } : { profileDa
                 <h1 className="text-3xl font-semibold">{whoAmI}</h1>
             </div>
 
-            <Button text="Supprimer données de profil" action={deleteProfile} color="bg-[rgb(var(--warning))]" 
+            <Button text="Se déconnecter" action={deleteProfile} color="bg-[rgb(var(--warning))]" 
             specifiedClasses="mx-auto" padding={smallScreen ? "p-2" : ""} />
 
         </div>

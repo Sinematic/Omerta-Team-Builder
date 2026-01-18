@@ -6,6 +6,7 @@ import Summary from "@/features/teamBuilder/Summary"
 import Button from "@/components/UI/Button"
 import { getAllPlayers } from "@/utils/players"
 import { type Player } from "@/types/dofus"
+import Card from "@/components/UI/Card"
 
 
 type PhaseName = "registration" | "format selection" | "team allocation" | "map selection" | "summary"
@@ -114,8 +115,8 @@ export default function TeamBuilder() {
 
             { phase === "format selection" ?
                 <div className="h-[80vh] w-fit mx-auto grid grid-cols-2 place-items-center gap-4">
-                    <Button text="Capitaines" action={() => setFormat("captains")} />
-                    <Button text="Aléatoire" action={() => setFormat("random")} />
+                    <Card text="Capitaines" image="/images/goultard.jpg" description="1 capitaine par équipe, sélection des joueurs en semi-snakes" action={() => setFormat("captains")} />
+                    <Card text="Aléatoire" image="/images/aventuriers-au-zaap.jpg" description="Composition aléatoire des équipes" action={() => setFormat("random")} />
                 </div>
             : null}
 

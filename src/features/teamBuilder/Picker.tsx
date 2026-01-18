@@ -83,14 +83,14 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                 style={{ gridTemplateColumns: `repeat(${captainsAmount}, minmax(0, 400px))` }}>
 
                     {teams.map((team, i) => (
-                        <div key={i} className="bg-stone-700 p-3 rounded text-[rgb(var(--text))]">
+                        <div key={i} className="bg-[rgb(var(--surface))] p-3 rounded text-[rgb(var(--text))]">
                             <h3 className="font-bold mb-2">
                                 💀 Capitaine : {team[0]}
                             </h3>
 
                             <ul className="space-y-1">
                                 {team.slice(1).map(member => (
-                                    <li key={member} className="bg-stone-600 p-2 rounded">
+                                    <li key={member} className="bg-[rgb(var(--bg))] p-2 rounded">
                                         {member}
                                     </li>
                                 ))}

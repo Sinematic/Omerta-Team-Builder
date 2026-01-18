@@ -22,16 +22,14 @@
 
 [data-theme="dark"] {
   --bg: 24 24 27;            /* neutral-800 */
-  --surface: 15 15 17;;       /* neutral-900 */
+  --lightest-gray: 82, 82, 82; /* neutral-600 */
+  --surface: 15 15 17;       /* neutral-900 */
   --bg-lighter: 64 64 64;        /* neutral-700 */
   --text: 250, 250, 250;       /* neutral-50 */
   --text-muted: 161 161 170; /* neutral-400 */
   --primary: 79, 70, 229;     /* blue-400 */
   --primary-blue: 59 130 246; /* blue-500 */
 }
-
-
-
 
 ul, ol {
   list-style: none;
@@ -44,8 +42,6 @@ a {
 
 img {
   display: block;
-  max-width: 100%;
-  height: auto;
 }
 
 .brown {

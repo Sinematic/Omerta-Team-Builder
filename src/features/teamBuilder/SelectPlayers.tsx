@@ -1,5 +1,5 @@
 import { sortPlayersByName } from "@/utils/players"
-//import { useState } from "react"
+import clsx from "clsx"
 
 type SelectPlayersProps = {
     participants: string[]
@@ -7,6 +7,7 @@ type SelectPlayersProps = {
     players: { name: string, classes: string[] }[]
     message?: string
 }
+
 
 export default function SelectPlayers({ participants, action, players, message } : SelectPlayersProps) {
 
@@ -18,16 +19,18 @@ export default function SelectPlayers({ participants, action, players, message }
         return length + " joueurs ont été sélectionnés";
     })
 
-    //const [query, setQuery] = useState<string>("")
-
 
     return (<>
-        <h2 className="select-none text-center text-[rgb(var(--text))] py-4 md:py-8">{message ? message : defaultMessage(participants.length)}</h2>
-        <ul className="grid grid-cols-3 gap-1 max-w-xl mx-auto select-none
-        md:grid-cols-4 md:gap-2">
+
+        <h2 className="select-none text-center text-lg font-semibold text-[rgb(var(--text))] py-4 md:py-8">{message ? message : defaultMessage(participants.length)}</h2>
+
+        <ul className="grid grid-cols-3 gap-1 max-w-xl mx-auto select-none md:grid-cols-4 md:gap-2">
             {sortedPlayers.map((player) => 
-                <li className={`py-2 md:px-4 md:py-2 text-center whitespace-nowrap cursor-pointer ${participants.includes(player.name) ? " bg-[rgb(var(--warning))] text-[rgb(var(--text))]" : "bg-stone-600 text-[rgb(var(--text))]"}`} 
-                key={player.name} onClick={() => action(player.name)}>
+                <li key={player.name} onClick={() => action(player.name)} className={clsx(
+                    "py-2 text-center whitespace-nowrap cursor-pointer md:px-4 md:py-2", 
+                    participants.includes(player.name) 
+                    ? "bg-[rgb(var(--warning))] text-[rgb(var(--text))]" : " bg-[rgb(var(--lightest-gray))] text-[rgb(var(--text))] border-solid border-1 border-[rgb(var(--text-muted))]"
+                )}>
                     {player.name}
                 </li> 
             )}

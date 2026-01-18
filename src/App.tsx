@@ -8,6 +8,7 @@ import NotFound from "@/components/UI/NotFound"
 import Profile from "@/features/profile/Profile"
 import ClassesOfPlayers from "./features/classesOfPlayers/ClassesOfPlayers"
 import { handleTheme } from "./utils/theme"
+import Card from "./components/UI/Card"
 
 handleTheme()
 
@@ -25,6 +26,7 @@ export default function App() {
 			<Route path="/classement" element={<Rank title="Classement" range="B2:G25" />} />
 			<Route path="/" element={<Profile />} />
 			<Route path="/*" element={<NotFound message="Page non trouvée!" />} />
+			<Route path="/test" element={<Card text="Aléatoire" description="Composition aléatoire des équipes" image="/images/classes/cra.jpg" />} />
 		</Routes>
 	</>
 	)

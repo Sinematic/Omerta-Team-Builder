@@ -9,6 +9,7 @@ type ButtonType = {
     specifiedClasses?: string;
 }
 
+
 export default function Button({ text, action, color, textColor, padding, specifiedClasses } : ButtonType ) {
 
 
