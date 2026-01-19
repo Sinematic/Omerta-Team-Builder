@@ -1,5 +1,9 @@
 import React from "react"
 import MapCard from "@/features/maps/MapCard"
+import Card from "@/components/UI/Card";
+import { getAllPlayers } from "@/utils/players";
+import classesData from "@/data/classes.json"
+import type { Player } from "@/types/dofus";
 
 type SummaryProps = {
     map: {
@@ -10,38 +14,41 @@ type SummaryProps = {
 }
 
 const teamColors = [
-    "bg-red-900",
-    "bg-blue-700",
-    "bg-green-600",
-    "bg-yellow-600",
-    "bg-purple-600",
-    "bg-pink-900"
+    "border-teal-600 text-teal-600",
+    "border-lime-600 text-lime-600",
+    "border-cyan-600 text-cyan-600",
+    "border-purple-600 text-purple-600",
+    "border-rose-600 text-rose-600",
 ]
 
 const shuffle = [...teamColors].sort(() => Math.random() - 0.5)
 
+
 export default function Summary({ map, teams }: SummaryProps) {
+
+    const players : Player[] = getAllPlayers()
+
+    const generateCustomPlayersList = (team: string[]) => team
+        .map(name => players.find(player => player.name === name))
+        .filter(Boolean)
+
+    const teamsData = teams.map(team => generateCustomPlayersList(team))
 
 
     return (
-        <div className="md:h-[80vh] mx-auto mt-8 max-w-4xl text-[rgb(var(--text))] select-none mb-12 md:grid md:place-items-center ">
+        <div className="md:min-h-[80vh] w-full mx-auto mt-8 max-w-4xl text-[rgb(var(--text))] select-none mb-12 md:grid md:place-items-center gap-5">
 
-            <h1 className="text-3xl font-semibold text-center pb-4">Résumé</h1>
+            <h1 className="text-3xl font-semibold text-center">Composition des équipes</h1>
 
-            <div className="text-center mx-auto space-y-3">
+            <div className="text-center mx-auto space-y-3 w-full">
 
-                {teams.map((team, teamIndex) => ( <React.Fragment key={teamIndex}>
-                    <ol className="flex justify-center flex-wrap">
+                {teamsData.map((team, teamIndex) => ( <React.Fragment key={teamIndex}>
+                    <ol className={"grid w-full h-[33vh] flex-wrap gap-1 " + (team.length === 4 ? "grid-cols-4" : "grid-cols-5")}>
 
                         {team.map((member, memberIndex) => (
-                            <li key={member + "-" + memberIndex} className={`${shuffle[teamIndex % shuffle.length]} 
-                                px-4 py-2 text-[rgb(var(--text))] shadow-md min-w-[150px] font-semibold 
-                                ${memberIndex === 0 ? 'rounded-l-lg' : ''} 
-                                ${memberIndex === team.length - 1 ? 'rounded-r-lg' : ''} 
-                                ${memberIndex !== 0 ? '-ml-1' : ''} 
-                                border border-gray-700`}>
-                                {member}
-                            </li>
+                            <Card text={member!.name} image={classesData[member!.classes[0] as keyof typeof classesData].image} 
+                            borderColor={`${shuffle[teamIndex % shuffle.length]}`} key={member + "-" + memberIndex}
+                            />
                         ))}
                     </ol>
 

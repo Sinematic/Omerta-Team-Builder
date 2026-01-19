@@ -15,7 +15,7 @@
     "Zobal": { "name": "Zobal", "short": "Zobal", "emoji": "🎭", "image": "/images/classes/zobal.jpg" },
     "Steamer": { "name": "Steamer", "short": "Steam", "emoji": "⚙️", "image": "/images/classes/steamer.jpg" },
     "Eliotrope": { "name": "Eliotrope", "short": "Elio", "emoji": "🌀", "image": "/images/classes/eliotrope.jpg" },
-    "Huppermage": { "name": "Huppermage", "short": "Hupper", "emoji": "🔮", "image": "/images/classes/huppermag.jpg" },
+    "Huppermage": { "name": "Huppermage", "short": "Hupper", "emoji": "🔮", "image": "/images/classes/huppermage.jpg" },
     "Ouginak": { "name": "Ouginak", "short": "Ougi", "emoji": "🐶", "image": "/images/classes/ouginak.jpg" },
     "Forgelance": { "name": "Forgelance", "short": "Forge", "emoji": "🛰️", "image": "/images/classes/forgelance.jpg" }
 }

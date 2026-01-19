@@ -3,6 +3,7 @@ import { useState, useMemo } from "react"
 export type PhaseName = "registration" | "format selection" | "team allocation" | "map selection" | "summary"
 
 export function useTeamBuilder() {
+    
     const [phase, setPhase] = useState<PhaseName>("registration")
     const [playersParticipating, setPlayersParticipating] = useState<string[]>([])
     const [format, setFormat] = useState<"captains" | "random">()

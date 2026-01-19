@@ -114,9 +114,11 @@ export default function TeamBuilder() {
             : null}
 
             { phase === "format selection" ?
-                <div className="h-[80vh] w-fit mx-auto grid grid-cols-2 place-items-center gap-4">
-                    <Card text="Capitaines" image="/images/goultard.jpg" description="1 capitaine par équipe, sélection des joueurs en semi-snakes" action={() => setFormat("captains")} />
-                    <Card text="Aléatoire" image="/images/aventuriers-au-zaap.jpg" description="Composition aléatoire des équipes" action={() => setFormat("random")} />
+                <div className="w-full h-[70vh] md:w-[70vh] md:h-[60vh] flex flex-cols justify-center gap-2 mx-auto p-2 md:mt-16">
+                    <Card text="Capitaines" image="/images/goultard.jpg" description="1 capitaine par équipe, sélection des joueurs en semi-snakes" 
+                    action={() => setFormat("captains")} animated={true} />
+                    <Card text="Aléatoire" image="/images/aventuriers-au-zaap.jpg" description="Composition aléatoire des équipes" 
+                    action={() => setFormat("random")} animated={true} />
                 </div>
             : null}
 
@@ -130,5 +132,6 @@ export default function TeamBuilder() {
 
             { phase === "summary" ? <Summary map={mapUsed} teams={teams} /> : null}
 
-        </div>)
+        </div>
+    )
 }

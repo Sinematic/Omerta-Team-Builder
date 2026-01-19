@@ -1,29 +1,29 @@
 import clsx from "clsx"
 
 type CardProps = { 
-    description: string
-    image: string
     text: string
-    width?: string
-    height?: string
+    image: string
+    description?: string
+    animated?: boolean
     action?: () => void
+    borderColor?: string
 }
 
 
-export default function Card({ description, image, text, width, height, action }: CardProps) {
+export default function Card({ text, image, description, animated=false, action, borderColor }: CardProps) {
 
     return (
-        <button onClick={action}
-        className={clsx(
-            "group relative flex flex-col justify-center bg-[rgb(var(--warning))] overflow-hidden rounded-xl cursor-pointer select-none border-solid border-3 border-[rgb(var(--warning))]", 
-            width || "w-[32vh]",
-            height || "h-[54vh]",
-            
+        <button onClick={action}className={clsx(
+            "group relative flex flex-col justify-center bg-[rgb(var(--warning))] overflow-hidden h-full w-full",
+            "rounded-xl cursor-pointer select-none border-solid border-3", 
+            borderColor || "border-[rgb(var(--lightest-gray))] md:border-[rgb(var(--warning))]",
         )}>
-            <img alt={description} src={image} className="w-full h-full object-cover grayscale saturate-0 brightness-75 transition-all duration-300 ease-out 
-            group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100" />
+            <img alt={description} src={image} className={clsx("w-full h-full object-cover", 
+                animated ? "md:grayscale md:saturate-0 md:brightness-75" : "", 
+                "transition-all duration-300 ease-out group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
+            )} />
 
-            <p className="absolute bottom-3 w-full text-center text-xl font-bold text-[rgb(var(--text))] shadow-lg">
+            <p className="absolute bottom-0 w-full py-2 text-center text-xl font-bold text-shadow-xl shadow-lg bg-[rgb(var(--bg))] text-[rgb(var(--text))]">
                 {text}
             </p>
         </button>
