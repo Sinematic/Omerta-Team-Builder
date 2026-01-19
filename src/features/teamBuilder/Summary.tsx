@@ -36,9 +36,9 @@ export default function Summary({ map, teams }: SummaryProps) {
 
 
     return (
-        <div className="md:min-h-[80vh] w-full mx-auto mt-8 max-w-4xl text-[rgb(var(--text))] select-none mb-12 md:grid md:place-items-center gap-5">
+        <div className="md:min-h-[80vh] w-full mx-auto mt-8 p-1 max-w-4xl text-[rgb(var(--text))] select-none mb-12 md:grid md:place-items-center gap-5">
 
-            <h1 className="text-3xl font-semibold text-center">Composition des équipes</h1>
+            <h1 className="text-xl font-semibold text-center mb-4  md:text-3xl">Composition des équipes</h1>
 
             <div className="text-center mx-auto space-y-3 w-full">
 

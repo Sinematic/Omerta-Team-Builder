@@ -15,7 +15,7 @@ export default function Card({ text, image, description, animated=false, action,
     return (
         <button onClick={action}className={clsx(
             "group relative flex flex-col justify-center bg-[rgb(var(--warning))] overflow-hidden h-full w-full",
-            "rounded-xl cursor-pointer select-none border-solid border-3", 
+            "rounded-xl cursor-pointer select-none border-solid md:border-3", 
             borderColor || "border-[rgb(var(--lightest-gray))] md:border-[rgb(var(--warning))]",
         )}>
             <img alt={description} src={image} className={clsx("w-full h-full object-cover", 
@@ -23,7 +23,7 @@ export default function Card({ text, image, description, animated=false, action,
                 "transition-all duration-300 ease-out group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
             )} />
 
-            <p className="absolute bottom-0 w-full py-2 text-center text-xl font-bold text-shadow-xl shadow-lg bg-[rgb(var(--bg))] text-[rgb(var(--text))]">
+            <p className="absolute bottom-0 w-full py-2 text-center text-sm md:text-xl md:font-semibold text-shadow-xl shadow-lg bg-[rgb(var(--bg))] text-[rgb(var(--text))]">
                 {text}
             </p>
         </button>
