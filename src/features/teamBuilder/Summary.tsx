@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import MapCard from "@/features/maps/MapCard"
-import Card from "@/components/UI/Card";
-import { getAllPlayers } from "@/utils/players";
+import Card from "@/components/UI/Card"
 import classesData from "@/data/classes.json"
-import type { Player } from "@/types/dofus";
+import type { Player } from "@/types/dofus"
+import { getAllPlayers } from "@/utils/players"
+
 
 type SummaryProps = {
     map: {
@@ -12,16 +13,6 @@ type SummaryProps = {
     };
     teams: string[][];
 }
-
-const teamColors = [
-    "border-teal-600 text-teal-600",
-    "border-lime-600 text-lime-600",
-    "border-cyan-600 text-cyan-600",
-    "border-purple-600 text-purple-600",
-    "border-rose-600 text-rose-600",
-]
-
-const shuffle = [...teamColors].sort(() => Math.random() - 0.5)
 
 
 export default function Summary({ map, teams }: SummaryProps) {
@@ -43,16 +34,10 @@ export default function Summary({ map, teams }: SummaryProps) {
     }
 
     const displayNextImage = (player: Player) => {
-        setTeamsState((prevTeams) =>
-            prevTeams.map((team) => 
-                team.map((p) => p.name === player.name 
-                    ? { ...p, classes: moveFirstToLast(p.classes)} 
-                    : p
-                )
-            )
+        setTeamsState((prevTeams) => prevTeams.map((team) => 
+            team.map((p) => p.name === player.name ? {...p, classes: moveFirstToLast(p.classes)} : p)
         )
-    }
-
+    )}
 
 
     return (
@@ -67,7 +52,7 @@ export default function Summary({ map, teams }: SummaryProps) {
 
                         {team.map((member, memberIndex) => (
                             <Card text={member!.name} image={classesData[member!.classes[0] as keyof typeof classesData].image} 
-                            borderColor={`${shuffle[teamIndex % shuffle.length]}`} key={member + "-" + memberIndex}
+                            borderColor={`border-[rgb(var(--lightest-gray))]`} key={member + "-" + memberIndex}
                             action={() => displayNextImage(member)}/>
                         ))}
                     </ol>
@@ -78,7 +63,7 @@ export default function Summary({ map, teams }: SummaryProps) {
 
             </div>
 
-            <div className="flex justify-center m-6">
+            <div className="flex justify-center md:w-[50vw] m-6">
                 <MapCard name={map.name} image={map.image} />
             </div>
 

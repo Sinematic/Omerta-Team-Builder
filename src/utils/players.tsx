@@ -1,4 +1,5 @@
 import playersData from "@/data/players.json"
+import mapsData from "@/data/maps.json"
 import { type Player } from "@/types/dofus"
 
 export const getAllPlayers = (): Player[] => playersData.map(player => ({
@@ -11,5 +12,13 @@ export const sortPlayersByName = (players=playersData): Player[] => (
 )
 
 export const isSmallScreen = () : boolean => {
-  return window.innerWidth <= 640
+    return window.innerWidth <= 640
+}
+
+
+const maps = mapsData.maps
+
+export const setRandomMap = (selecter: (name: string, image:string) => void) => {
+    const randomIndex = (Math.floor(Math.random() * maps.length) -1)
+    selecter(maps[randomIndex].name, maps[randomIndex].image)
 }

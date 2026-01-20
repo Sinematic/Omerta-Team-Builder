@@ -28,14 +28,19 @@ export default function Profile() {
     const handleClick = (name : PlayerName) => {
         setTemporaryIdentity(name)
         setOpenConfirm(true)
+        return [name]
     }
 
-    const setAsProfile  = () => {
+    const setAsProfile = () => {
         localStorage.setItem("whoAmI", temporaryIdentity)
         setOpenConfirm(false)
         setProfile(temporaryIdentity)
     }
 
+    const handleCancel = () => {
+        setOpenConfirm(false)
+        setTemporaryIdentity("")
+    }
 
     const handleDeleProfile = () => {
         localStorage.removeItem("whoAmI")
@@ -57,19 +62,18 @@ export default function Profile() {
         <div className="h-[90vh] w-full p-3 grid place-items-center mx-auto text-center select-none md:p-6 md:space-y-6 md:w-2/3 ">
             {profile && profileData ? <ProfileView profileData={profileData} deleteProfile={handleDeleProfile} /> 
             : <>
-                <SelectPlayers participants={[]} players={players} action={handleClick} message="Qui es-tu ?" /> 0
+                <SelectPlayers selected={[temporaryIdentity]} players={players} action={handleClick} message="Qui es-tu ?" />
 
                 {openConfirm && 
                     <div className="m-4 px-4 py-2 mx-auto text-[rgb(var(--text))] bg-[rgb(var(--bg-lighter))] rounded-xl w-fit">
                         <p className="pb-2 md:text-lg">Tu es <span className="font-semibold">{temporaryIdentity}</span>, c'est ça ?</p>
                         <div className="flex justify-center gap-3">
                             <Button text={"Oui"} action={setAsProfile} />
-                            <Button text={"Non"} action={() => setOpenConfirm(false)} color="bg-[rgb(var(--warning))]" />
+                            <Button text={"Non"} action={handleCancel} color="bg-[rgb(var(--warning))]" />
                         </div>    
                     </div>
                 }
             </>}
-        
         </div>
     )
 }

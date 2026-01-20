@@ -87,9 +87,9 @@ export default function TeamBuilder() {
         })
     }
 
-    const handleMapClick = (name:string, image: string) : void => {
+    const handleMapClick = (name:string, image: string, newRandomMap ?: boolean) : void => {
         setMapUsed({ name, image})
-        setPhase(phases[4].name)
+        if(!newRandomMap) setPhase(phases[4].name)
     }
 
     const handleTeams = (teamsAssigned: string[][]) => setTeams(teamsAssigned)
@@ -110,7 +110,7 @@ export default function TeamBuilder() {
             { phase !== "summary" ? <p className="px-4 pt-7 text-center -translate-x-96 italic text-[rgb(var(--text))] animate-pulse text-lg">{messagePhase()}</p> : null}
 
             { phase === "registration" ? 
-                <SelectPlayers participants={playersParticipating} action={handleClickOnParticipants} players={players} /> 
+                <SelectPlayers selected={playersParticipating} action={handleClickOnParticipants} players={players} /> 
             : null}
 
             { phase === "format selection" ?
@@ -130,7 +130,10 @@ export default function TeamBuilder() {
                 <Button text="Suivant" action={handlePhases} specifiedClasses="w-fit mx-auto my-8" />
             : null }
 
-            { phase === "summary" ? <Summary map={mapUsed} teams={teams} /> : null}
+            { phase === "summary" ? <>
+                <Summary map={mapUsed} teams={teams} />
+            </>
+            : null}
 
         </div>
     )
