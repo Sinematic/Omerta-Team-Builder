@@ -35,6 +35,6 @@
     { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Crâ", "Pandawa", "Steamer", "Ecaflip", "Iop", "Zobal", "Huppermage" ] },
     { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa", "Forgelance", "Iop", "Pandawa", "Xélor", "Ecaflip" ] },
     { "name": "Saiyan", "classes": [ "Forgelance" ] },
-    { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak" ] },
+    { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
     { "name": "Fumeurdefrap", "classes": [ "Iop" ] }
 ]

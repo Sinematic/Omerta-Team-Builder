@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import MapCard from "@/features/maps/MapCard"
 import Card from "@/components/UI/Card";
 import { getAllPlayers } from "@/utils/players";
@@ -30,9 +30,29 @@ export default function Summary({ map, teams }: SummaryProps) {
 
     const generateCustomPlayersList = (team: string[]) => team
         .map(name => players.find(player => player.name === name))
-        .filter(Boolean)
+        .filter(Boolean) as Player[]
 
     const teamsData = teams.map(team => generateCustomPlayersList(team))
+
+    const [teamsState, setTeamsState] = useState<Player[][]>(teamsData)
+
+    const moveFirstToLast = (array: string[]) => {
+        if (array.length <= 1) return array
+        const [first, ...rest] = array
+        return [...rest, first]
+    }
+
+    const displayNextImage = (player: Player) => {
+        setTeamsState((prevTeams) =>
+            prevTeams.map((team) => 
+                team.map((p) => p.name === player.name 
+                    ? { ...p, classes: moveFirstToLast(p.classes)} 
+                    : p
+                )
+            )
+        )
+    }
+
 
 
     return (
@@ -42,13 +62,13 @@ export default function Summary({ map, teams }: SummaryProps) {
 
             <div className="text-center mx-auto space-y-3 w-full">
 
-                {teamsData.map((team, teamIndex) => ( <React.Fragment key={teamIndex}>
+                {teamsState.map((team, teamIndex) => ( <React.Fragment key={teamIndex}>
                     <ol className={"grid w-full h-[33vh] flex-wrap gap-1 " + (team.length === 4 ? "grid-cols-4" : "grid-cols-5")}>
 
                         {team.map((member, memberIndex) => (
                             <Card text={member!.name} image={classesData[member!.classes[0] as keyof typeof classesData].image} 
                             borderColor={`${shuffle[teamIndex % shuffle.length]}`} key={member + "-" + memberIndex}
-                            />
+                            action={() => displayNextImage(member)}/>
                         ))}
                     </ol>
 
