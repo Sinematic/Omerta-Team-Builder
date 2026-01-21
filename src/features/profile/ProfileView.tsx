@@ -8,12 +8,12 @@ import { isSmallScreen } from "@/utils/players"
 export default function ProfileView({ profileData, deleteProfile } : { profileData: Player, deleteProfile: () => void }) {
 
     const whoAmI = localStorage.getItem("whoAmI")
-
+    
     const classesData : DofusClasses = classesRawData
+    const smallScreen = isSmallScreen()
 
     if (!whoAmI) return
 
-    const smallScreen = isSmallScreen()
 
 
     return (

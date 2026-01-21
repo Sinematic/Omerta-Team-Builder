@@ -5,6 +5,7 @@ import { useNavigate } from "react-router"
 export default function Rank({ title, range } : { title : string, range : string }) {
 
     const { data, isLoading } = useStats(title, range)
+    console.log(data)
     const navigate = useNavigate()
 
     let sortedRows
