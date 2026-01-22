@@ -19,16 +19,17 @@ export default function RankPage() {
         
         <div className="flex flex-cols-1 gap-2 mt-8 w-fit mx-auto">
             <Button text="Saison 1" action={() => setSeasonDisplayed(1)} 
-            color={seasonDisplayed === 1 ? "bg-[rgb(var(--text))]" : ""}
-            textColor={seasonDisplayed === 1 ? "text-[rgb(var(--bg))]" : ""} />
+            color={seasonDisplayed === 1 ? "" : "bg-[rgb(var(--text))]"}
+            textColor={seasonDisplayed === 1 ? "" : "text-[rgb(var(--bg))]"} />
             <Button text="Saison 2" action={() => setSeasonDisplayed(2)} 
-            color={seasonDisplayed === 2 ? "bg-[rgb(var(--text))]" : ""}
-            textColor={seasonDisplayed === 2 ? "text-[rgb(var(--bg))]" : ""} />
+            color={seasonDisplayed === 2 ? "" : "bg-[rgb(var(--text))]"}
+            textColor={seasonDisplayed === 2 ? "" : "text-[rgb(var(--bg))]"} />
         </div>
 
         {seasonDisplayed === currentSeason 
             ? <Rank page="Classement" range="B2:G25" title={"Classement S" + currentSeason + " (en cours)"} /> 
-            : <Rank title="Classement S1" file={rankSeasonOne} />}
+            : <Rank title="Classement S1" file={rankSeasonOne} />
+        }
 
     </>)
 }

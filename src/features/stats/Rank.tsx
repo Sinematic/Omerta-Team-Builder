@@ -24,18 +24,20 @@ export default function Rank({ page, range, title, file }: RankProps) {
 
     const sortedRows = [...sourceData].sort((a, b) => (b[0] as number) - (a[0] as number))
     const normalizedRows = sortedRows.map(row => row.map(cell => cell ?? ""))
+    const clearedRows = [...normalizedRows].filter(row => row[0] as number > 0)
 
 
     return (
-        <div className="pt-8 justify-center font-semibold mx-auto w-[370px] hover:cursor-pointer select-none md:py-12">
+        <div className="pt-8 justify-center font-semibold mx-auto hover:cursor-pointer select-none md:py-12">
 
             <h1 className="text-[rgb(var(--text))] text-2xl text-center md:text-3xl md:mb-8">{title}</h1>
+
             {isLoading && <p className="text-[rgb(var(--text))] text-center text-xl mb-8">Chargement...</p>}
 
 
-            {normalizedRows ? <ol className="text-black px-4 py-4 text-left">
+            {clearedRows && clearedRows.length > 0 ? <ol className="text-black px-4 py-4 text-left w-[370px] mx-auto">
 
-                {normalizedRows.map((row: (string | number )[], index: number) => row[1] ?
+                {clearedRows.map((row: (string | number )[], index: number) => row[1] ?
 
                     <li key={index} onClick={() => navigate("/stats/" + String(row[1]).toLowerCase())}
                     className={"relative py-2 mb-2 text-lg rounded-lg text-[rgb(var(--bg))] border-solid overflow-hidden " + 
@@ -61,7 +63,7 @@ export default function Rank({ page, range, title, file }: RankProps) {
                 
             </ol>
             
-            : null}
+            : <h2 className="text-[rgb(var(--text))] w-fit mx-auto text-lg">Pas de données pour cette saison !</h2>}
 
         </div>
     )
