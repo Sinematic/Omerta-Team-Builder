@@ -1,5 +1,7 @@
 export const fetchStats = async (sheet: string, range?: string) => {
 
+    if(!sheet) return null
+
     const params = new URLSearchParams({
         tqx: 'out:json',
         ...(sheet && { sheet }),
