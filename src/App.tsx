@@ -6,7 +6,6 @@ import NotFound from "@/components/UI/NotFound"
 import Profile from "@/features/profile/Profile"
 import ClassesOfPlayers from "./features/classesOfPlayers/ClassesOfPlayers"
 import { handleTheme } from "./utils/theme"
-import Card from "./components/UI/Card"
 import RankPage from "./features/stats/RankPage"
 import HeaderPage from "./components/UI/HeaderPage"
 
