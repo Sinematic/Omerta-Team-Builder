@@ -18,6 +18,6 @@ export default function SearchButton() {
         md:max-w-[195px] focus:outline-none focus:ring-0" 
         placeholder="Rechercher un joueur" aria-label="Rechercher un joueur"
         onChange={(e) => setPseudoSearched(e.target.value)} value={pseudoSearched} 
-        onKeyDown={(e) => e.key === "Enter" ? search(pseudoSearched) : ""}/>
+        onKeyDown={(e) => e.key === "Enter" ? search(pseudoSearched) : ""} />
     )
 }

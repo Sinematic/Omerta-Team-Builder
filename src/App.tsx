@@ -4,10 +4,10 @@ import TeamBuilder from "@/features/teamBuilder/TeamBuilder"
 import PlayerHistory from "@/features/stats/PlayerHistory"
 import NotFound from "@/components/UI/NotFound"
 import Profile from "@/features/profile/Profile"
-import ClassesOfPlayers from "./features/classesOfPlayers/ClassesOfPlayers"
-import { handleTheme } from "./utils/theme"
-import RankPage from "./features/stats/RankPage"
-import HeaderPage from "./components/UI/HeaderPage"
+import ClassesOfPlayers from "@/features/classesOfPlayers/ClassesOfPlayers"
+import { handleTheme } from "@/utils/theme"
+import RankPage from "@/features/stats/RankPage"
+import HeaderPage from "@/components/UI/HeaderPage"
 
 handleTheme()
 

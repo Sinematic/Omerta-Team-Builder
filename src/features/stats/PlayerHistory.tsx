@@ -8,20 +8,20 @@ import GameCard from "@/features/stats/GameCard"
 type PlayerInfoType = [ string, ...string[] ]
 
 type Match = ({
-    result: string;
-    side: string;
-    classPlayed: string;
-    points: number;
-    details: string[];
+    result: string
+    side: string
+    classPlayed: string
+    points: number
+    details: string[]
 } | null)
 
 export type PlayerDataType = {
-    name: string;
-    matches : Match[];
+    name: string
+    matches : Match[]
 }
 
 export type MatchDataType = {
-    index: number;
+    index: number
     participants: ParticipantType[]
 }
 
@@ -95,25 +95,25 @@ export default function PlayerHistory() {
 
 
     return (
+    <>
+        {playerFound ? 
+            <div className="grid place-items-center w-full mx-auto px-6 pt-16 pb-[70px] bg-[rgb(var(--bg))]
+            text-[rgb(var(--text))] text-center gap-8 relative rounded-lg md:max-w-[800px] md:py-16 md:px-12">
+                
+                <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">
+                    {(["a", "e", "i", "o", "u", "y"].includes(pseudoInGame[0].toLowerCase())
+                    ? "Historique d'" : "Historique de ") + pseudoInGame}
+                </h1>
 
-        <div>
-            {playerFound ? 
-                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 pt-16 pb-[70px] md:py-16 bg-[rgb(var(--surface))] text-[rgb(var(--text))] 
-                text-center gap-8 relative rounded-lg ">
-                    <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">
-                        {(["a", "e", "i", "o", "u", "y"].includes(pseudoInGame[0].toLowerCase())
-                        ? "Historique d'" : "Historique de ") + pseudoInGame}</h1>
+                {isLoading && <h2>Chargement...</h2>} 
 
-                    {isLoading && <h2>Chargement...</h2>} 
+                {matchesPlayedByPlayer.length 
+                    ? matchesToDisplay.map(match => <GameCard matchData={match} pseudo={pseudoInGame} key={match.index} />) 
+                    : <h2 className="text-xl p-4">Aucune partie trouvée !</h2>
+                }
+                
+            </div>
 
-                    {matchesPlayedByPlayer.length 
-                        ? matchesToDisplay.map(match => <GameCard matchData={match} pseudo={pseudoInGame} key={match.index} />) 
-                        : <h2 className="text-xl p-4">Aucune partie trouvée !</h2>
-                    }
-                    
-                </div>
-            : <NotFound message={"Joueur introuvable !"} />}
-        </div>
-
-    )
+        : <NotFound message={"Joueur introuvable !"} />}
+    </>)
 }

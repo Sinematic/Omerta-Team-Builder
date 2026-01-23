@@ -17,6 +17,8 @@
   --very-dark-green: 6, 78, 59; /* emerald-900 */
   --warning: 180, 83, 9;         /* amber-700 */
   --danger: 220 38 38;          /* red-600 */
+  --slate: 15 23 42;
+  --dark-orange: 69 10 10;
 }
 
 [data-theme="dark"] {

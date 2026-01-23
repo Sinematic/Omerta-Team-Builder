@@ -4,14 +4,13 @@ import Button from "@/components/UI/Button"
 import { isSmallScreen, setRandomMap } from "@/utils/players"
 
 type MapListerProps = {
-    mapSelecter?: (name: string, image:string) => void;
-    randomMapButton?: boolean;
+    mapSelecter?: (name: string, image:string) => void
+    randomMapButton?: boolean
 }
 
 export default function MapLister({ mapSelecter, randomMapButton } : MapListerProps) {
 
     const maps = mapsData.maps
-
     const smallScreen = isSmallScreen()
 
 
