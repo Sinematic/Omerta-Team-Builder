@@ -28,12 +28,11 @@ export default function Rank({ page, range, title, file }: RankProps) {
 
 
     return (
-        <div className="pt-8 justify-center font-semibold mx-auto hover:cursor-pointer select-none md:py-12">
+        <div className="pt-8 pb-[60px] justify-center font-semibold mx-auto hover:cursor-pointer select-none md:py-12">
 
             <h1 className="text-[rgb(var(--text))] text-2xl text-center md:text-3xl md:mb-8">{title}</h1>
 
             {isLoading && <p className="text-[rgb(var(--text))] text-center text-xl mb-8">Chargement...</p>}
-
 
             {clearedRows && clearedRows.length > 0 ? <ol className="text-black px-4 py-4 text-left w-[370px] mx-auto">
 

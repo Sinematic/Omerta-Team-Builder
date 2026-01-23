@@ -98,14 +98,18 @@ export default function PlayerHistory() {
 
         <div>
             {playerFound ? 
-                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 py-16 bg-[rgb(var(--surface))] text-[rgb(var(--text))] text-center gap-8 relative rounded-lg">
+                <div className="grid place-items-center max-w-5/11 mx-auto m-12 px-12 pt-16 pb-[70px] md:py-16 bg-[rgb(var(--surface))] text-[rgb(var(--text))] 
+                text-center gap-8 relative rounded-lg ">
                     <h1 className="text-2xl font-semibold mb-6 absolute top-4 right-8">
                         {(["a", "e", "i", "o", "u", "y"].includes(pseudoInGame[0].toLowerCase())
                         ? "Historique d'" : "Historique de ") + pseudoInGame}</h1>
+
                     {isLoading && <h2>Chargement...</h2>} 
+
                     {matchesPlayedByPlayer.length 
-                    ? matchesToDisplay.map(match => <GameCard matchData={match} pseudo={pseudoInGame} key={match.index} />) 
-                    : <h2 className="text-xl p-4">Aucune partie trouvée !</h2>}
+                        ? matchesToDisplay.map(match => <GameCard matchData={match} pseudo={pseudoInGame} key={match.index} />) 
+                        : <h2 className="text-xl p-4">Aucune partie trouvée !</h2>
+                    }
                     
                 </div>
             : <NotFound message={"Joueur introuvable !"} />}

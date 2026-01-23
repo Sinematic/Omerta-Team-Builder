@@ -17,7 +17,7 @@ export default function MapLister({ mapSelecter, randomMapButton } : MapListerPr
 
     return (
         <div>
-            <ul className="grid grid-cols-1 gap-4 justify-center px-4 py-8 select-none md:grid-cols-3 md:p-40">
+            <ul className="grid grid-cols-1 gap-4 justify-center px-4 py-8 pb-[70px] select-none md:grid-cols-3 md:p-40">
 
                 {randomMapButton && mapSelecter? <Button action={() => setRandomMap(mapSelecter)} color="bg-[rgb(var(--primary))] text-[rgb(var(--text))]" text="Aléatoire" 
                 specifiedClasses={"absolute mx-auto center justify-center " + (smallScreen ? "top-20 right-4" : "top-25 right-40")} />

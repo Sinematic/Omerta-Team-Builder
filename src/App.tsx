@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router"
-import Header from "@/components/UI/Header"
 import MapLister from "@/features/maps/MapLister"
 import TeamBuilder from "@/features/teamBuilder/TeamBuilder"
 import PlayerHistory from "@/features/stats/PlayerHistory"
@@ -9,6 +8,7 @@ import ClassesOfPlayers from "./features/classesOfPlayers/ClassesOfPlayers"
 import { handleTheme } from "./utils/theme"
 import Card from "./components/UI/Card"
 import RankPage from "./features/stats/RankPage"
+import HeaderPage from "./components/UI/HeaderPage"
 
 handleTheme()
 
@@ -17,9 +17,9 @@ export default function App() {
 	
 	return (
 	<>
-		<Header />	
+		<HeaderPage />	
 		<Routes>
-			<Route path="/picker" element={<TeamBuilder />} />         
+			<Route path="/draft" element={<TeamBuilder />} />         
 			<Route path="/classes-des-joueurs" element={<ClassesOfPlayers />} />    
 			<Route path="/maps" element={<MapLister />} />
 			<Route path="/stats/:pseudo" element={<PlayerHistory />} />        

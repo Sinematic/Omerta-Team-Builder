@@ -105,7 +105,7 @@ export default function TeamBuilder() {
 
 
     return (
-        <div className="flex justify-center flex-col">
+        <div className="flex justify-center flex-col pb-[70px]">
 
             { phase !== "summary" ? <p className="px-4 pt-7 text-center -translate-x-96 italic text-[rgb(var(--text))] animate-pulse text-lg">{messagePhase()}</p> : null}
 

@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react"
-
+//unused for now, refactor on TeamBuilder component is required
 export type PhaseName = "registration" | "format selection" | "team allocation" | "map selection" | "summary"
 
 export function useTeamBuilder() {
