@@ -28,13 +28,13 @@ export default function Rank({ page, range, title, file }: RankProps) {
 
 
     return (
-        <div className="pt-8 pb-[60px] justify-center font-semibold mx-auto hover:cursor-pointer select-none md:py-12">
+        <div className="pt-8 pb-[60px] justify-center font-semibold mx-auto hover:cursor-pointer select-none md:p-12">
 
             <h1 className="text-[rgb(var(--text))] text-2xl text-center md:text-3xl md:mb-8">{title}</h1>
 
             {isLoading && <p className="text-[rgb(var(--text))] text-center text-xl mb-8">Chargement...</p>}
 
-            {clearedRows && clearedRows.length > 0 ? <ol className="text-black px-4 py-4 text-left w-[370px] mx-auto">
+            {clearedRows && clearedRows.length > 0 ? <ol className="text-black px-4 pt-8 text-left w-[370px] mx-auto">
 
                 {clearedRows.map((row: (string | number )[], index: number) => row[1] ?
 
@@ -44,19 +44,25 @@ export default function Rank({ page, range, title, file }: RankProps) {
                         : (index === 0 ? "bg-[#d1aa2a] text-[rgb(var(--text))]" 
                         : (index === 1 ? "bg-neutral-400 text-[rgb(var(--text))]" 
                         : "text-[rgb(var(--text))] bg-[#a86828]")))}>
+
                         <span className={"py-2 absolute left-0 top-0 text-xl " + 
                         (index >= 3 || row[0] as number < 1 ? "bg-[rgb(var(--text))] px-4 rounded-l-lg" 
                         : (index === 0 ? "gold text-stone-800 px-5 " 
                         : (index === 1 ? "bg-[rgb(var(--text-muted))] text-[rgb(var(--text))] px-5" 
                         : "brown text-[rgb(var(--text))] px-5 text-xl")))}>{row[0] as number > 0  ? index + 1 : "-"}</span>
-                        <p className={clsx(
-                            "text-center pr-4", 
-                            row[0] as number > 1  && index < 3 ? "text-[rgb(var(--text))]" : "")}>{row[1]} </p>
+
+                        <p className={clsx("text-center pr-4", 
+                        row[0] as number > 1  && index < 3 ? "text-[rgb(var(--text))]" : "")}>
+                                {row[1]} 
+                        </p>
+
                         <span className={"text-sm py-3 px-3 text-end absolute right-0 top-0 w-[70px] " + 
                         (index >= 3 || row[0] as number < 1 ? " bg-gray-200" 
                         : (index === 0 ? "bg-[#d1aa2a] text-[rgb(var(--text))]" 
                         : (index === 1 ? "bg-[rgb(var(--text-muted))] text-[rgb(var(--text))]" 
-                        : "bg-[#a86828] text-[rgb(var(--text))]")))}>{row[0]}pts</span>         
+                        : "bg-[#a86828] text-[rgb(var(--text))]")))}>
+                            {row[0]}pts
+                        </span>         
                     </li> 
                 : "")}
                 

@@ -26,7 +26,6 @@ export default function App() {
 			<Route path="/classement" element={<RankPage />} />
 			<Route path="/" element={<Profile />} />
 			<Route path="/*" element={<NotFound message="Page non trouvée!" />} />
-			<Route path="/test" element={<Card text="Aléatoire" description="Composition aléatoire des équipes" image="/images/classes/cra.jpg" />} />
 		</Routes>
 	</>
 	)
