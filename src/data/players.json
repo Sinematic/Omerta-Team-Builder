@@ -9,7 +9,7 @@
     { "name": "Shanks", "classes": [ "Enutrof", "Féca" ] },
     { "name": "Zenio", "classes": [ "Sacrieur", "Iop" ] },
     { "name": "Shambala", "classes": [ "Ecaflip" ] },
-    { "name": "Mojo", "classes": [ "Roublard", "Forgelance"] },
+    { "name": "Mojo", "classes": [ "Roublard", "Forgelance", "Iop"] },
     { "name": "Sinematic", "classes": [ "Sram", "Steamer", "Forgelance", "Féca", "Iop" ] },
     { "name": "Agaleh", "classes": [ "Iop" ] },
     { "name": "Athanor", "classes": ["Féca", "Pandawa"] },
@@ -18,8 +18,8 @@
     { "name": "Dixite", "classes": [ "Féca", "Pandawa" ] },
     { "name": "Vahalgrim", "classes": [ "Forgelance", "Iop" ] },
     { "name": "Kirito", "classes": [ "Iop", "Féca" ] },
-    { "name": "Smoky", "classes": [ "Féca" ] },
-    { "name": "Tykouette", "classes": [ "Forgelance" ] },
+    { "name": "Smoky", "classes": [ "Féca", "Iop" ] },
+    { "name": "Tykouette", "classes": [ "Forgelance", "Eniripsa" ] },
     { "name": "Terahertz", "classes": [ "Ecaflip", "Roublard", "Sacrieur", "Féca" ] },
     { "name": "Vodar", "classes": [ "Forgelance" ] },
     { "name": "Coucougnou", "classes": [ "Steamer" ] },
@@ -32,9 +32,10 @@
     { "name": "Sponge", "classes": ["Eniripsa", "Huppermage" ] },
     { "name": "Kulinaire", "classes": [ "Pandawa"] },
     { "name": "Cullinan", "classes": [ "Iop" ] },
-    { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Crâ", "Pandawa", "Steamer", "Ecaflip", "Iop", "Zobal", "Huppermage" ] },
-    { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa", "Forgelance", "Iop", "Pandawa", "Xélor", "Ecaflip" ] },
+    { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Pandawa", "Steamer", "Ecaflip", "Iop" ] },
+    { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa" ] },
     { "name": "Saiyan", "classes": [ "Forgelance" ] },
     { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
-    { "name": "Fumeurdefrap", "classes": [ "Iop" ] }
+    { "name": "Fumeurdefrap", "classes": [ "Iop" ] },
+    { "name": "Iopinambour", "classes": [ "Iop" ] }
 ]
