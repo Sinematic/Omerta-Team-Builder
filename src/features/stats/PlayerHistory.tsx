@@ -3,6 +3,7 @@ import { useParams } from "react-router"
 import playersData from "@/data/players.json"
 import NotFound from "@/components/UI/NotFound"
 import GameCard from "@/features/stats/GameCard"
+//import dataSeasonOne from "@/data/season-1-definitive-matches.json"
 
 
 type PlayerInfoType = [ string, ...string[] ]
@@ -41,6 +42,11 @@ export default function PlayerHistory() {
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
 
     const { data, isLoading } = useStats("Matchs", "A2:Z33")
+
+    console.log("voic", data)
+
+
+
 
     if (!data) return
 

@@ -57,14 +57,14 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
 
     
     return (
-        <div className="p-6 space-y-6 w-2/3 mx-auto text-center select-none">
+        <div className="px-4 space-y-6 mx-auto text-center select-none md:w-2/3 md:p-6">
 
-            <div className="free-players w-2/3 mx-auto">
+            <div className="free-players md:w-2/3 mx-auto">
                 <h2 className="text-xl font-medium mb-4 text-[rgb(var(--text))]">
                     Joueurs sans équipe
                 </h2>
 
-                <ul className="rounded-lg mx-auto  ">
+                <ul className="rounded-lg mx-auto">
                     {freePlayers.map(playerName => {
                         const playerInfo = playersData.find(p => p.name === playerName)
                         if (!playerInfo) return null
