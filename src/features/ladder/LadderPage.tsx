@@ -70,10 +70,6 @@ export default function LadderPage() {
             <circle cx="10" cy="10" r="10" fill="#880D07"/>
         </svg>
 
-    const navBar = document.querySelector('nav')
-    
-    if(navBar) navBar.style.display = "none"
-
 
     return (
         <div className="bg-[url(/images/bg-ally-remade.png)] bg-center bg-no-repeat bg-cover w-[1414px] h-[855px] mx-auto mt-6 mb-6 text-white py-10 px-17 font-[Roboto]">
