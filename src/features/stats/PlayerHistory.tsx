@@ -43,10 +43,6 @@ export default function PlayerHistory() {
 
     const { data, isLoading } = useStats("Matchs", "A2:Z33")
 
-    console.log("voic", data)
-
-
-
 
     if (!data) return
 

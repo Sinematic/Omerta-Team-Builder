@@ -5,10 +5,10 @@ import PlayerHistory from "@/features/stats/PlayerHistory"
 import NotFound from "@/components/UI/NotFound"
 import Profile from "@/features/profile/Profile"
 import ClassesOfPlayers from "@/features/classesOfPlayers/ClassesOfPlayers"
-import { handleTheme } from "@/utils/theme"
 import RankPage from "@/features/stats/RankPage"
 import HeaderPage from "@/components/UI/HeaderPage"
-
+import LadderPage from "./features/ladder/LadderPage"
+import { handleTheme } from "./utils/theme"
 handleTheme()
 
 
@@ -25,6 +25,7 @@ export default function App() {
 			<Route path="/classement" element={<RankPage />} />
 			<Route path="/" element={<Profile />} />
 			<Route path="/*" element={<NotFound message="Page non trouvée!" />} />
+			<Route path="/generate/ladder" element={<LadderPage />} />
 		</Routes>
 	</>
 	)
