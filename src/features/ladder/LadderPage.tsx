@@ -78,7 +78,7 @@ export default function LadderPage() {
 
             <div className="grid grid-cols-2 grid-cols-[105px_600px] gap-9">
                 <div className="w-[110px]">
-                    <img className="w-[100%]" src="/favicon.png"  alt="Blason Omerta, Alliance PVP n°1 sur Draconiros" />
+                    <img className="w-[100%]" src="favicon.png"  alt="Blason Omerta, Alliance PVP n°1 sur Draconiros" />
                 </div>
 
                 <div>
@@ -109,7 +109,7 @@ export default function LadderPage() {
 
                 <div className="pt-1 w-fit mx-auto flex flex-cols-2 gap-5 place-items-center">
                     <div className="w-[60px]">
-                        <img src="/images/kama-OG.png" alt="Le Kama, coeur de Dofus" />
+                        <img src="images/kama-OG.png" alt="Le Kama, coeur de Dofus" />
                     </div>
 
                     <p className="text-2xl font-thin flex">{(totalMoney / 1000000)} millions sont répartis sur ce ladder <span className="pl-6 pt-3">{dot}</span></p>
