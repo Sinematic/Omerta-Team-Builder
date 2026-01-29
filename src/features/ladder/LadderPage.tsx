@@ -1,12 +1,14 @@
 import { useState } from "react"
 import LadderElement from "@/features/ladder/LadderElement"
 
+
 export type playerLadderDataType = {
     name: string
     score: string
     perc?: string
     rank: number
 }
+
 
 export default function LadderPage() {
 
@@ -78,7 +80,7 @@ export default function LadderPage() {
 
             <div className="grid grid-cols-2 grid-cols-[105px_600px] gap-9">
                 <div className="w-[110px]">
-                    <img className="w-[100%]" src="/favicon.png"  alt="Blason Omerta, Alliance PVP n°1 sur Draconiros" />
+                    <img className="w-[100%]" src="favicon.png"  alt="Blason Omerta, Alliance PVP n°1 sur Draconiros" />
                 </div>
 
                 <div>
