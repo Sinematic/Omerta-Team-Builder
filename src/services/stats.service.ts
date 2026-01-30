@@ -1,4 +1,4 @@
-export const fetchStats = async (sheet: string, range?: string) => {
+export const fetchStats = async (sheet: string, range?: string, source?:string) => {
 
     if(!sheet) return null
 
@@ -8,9 +8,9 @@ export const fetchStats = async (sheet: string, range?: string) => {
         ...(range && { range }),
     })
 
-    const ID = '1F2LN-QA-8fAihWl0lPlPNrKs7P7Ia8V4D2ilJ39ZX30'
-
+    const ID = source ?? import.meta.env.VITE_GOOGLE_SHEETS_ID   
     const res = await fetch(`https://docs.google.com/spreadsheets/d/${ID}/gviz/tq?${params}`) 
+
     if (!res.ok) throw new Error('Erreur Google Sheets API')
 
     const text = await res.text()

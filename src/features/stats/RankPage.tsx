@@ -1,7 +1,7 @@
 import { useStats } from "@/hooks/useStats"
 import { useState } from "react"
 import Rank from "./Rank"
-import rankSeasonOne from "@/data/season-1-definitive-rank.json"
+import rankSeasonOne from "@/data/seasons/season-1-rank.json"
 import Button from "@/components/UI/Button"
 
 export default function RankPage() {

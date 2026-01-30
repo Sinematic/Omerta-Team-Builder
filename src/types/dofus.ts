@@ -11,3 +11,13 @@ export interface Player {
     name: string;
     classes: string[];
 }
+
+export type Match = ({
+    result: string
+    side: string
+    classPlayed: string
+    points: number
+    details: string[]
+} | null)
+
+export type PlayerInfoType = [string, ...(string | null)[]]

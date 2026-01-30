@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import LadderElement from "@/features/ladder/LadderElement"
+import { exportHtmlToImage } from "@/utils/exportHtmlToImage"
+import Button from "@/components/UI/Button"
 
 
 export type playerLadderDataType = {
@@ -15,6 +17,9 @@ export default function LadderPage() {
     const [totalMoney, ] = useState(10000000)
     const [title, ] = useState("Classement ladder focus")
     const [period, ] = useState("5 Janvier au 18 Janvier")
+
+    const ref = useRef<HTMLDivElement | null>(null)
+
 
     const players : playerLadderDataType[] = [
         { name: "Sinematic", score: "460", rank: 0 },
@@ -58,12 +63,17 @@ export default function LadderPage() {
         return { ...player, rank: currentRank }
     })
 
+    const handleExportImage = async () => {
+        await exportHtmlToImage(ref as React.RefObject<HTMLElement>, "ladder-omerta.png")
+    }
+
+
 
     const totalScore = players.reduce((total, player) => total + Number(player.score), 0)
-
-    const displayLimit = 15
-    const leftColumn = rankedPlayers.slice(0, displayLimit)
-    const rightColumn = rankedPlayers.slice(displayLimit)
+    // Barrer les sommes de kamas des joueurs qui obtiennent un perc via ladder focus
+    const mid = Math.ceil(rankedPlayers.length / 2)
+    const leftColumn = rankedPlayers.slice(0, mid)
+    const rightColumn = rankedPlayers.slice(mid)
 
     const dot = 
         <svg width="10" height="10" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +82,9 @@ export default function LadderPage() {
 
 
     return (
-        <div className="bg-[url(/images/bg-ally-remade.png)] bg-center bg-no-repeat bg-cover w-[1414px] h-[855px] mx-auto mt-6 mb-6 text-white py-10 px-17 font-[Roboto]">
+    <div className="flex justify-center mt-6 mb-6">
+        <div ref={ref}
+        className="bg-[url(/images/bg-ally.png)] bg-center bg-no-repeat bg-cover w-[1414px] h-[855px] mx-auto text-white py-10 px-17 font-[Roboto]">
 
             <div className="grid grid-cols-2 grid-cols-[105px_600px] gap-9">
                 <div className="w-[110px]">
@@ -107,13 +119,17 @@ export default function LadderPage() {
 
                 <div className="pt-1 w-fit mx-auto flex flex-cols-2 gap-5 place-items-center">
                     <div className="w-[60px]">
-                        <img src="images/kama-OG.png" alt="Le Kama, coeur de Dofus" />
+                        <img src="images/kama.webp" alt="Le Kama, coeur de Dofus" />
                     </div>
 
                     <p className="text-2xl font-thin flex">{(totalMoney / 1000000)} millions sont répartis sur ce ladder <span className="pl-6 pt-3">{dot}</span></p>
                 </div>
 
             </div>
+
+            <Button text="Exporter Ladder" specifiedClasses="no-export absolute top-5 left-5" action={handleExportImage}/>
+
+        </div>
 
         </div>
 

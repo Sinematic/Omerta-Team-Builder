@@ -3,18 +3,12 @@ import { useParams } from "react-router"
 import playersData from "@/data/players.json"
 import NotFound from "@/components/UI/NotFound"
 import GameCard from "@/features/stats/GameCard"
-//import dataSeasonOne from "@/data/season-1-definitive-matches.json"
+import { type Match } from "@/types/dofus"
+import { parseMatch } from "@/utils/players"
+import { useSeasons } from "@/hooks/useSeasons"
+import { type PlayerInfoType } from "@/types/dofus"
+import Loader from "@/components/UI/Loader"
 
-
-type PlayerInfoType = [ string, ...string[] ]
-
-type Match = ({
-    result: string
-    side: string
-    classPlayed: string
-    points: number
-    details: string[]
-} | null)
 
 export type PlayerDataType = {
     name: string
@@ -28,8 +22,15 @@ export type MatchDataType = {
 
 export type ParticipantType = { name: string; match: Match }
 
+export type PlayerData = {
+  name: string
+  matches: Match[]
+}
+
 
 export default function PlayerHistory() {
+
+    const seasons = useSeasons()
 
     const { pseudo } = useParams<{ pseudo: string }>()
 
@@ -43,26 +44,40 @@ export default function PlayerHistory() {
 
     const { data, isLoading } = useStats("Matchs", "A2:Z33")
 
+    if(isLoading) return <Loader message={"Chargement des données du joueur " + pseudo} />
 
-    if (!data) return
+    if (!data) return <NotFound message="Données introuvables !" />
 
-    const parseMatch = (rawMatch: unknown): Match | null => {
-        if (typeof rawMatch !== "string") return null
+    const mergeSeasons = (pastSeasons: PlayerInfoType[][], currentSeason: PlayerInfoType[]): PlayerInfoType[] => {
 
-        const parts = rawMatch.split("-")
-        if (parts.length < 4) return null
+        const playerMap: Record<string, (string | null)[]> = {}
 
-        const [side, result, classPlayed, points, details] = parts
+        pastSeasons?.forEach(season => {
+            season.forEach(([name, ...matches]) => {
+                if (!playerMap[name]) playerMap[name] = [name]
+                playerMap[name].push(...matches)
+            })
+        })
 
-        if (!side || !result || !classPlayed) return null
+        currentSeason.forEach(([name, ...matches]) => {
+            if (!playerMap[name]) playerMap[name] = [name]
+            playerMap[name].push(...matches)
+        })
 
-        const parsedPoints = Number(points)
-        if (!Number.isFinite(parsedPoints)) return null
-
-        return { side, result, classPlayed, points: parsedPoints, details: details ? details.split("") : [] }
+        return Object.values(playerMap).filter((row): row is PlayerInfoType => typeof row[0] === "string")
     }
+
+    let usableData
+
+    if(seasons?.seasons) {
+        const pastSeasons: PlayerInfoType[][] = seasons.seasons.map((season) => season.data as PlayerInfoType[])  
+        usableData = mergeSeasons(pastSeasons, data)
+    }
+
+    if(!usableData) usableData = data
+
     
-    const players: PlayerDataType[] = data.map(([name, ...rawMatches] : PlayerInfoType) => ({
+    const players: PlayerDataType[] = (usableData as PlayerInfoType[]).map(([name, ...rawMatches] : PlayerInfoType) => ({
         name,
         matches: rawMatches.map(match => parseMatch(match))
     }))
