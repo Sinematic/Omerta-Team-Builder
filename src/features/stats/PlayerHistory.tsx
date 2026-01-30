@@ -48,6 +48,7 @@ export default function PlayerHistory() {
 
     if (!data) return <NotFound message="Données introuvables !" />
 
+
     const mergeSeasons = (pastSeasons: PlayerInfoType[][], currentSeason: PlayerInfoType[]): PlayerInfoType[] => {
 
         const playerMap: Record<string, (string | null)[]> = {}
@@ -89,13 +90,24 @@ export default function PlayerHistory() {
         .filter(index => index !== -1) ?? []
 
     const matchesPlayedByPlayer : MatchDataType[] = indexOfGamesPlayed.map(index => {
-
+/*
         const participants = players
             .filter(player => player.matches[index] !== null)
             .map(player => ({
                 name: player.name,
                 match: player.matches[index]
+            }))*/
+
+
+        const participants = players
+            .map(player => ({
+                name: player.name,
+                match: player.matches[index]
             }))
+            .filter(
+                (p): p is { name: string; match: Match } =>
+                p.match !== null && p.match !== undefined
+            )
 
             
         participants.sort((a, b) => {
@@ -107,6 +119,8 @@ export default function PlayerHistory() {
         return { index, participants }
         
     })
+
+    console.log(matchesPlayedByPlayer)
 
     const matchesToDisplay = [...matchesPlayedByPlayer].reverse()
 
