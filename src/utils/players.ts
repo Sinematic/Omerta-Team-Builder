@@ -38,3 +38,5 @@ export const parseMatch = (rawMatch: unknown): Match | null => {
 
     return { side, result, classPlayed, points: parsedPoints, details: details ? details.split("") : [] }
 }
+
+export const shuffleArray = (array: string[]) => [...array].sort(() => Math.random() - 0.5)
