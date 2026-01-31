@@ -13,12 +13,10 @@ type RankProps = {
 
 export default function Rank({ page, range, title, file }: RankProps) {
 
-
     const navigate = useNavigate()
 
     const { data, isLoading } = useStats(page as string, range)
     const sourceData: SheetData | undefined = file ?? data
-
 
     if (!sourceData || isLoading) return null
 

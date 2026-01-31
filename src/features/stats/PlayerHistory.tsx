@@ -8,7 +8,7 @@ import { type PlayerInfoType } from "@/types/dofus"
 import Loader from "@/components/UI/Loader"
 import { useStats } from "@/hooks/useStats"
 import { useSeasons } from "@/hooks/useSeasons"
-import { usePlayerHistory } from "@/hooks/usePlayerHistory"
+//import { usePlayerHistory } from "@/hooks/usePlayerHistory"
 
 
 export type PlayerDataType = { name: string; matches : Match[] }
@@ -35,17 +35,10 @@ export default function PlayerHistory() {
 
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
-
-
     
-    const mergedData = usePlayerHistory()
+    //const mergedData = usePlayerHistory()
 
-    console.log(mergedData)
-
-    if(!playerFound) return <NotFound message={"Joueur introuvable !"} />
-
-
-
+    if(!playerFound) return <NotFound message="Joueur introuvable !" />
     if(isLoading) return <Loader message={"Chargement des données du joueur " + pseudo} />
     if (!data) return <NotFound message="Données introuvables !" />
 

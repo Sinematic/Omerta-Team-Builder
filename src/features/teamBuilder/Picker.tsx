@@ -19,9 +19,6 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
     const [teams, setTeams] = useState<string[][]>([])
     const [pickIndex, setPickIndex] = useState<number>(0)
 
-    
-    console.log("TEAMS dans picker:", teams)
-
    const pickOrder = snakePickOrder[captainsAmount.toString() as "2" | "3" | "4"]?.[Number(players) % 4 === 0 ? '4' : '5']
 
     useEffect(() => {

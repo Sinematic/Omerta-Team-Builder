@@ -27,7 +27,6 @@ export default function TeamBuilder() {
         isValidAmountOfPlayers,
     } = useTeamBuilder()
 
-    console.log("TEAMS du TB:", teams)
 
     return (
         <div className="flex justify-center flex-col pb-[70px]">
