@@ -17,6 +17,9 @@ type SummaryProps = {
 
 export default function Summary({ map, teams }: SummaryProps) {
 
+    console.log("TEAMS:", teams)
+
+
     const players : Player[] = getAllPlayers()
 
     const generateCustomPlayersList = (team: string[]) => team

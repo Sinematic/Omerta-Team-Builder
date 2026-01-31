@@ -9,6 +9,7 @@ export type UseTeamBuilderReturn = {
     playersParticipating: string[]
     format?: "captains" | "random"
     teams: string[][]
+    updateTeams: (newTeams: string[][]) => void
     mapUsed: { name: string; image: string }
     togglePlayer: (player: string) => void
     chooseFormat: (format: "captains" | "random") => void
@@ -45,9 +46,6 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         }
     }, [phase])
 
-    // Priorité à la composition d'équipes à 5, si indisponible, composition par 4
-    const countCaptains = (players: string[]) => players.length % 5 === 0 ? players.length / 5 : players.length / 4
-
     const togglePlayer = (player: string) => {
         setPlayersParticipating(prev =>
             prev.includes(player) ? prev.filter(p => p !== player) : [...prev, player]
@@ -74,7 +72,6 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         }
     }
 
-
     const nextPhase = () => {
         switch (phase) {
         case "registration":
@@ -88,6 +85,13 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
             setPhase("summary")
             break
         }
+    }
+
+    // Priorité à la composition d'équipes à 5, si indisponible, composition par 4
+    const countCaptains = (players: string[]) => players.length % 5 === 0 ? players.length / 5 : players.length / 4
+
+    const updateTeams = (newTeams: string[][]) => {
+        setTeams(newTeams)
     }
 
     const selectMap = (name: string, image: string) => {
@@ -105,6 +109,7 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         playersParticipating,
         format,
         teams,
+        updateTeams,
         mapUsed,
         togglePlayer,
         chooseFormat,

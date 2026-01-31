@@ -10,12 +10,14 @@ import Card from "@/components/UI/Card"
 import { useTeamBuilder } from "@/hooks/useTeamBuilder"
 
 export default function TeamBuilder() {
+
     const players: Player[] = useMemo(() => getAllPlayers(), [])
 
     const {
         phase,
         playersParticipating,
         teams,
+        updateTeams,
         mapUsed,
         togglePlayer,
         chooseFormat,
@@ -24,6 +26,8 @@ export default function TeamBuilder() {
         messagePhase,
         isValidAmountOfPlayers,
     } = useTeamBuilder()
+
+    console.log("TEAMS du TB:", teams)
 
     return (
         <div className="flex justify-center flex-col pb-[70px]">
@@ -49,12 +53,13 @@ export default function TeamBuilder() {
 
                     <Card text="Aléatoire" image="/images/aventuriers-au-zaap.jpg" action={() => chooseFormat("random")}
                     description="Composition aléatoire des équipes" animated />
+
                 </div>
             )}
 
             {phase === "team allocation" && (
                 <Picker players={playersParticipating} captainsAmount={teams.length || 0} 
-                teamsHandler={() => {}} phaseHandler={nextPhase} />
+                teamsHandler={updateTeams} phaseHandler={nextPhase} />
             )}
 
             {phase === "map selection" && (
@@ -62,6 +67,7 @@ export default function TeamBuilder() {
             )}
 
             {phase === "summary" && <Summary map={mapUsed} teams={teams} /> }
+
         </div>
     )
 }

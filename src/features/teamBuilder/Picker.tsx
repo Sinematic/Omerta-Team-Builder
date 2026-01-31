@@ -19,6 +19,9 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
     const [teams, setTeams] = useState<string[][]>([])
     const [pickIndex, setPickIndex] = useState<number>(0)
 
+    
+    console.log("TEAMS dans picker:", teams)
+
    const pickOrder = snakePickOrder[captainsAmount.toString() as "2" | "3" | "4"]?.[Number(players) % 4 === 0 ? '4' : '5']
 
     useEffect(() => {
@@ -47,7 +50,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             const newTeams = prev.map(team => [...team])
             newTeams[currentTeamIndex].push(player)
             return newTeams
-        });
+        })
 
         setFreePlayers(prev => prev.filter(p => p !== player))
         setPickIndex(prev => prev + 1)
@@ -55,14 +58,12 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
 
     if(freePlayers.length === 1) addToTeam(freePlayers[0])
 
-    
+        
     return (
         <div className="px-4 space-y-6 mx-auto text-center select-none md:w-2/3 md:p-6">
 
             <div className="free-players md:w-2/3 mx-auto">
-                <h2 className="text-xl font-medium mb-4 text-[rgb(var(--text))]">
-                    Joueurs sans équipe
-                </h2>
+                <h2 className="text-xl font-medium mb-4 text-[rgb(var(--text))]">Joueurs sans équipe</h2>
 
                 <ul className="rounded-lg mx-auto">
                     {freePlayers.map(playerName => {
