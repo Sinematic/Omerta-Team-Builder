@@ -34,7 +34,7 @@
     { "name": "Cullinan", "classes": [ "Iop" ] },
     { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Pandawa", "Steamer", "Ecaflip", "Iop" ] },
     { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa" ] },
-    { "name": "Saiyan", "classes": [ "Forgelance" ] },
+    { "name": "Saiyan", "classes": [ "Forgelance", "Iop", "Pandawa" ] },
     { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
     { "name": "Fumeurdefrap", "classes": [ "Iop" ] },
     { "name": "Iopinambour", "classes": [ "Iop" ] }
