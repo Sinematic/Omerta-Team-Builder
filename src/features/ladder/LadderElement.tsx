@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import type { playerLadderDataType } from "./LadderPage"
 
-export default function LadderElement({ player, share } : { player : playerLadderDataType, position: number, share: string }) {
+export default function LadderElement({ player } : { player: playerLadderDataType }) {
 
     // const tearDrop = 
     //     <svg viewBox="0 0 31 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +36,7 @@ export default function LadderElement({ player, share } : { player : playerLadde
                 {player.rank as number > 9 ? player.rank  as number : ("0" + (player.rank))}
             </p>
 
-            <p className="w-[90px] flex-shrink-0">{player.name}</p>
+            <p className="w-[122px] flex-shrink-0">{player.name}</p>
 
             <p className="w-[135px] flex align-middle flex-shrink-0">
                 {player.perc ? 
@@ -45,7 +45,14 @@ export default function LadderElement({ player, share } : { player : playerLadde
             </p>
 
             <p className="w-[20px]">{player.score}</p>
-            <p className="w-[100%] text-end pr-2">{share}</p>
+            
+            <p className={clsx(
+            "w-[100%] text-end pr-2",
+            player.perc ? "line-through" : ""
+            )}>
+                {new Intl.NumberFormat("fr-FR").format(player.share)}
+            </p>
+
         </li>
     )
 }

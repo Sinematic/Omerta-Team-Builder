@@ -2,7 +2,9 @@ import { useStats } from "@/hooks/useStats"
 import clsx from "clsx"
 import { useNavigate } from "react-router"
 
-type SheetData = (number | string | null)[][]
+export type SheetRow = (number | string | null)[]
+
+export type SheetData = SheetRow[]
 
 type RankProps = {
     title: string

@@ -1,7 +1,10 @@
-import { useRef, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import LadderElement from "@/features/ladder/LadderElement"
 import { exportHtmlToImage } from "@/utils/exportHtmlToImage"
 import Button from "@/components/UI/Button"
+import { useStats } from "@/hooks/useStats"
+import Loader from "@/components/UI/Loader"
+import type { SheetRow } from "../stats/Rank"
 
 
 export type playerLadderDataType = {
@@ -9,67 +12,84 @@ export type playerLadderDataType = {
     score: string
     perc?: string
     rank: number
+    share: number
 }
 
 
 export default function LadderPage() {
 
-    const [totalMoney, ] = useState(10000000)
+    const { data, isLoading } = useStats("Ladder Focus", "C3:K31", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
+
+    const totalMoney = Number(data?.[4]?.[8] ?? 10000000);// Donnée contenue dans K7 soit data[4][8]
     const [title, ] = useState("Classement ladder focus")
     const [period, ] = useState("5 Janvier au 18 Janvier")
 
     const ref = useRef<HTMLDivElement | null>(null)
 
+    const playersData: playerLadderDataType[] = useMemo(() => {
+        if (!data || !totalMoney) return [];
+        console.log(data[0])
 
-    const players : playerLadderDataType[] = [
-        { name: "Sinematic", score: "460", rank: 0 },
-        { name: "Ospin", score: "420", rank: 0 },
-        { name: "Dixite", score: "370", rank: 0 },
-        { name: "Quasar", score: "270", rank: 0 },
-        { name: "Saiyan", score: "230", rank: 0,  perc: "1"},
-        { name: "Atalyah", score: "220", rank: 0 },
-        { name: "Smoky", score: "200", rank: 0 },
-        { name: "Atyla", score: "180", rank: 0, perc: "1" },
-        { name: "Kulinaire", score: "170", rank: 0, perc: "1" },
-        { name: "Harbat", score: "150", rank: 0 },
-        { name: "Shankski", score: "140", rank: 0 },
-        { name: "Neithya", score: "130", rank: 0 },
-        { name: "Fumeur", score: "120", rank: 0 },
-        { name: "Gump", score: "100", rank: 0 },
-        { name: "Mojo", score: "100", rank: 0 },
-        { name: "Fecafe", score: "90", rank: 0 },
-        { name: "Shambala", score: "90", rank: 0 }, 
-        { name: "Tykouette", score: "90", rank: 0 },
-        { name: "Terahertz", score: "80", rank: 0 },
-        { name: "Zenio", score: "60", rank: 0 },
-        { name: "Vahalgrim", score: "40", rank: 0 },
-        { name: "Zelenox", score: "40", rank: 0 },
-        { name: "Damnor", score: "30", rank: 0 },
-        { name: "Idhao", score: "30", rank: 0 },
-        { name: "Dahlma", score: "20", rank: 0 },
-        { name: "Jaardiland", score: "20", rank: 0 },
-    ]
+        const totalScore = data.reduce((sum: number, row: SheetRow) => sum + Number(row[1]?? 0), 0);
+
+        return data
+            .filter((row: SheetRow) => row[0])
+            .map((row : SheetRow) => {
+
+                const score = Number(row[1] ?? 0);
+                const rawShare = (totalMoney * score) / totalScore;
+                const share = Math.floor(rawShare / 1000) * 1000;
+
+                return {
+                    name: row[0],
+                    score,
+                    perc: row[3],
+                    rank: 0,
+                    share
+                }
+        })
+    }, [data, totalMoney])
+
+    const totalScore = playersData.reduce((total, player) => total + Number(player.score), 0)
+
+    const players = playersData
+        .filter(player => player.name !== null)
+        .map(player => ({
+            ...player,
+            share: Math.floor((totalMoney * (Number(player.score) / totalScore)) / 1000) * 1000
+        }))
 
 
-    let currentRank = 1 
-    let previousScore: number | null = null
 
-    const rankedPlayers = players.map((player, index) => {
-        if (index === 0 || Number(player.score) !== previousScore) {
-            currentRank = index + 1
-            previousScore = Number(player.score)
-        }
 
-        return { ...player, rank: currentRank }
-    })
+    const rankedPlayers = useMemo(() => {
+
+        const sorted = [...players].sort((a, b) => Number(b.score) - Number(a.score))
+
+        return sorted.reduce<playerLadderDataType[]>((acc, player, index) => {
+            const prev = acc[index - 1]
+
+            const rank =
+            index === 0
+                ? 1
+                : player.score === prev.score
+                ? prev.rank
+                : index + 1
+
+            acc.push({ ...player, rank });
+
+            return acc
+        }, [])
+
+    }, [players])
+
+
+     if(isLoading) return <Loader message="Chargemen des données du Ladder" />
 
     const handleExportImage = async () => {
         await exportHtmlToImage(ref as React.RefObject<HTMLElement>, "ladder-omerta.png")
     }
 
-
-
-    const totalScore = players.reduce((total, player) => total + Number(player.score), 0)
     // Barrer les sommes de kamas des joueurs qui obtiennent un perc via ladder focus
     const mid = Math.ceil(rankedPlayers.length / 2)
     const leftColumn = rankedPlayers.slice(0, mid)
@@ -100,16 +120,14 @@ export default function LadderPage() {
 
             <div className="w-[1020px] h-[580px] mx-auto flex flex-cols-2 gap-[90px] opacity-100">
                 <ol className="flex flex-col overflow-hidden h-[100%]">
-                    {leftColumn.map((player, index) => (
-                        <LadderElement key={player.name} player={player} position={index} 
-                        share={new Intl.NumberFormat("fr-FR").format(Math.ceil(totalMoney * (Number(player.score) / totalScore)))} />
+                    {leftColumn.map((player) => (
+                        <LadderElement key={player.name} player={player} />
                     ))}
                 </ol>
 
                 <ol className="flex flex-col h-[100%]">
-                    {rightColumn.map((player, index) => (
-                        <LadderElement key={player.name} player={player} position={index} 
-                        share={new Intl.NumberFormat("fr-FR").format(Math.ceil(totalMoney * (Number(player.score) / totalScore)))} />
+                    {rightColumn.map((player) => (
+                        <LadderElement key={player.name} player={player} />
                     ))}
                 </ol>
             </div>
