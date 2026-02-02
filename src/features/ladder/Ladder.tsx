@@ -23,10 +23,9 @@ export default function Ladder({ page } : { page: LadderType}) {
     const { data: ladderData, isLoading: isLoadingLadder } = useStats(page, "C3:M40", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
     const { data: metaData, isLoading: isLoadingMeta } = useStats("Données", "B22", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY") 
 
-    const totalMoney = page === "Ladder Classique" ? (Number(ladderData?.[11]?.[10]) || 20000000) : (Number(ladderData?.[4]?.[8]) || 10000000) // Donnée contenue dans K7 soit data[4][8]
+    const totalMoney = page === "Ladder Classique" ? (Number(ladderData?.[12]?.[10]) || 20000000) : (Number(ladderData?.[4]?.[8]) || 10000000) // Donnée contenue dans K7 soit data[4][8]
     const period = metaData?.[0]?.[0] ?? "Période non renseignée" // Donnée contenue dans B22
     const limit = page === "Ladder Classique" ? (Number(ladderData?.[11]?.[9]) || 20) : 999
-
 
     const ref = useRef<HTMLDivElement | null>(null)
 
@@ -45,7 +44,7 @@ export default function Ladder({ page } : { page: LadderType}) {
                 const share = Math.floor(rawShare / 1000) * 1000
 
                 return {
-                    name: row[0],
+                    name: typeof row[0] ==="string" ? row[0].replace(/-.*/, "") : null,
                     score,
                     perc: row[3],
                     rank: 0,
@@ -108,7 +107,7 @@ export default function Ladder({ page } : { page: LadderType}) {
 
     return (
         <div ref={ref}
-        className="bg-[url(/images/bg-ally.png)] bg-center bg-no-repeat bg-cover w-[1414px] h-[855px] mx-auto text-white py-10 px-17 font-[Roboto]">
+        className="bg-[url(/images/bg-ally.png)] bg-center bg-no-repeat bg-cover w-[1414px] h-[870px] mx-auto text-white pt-10 px-17 font-[Roboto]">
 
             <div className="grid grid-cols-2 grid-cols-[105px_600px] gap-9">
                 <div className="w-[110px] scale-160">
