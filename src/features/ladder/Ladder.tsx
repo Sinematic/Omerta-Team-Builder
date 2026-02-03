@@ -8,9 +8,9 @@ import type { SheetRow } from "../stats/Rank"
 import type { LadderType } from "./LadderPage"
 
 
-export type playerLadderDataType = {
+export type PlayerLadderDataType = {
     name: string
-    score: string
+    score: number
     perc?: string
     rank: number
     share: number
@@ -29,46 +29,48 @@ export default function Ladder({ page } : { page: LadderType}) {
 
     const ref = useRef<HTMLDivElement | null>(null)
 
-    const playersData: playerLadderDataType[] = useMemo(() => {
+    const playersData: PlayerLadderDataType[] = useMemo(() => {
 
-        if (!ladderData || !totalMoney) return []
-
-        const totalScore = ladderData.reduce((sum: number, row: SheetRow) => sum + Number(row[1]?? 0), 0)
+        if (!ladderData) return []
 
         return ladderData
             .filter((row: SheetRow) => row[0])
             .map((row : SheetRow) => {
-
-                const score = Number(row[1] ?? 0)
-                const rawShare = (totalMoney * score) / totalScore
-                const share = Math.floor(rawShare / 1000) * 1000
-
                 return {
                     name: typeof row[0] ==="string" ? row[0].replace(/-.*/, "") : null,
-                    score,
+                    score: row[1] ?? 0,
                     perc: row[3],
                     rank: 0,
-                    share,
+                    share: 0,
                     allowedHotSpot: row[4] === "X"
                 }
         })
-    }, [ladderData, totalMoney])
+    }, [ladderData])
 
-    const totalScore = playersData.reduce((total, player) => total + Number(player.score), 0)
+    const topPlayers = useMemo(() => {
+        if (!playersData.length) return []
 
-    const players = playersData
-        .filter(player => player.name !== null)
-        .map(player => ({
-            ...player,
-            share: Math.floor((totalMoney * (Number(player.score) / totalScore)) / 1000) * 1000
-    }))
+        return [...playersData]
+            .sort((a, b) => b.score - a.score)
+            .slice(0, limit)
+        }, [playersData, limit]
+    )
 
+        const totalScore = topPlayers.reduce((total, player) => total + Number(player.score), 0)
+
+        const players = topPlayers
+            .filter(player => player.name !== null)
+            .map(player => ({
+                ...player,
+                share: Math.round((totalMoney * (player.score / totalScore)) / 1000) * 1000
+            })
+        )
 
     const tempPlayers = useMemo(() => {
 
-        const sorted = [...players].sort((a, b) => Number(b.score) - Number(a.score))
+        const sorted = [...players].sort((a, b) => b.score - a.score)
 
-        return sorted.reduce<playerLadderDataType[]>((acc, player, index) => {
+        return sorted.reduce<PlayerLadderDataType[]>((acc, player, index) => {
             const prev = acc[index - 1]
 
             const rank =
@@ -86,8 +88,6 @@ export default function Ladder({ page } : { page: LadderType}) {
     }, [players])
 
     const rankedPlayers = tempPlayers.filter(player => player.rank <= limit)
-    console.log("top20", rankedPlayers)
-
 
     if(isLoadingLadder || isLoadingMeta) return <Loader message="Chargement des données du Ladder" />
 
@@ -109,7 +109,7 @@ export default function Ladder({ page } : { page: LadderType}) {
         <div ref={ref}
         className="bg-[url(/images/bg-ally.png)] bg-center bg-no-repeat bg-cover w-[1414px] h-[870px] mx-auto text-white pt-10 px-17 font-[Roboto]">
 
-            <div className="grid grid-cols-2 grid-cols-[105px_600px] gap-9">
+            <div className="grid grid-cols-[105px_600px] gap-9">
                 <div className="w-[110px] scale-160">
                     <img className="w-[100%]" src="favicon.png"  alt="Blason Omerta, Alliance PVP n°1 sur Draconiros" />
                 </div>
@@ -121,7 +121,7 @@ export default function Ladder({ page } : { page: LadderType}) {
 
             </div>
 
-            <div className="w-[1020px] h-[580px] mx-auto flex flex-cols-2 gap-[90px] opacity-100">
+            <div className="w-[1020px] h-[580px] mx-auto flex gap-[90px] opacity-100">
                 <ol className="flex flex-col overflow-hidden h-[100%]">
                     {leftColumn.map((player) => (
                         <LadderElement key={player.name} player={player} ladderType={page} />
