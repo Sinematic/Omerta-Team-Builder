@@ -9,6 +9,7 @@ import RankPage from "@/features/stats/RankPage"
 import LadderPage from "./features/ladder/LadderPage"
 import { handleTheme } from "./utils/theme"
 import { LayoutNoHeader, LayoutWithHeader } from "./features/layout/Layouts"
+import RestrictedAreasPage from "./features/RestrictedAreas/RestrictedAreasPage"
 handleTheme()
 
 
@@ -23,6 +24,7 @@ export default function App() {
 				<Route path="/maps" element={<MapLister />} />
 				<Route path="/stats/:pseudo" element={<PlayerHistory />} />        
 				<Route path="/classement" element={<RankPage />} />
+				<Route path="/acces" element={<RestrictedAreasPage />} />
 				<Route path="/" element={<Profile />} />
 				<Route path="/*" element={<NotFound message="Page non trouvée!" />} />
 			</Route>

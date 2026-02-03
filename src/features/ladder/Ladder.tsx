@@ -1,95 +1,89 @@
-import { useMemo, useRef } from "react"
+import { useRef, type SetStateAction } from "react"
 import LadderElement from "@/features/ladder/LadderElement"
 import { exportHtmlToImage } from "@/utils/exportHtmlToImage"
 import Button from "@/components/UI/Button"
-import { useStats } from "@/hooks/useStats"
 import Loader from "@/components/UI/Loader"
-import type { SheetRow } from "../stats/Rank"
 import type { LadderType } from "./LadderPage"
+import useLadderData from "@/hooks/useLadderData"
 
 
-export type PlayerLadderDataType = {
-    name: string
-    score: number
-    perc?: string
-    rank: number
-    share: number
-    allowedHotSpot: boolean
-}
+export default function Ladder({ page, setPage } : { page: LadderType, setPage: React.Dispatch<SetStateAction<"" | LadderType>> }) {
 
+    // const { data: ladderData, isLoading: isLoadingLadder } = useStats(page, "C3:M40", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
+    // const { data: metaData, isLoading: isLoadingMeta } = useStats("Données", "B22", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY") 
 
-export default function Ladder({ page } : { page: LadderType}) {
-
-    const { data: ladderData, isLoading: isLoadingLadder } = useStats(page, "C3:M40", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
-    const { data: metaData, isLoading: isLoadingMeta } = useStats("Données", "B22", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY") 
-
-    const totalMoney = page === "Ladder Classique" ? (Number(ladderData?.[12]?.[10]) || 20000000) : (Number(ladderData?.[4]?.[8]) || 10000000) // Donnée contenue dans K7 soit data[4][8]
-    const period = metaData?.[0]?.[0] ?? "Période non renseignée" // Donnée contenue dans B22
-    const limit = page === "Ladder Classique" ? (Number(ladderData?.[11]?.[9]) || 20) : 999
+    // const totalMoney = page === "Ladder Classique" ? (Number(ladderData?.[12]?.[10]) || 20000000) : (Number(ladderData?.[4]?.[8]) || 10000000) // Donnée contenue dans K7 soit data[4][8]
+    // const period = metaData?.[0]?.[0] ?? "Période non renseignée" // Donnée contenue dans B22
+    // const limit = page === "Ladder Classique" ? (Number(ladderData?.[11]?.[9]) || 20) : 999
 
     const ref = useRef<HTMLDivElement | null>(null)
 
-    const playersData: PlayerLadderDataType[] = useMemo(() => {
+    // const playersData: PlayerLadderDataType[] = useMemo(() => {
 
-        if (!ladderData) return []
+    //     if (!ladderData) return []
 
-        return ladderData
-            .filter((row: SheetRow) => row[0])
-            .map((row : SheetRow) => {
-                return {
-                    name: typeof row[0] ==="string" ? row[0].replace(/-.*/, "") : null,
-                    score: row[1] ?? 0,
-                    perc: row[3],
-                    rank: 0,
-                    share: 0,
-                    allowedHotSpot: row[4] === "X"
-                }
-        })
-    }, [ladderData])
+    //     return ladderData
+    //         .filter((row: SheetRow) => row[0])
+    //         .map((row : SheetRow) => {
+    //             return {
+    //                 name: typeof row[0] ==="string" ? row[0].replace(/-.*/, "") : null,
+    //                 score: row[1] ?? 0,
+    //                 perc: row[3],
+    //                 rank: 0,
+    //                 share: 0,
+    //                 allowedHotSpot: row[4] === "X"
+    //             }
+    //     })
+    // }, [ladderData])
 
-    const topPlayers = useMemo(() => {
-        if (!playersData.length) return []
+    // const topPlayers = useMemo(() => {
+    //     if (!playersData.length) return []
 
-        return [...playersData]
-            .sort((a, b) => b.score - a.score)
-            .slice(0, limit)
-        }, [playersData, limit]
-    )
+    //     return [...playersData]
+    //         .sort((a, b) => b.score - a.score)
+    //         .slice(0, limit)
+    //     }, [playersData, limit]
+    // )
 
-        const totalScore = topPlayers.reduce((total, player) => total + Number(player.score), 0)
+    //     const totalScore = topPlayers.reduce((total, player) => total + Number(player.score), 0)
 
-        const players = topPlayers
-            .filter(player => player.name !== null)
-            .map(player => ({
-                ...player,
-                share: Math.round((totalMoney * (player.score / totalScore)) / 1000) * 1000
-            })
-        )
+    //     const players = topPlayers
+    //         .filter(player => player.name !== null)
+    //         .map(player => ({
+    //             ...player,
+    //             share: Math.round((totalMoney * (player.score / totalScore)) / 1000) * 1000
+    //         })
+    //     )
 
-    const tempPlayers = useMemo(() => {
+    // const tempPlayers = useMemo(() => {
 
-        const sorted = [...players].sort((a, b) => b.score - a.score)
+    //     const sorted = [...players].sort((a, b) => b.score - a.score)
 
-        return sorted.reduce<PlayerLadderDataType[]>((acc, player, index) => {
-            const prev = acc[index - 1]
+    //     return sorted.reduce<PlayerLadderDataType[]>((acc, player, index) => {
+    //         const prev = acc[index - 1]
 
-            const rank =
-            index === 0
-                ? 1
-                : player.score === prev.score
-                ? prev.rank
-                : index + 1
+    //         const rank =
+    //         index === 0
+    //             ? 1
+    //             : player.score === prev.score
+    //             ? prev.rank
+    //             : index + 1
 
-            acc.push({ ...player, rank })
+    //         acc.push({ ...player, rank })
 
-            return acc
-        }, [])
+    //         return acc
+    //     }, [])
 
-    }, [players])
+    // }, [players])
 
-    const rankedPlayers = tempPlayers.filter(player => player.rank <= limit)
+    // const rankedPlayers = tempPlayers.filter(player => player.rank <= limit)
 
-    if(isLoadingLadder || isLoadingMeta) return <Loader message="Chargement des données du Ladder" />
+    const { isLoading,
+        period,
+        totalMoney,
+        rankedPlayers } = useLadderData(page, "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
+
+    if(isLoading) return <Loader message="Chargement des données du Ladder" />
 
     const handleExportImage = async () => {
         await exportHtmlToImage(ref as React.RefObject<HTMLElement>, page.replace(' ', '-').toLowerCase() + ".png")
@@ -148,7 +142,10 @@ export default function Ladder({ page } : { page: LadderType}) {
 
             </div>
 
-            <Button text="Exporter Ladder" specifiedClasses="no-export absolute top-5 left-5" action={handleExportImage}/>
+            <div className="no-export absolute top-15 left-10 grid grid-cols-[1fr] gap-4">
+                <Button text="Retour" specifiedClasses="w-full" action={() => setPage("")} color="bg-[rgb(var(--warning))]" />
+                <Button text="Exporter Ladder" specifiedClasses="w-full" action={handleExportImage} />
+            </div>
 
         </div>
 

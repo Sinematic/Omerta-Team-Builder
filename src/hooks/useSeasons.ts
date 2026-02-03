@@ -3,7 +3,7 @@ import { useStats } from "./useStats"
 import { useMemo } from "react"
 
 
-export const useSeasons = () => {
+export function useSeasons() {
 
     const { data, isLoading, isError } = useStats("Saison", "B1")
 

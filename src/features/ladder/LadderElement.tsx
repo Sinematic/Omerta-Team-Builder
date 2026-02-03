@@ -1,6 +1,7 @@
 import clsx from "clsx"
-import type { PlayerLadderDataType } from "./Ladder"
 import type { LadderType } from "./LadderPage"
+import type { PlayerLadderDataType } from "@/hooks/useLadderData"
+
 
 export default function LadderElement({ player, ladderType } : { player: PlayerLadderDataType, ladderType: LadderType }) {
 
@@ -52,13 +53,20 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
             <p className={clsx("flex align-middle flex-shrink-0", ladderType === "Ladder Focus" ? "justify-center" : "")}>
 
                 {ladderType === "Ladder Classique" ? 
-                    Array.from({ length: 4 }).map((_, i) => (
-                        <span key={i} style={{ color: player.perc && i < Number(player.perc) ? colors.red : colors.muted }}
-                            className="h-[20px] w-[26px] flex-shrink-0 flex items-center">
-                            {percIcon}
-                        </span>
-                    ))    
-            
+                    Array.from({ length: 4 }).map((_, i) => {
+                        const percCount = Number(player.perc ?? 0)
+                        let color = colors.muted
+
+                        if (i < percCount) color = colors.red
+                        else if (player.extraPerc && i === percCount) color = colors.golden
+
+                        return (
+                            <span key={i} style={{ color }} className="h-[20px] w-[26px] flex-shrink-0 flex items-center">
+                                {percIcon}
+                            </span>
+                        )
+                    })
+
                 : player.perc &&
                     <span style={{ color: colors.golden }} className={clsx(
                         "h-[20px] w-[26px] flex-shrink-0 flex",

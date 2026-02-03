@@ -22,7 +22,7 @@ export default function Button({ text, action, color, textColor, borderColor, pa
             borderColor || "",
             padding || "px-5 py-3",
             specifiedClasses, 
-            "w-fit rounded-lg shadow-lg font-medium cursor-pointer select-none"
+            "w-fit rounded-lg shadow-lg text-shadow-lg font-medium cursor-pointer select-none"
         )}>
             {text}
         </button>

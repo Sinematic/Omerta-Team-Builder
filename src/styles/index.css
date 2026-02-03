@@ -1,55 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: "Open Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-  --bg: 250 250 250;
-  --bg-surface: 244 244 245;
-  --text: 24 24 27;
-  --text-muted: 113 113 122;
-  --border: 228 228 231;
-  --primary-hover: 37 99 235;
-  --success: 5 150 105;         /* emerald-600 */
-  --lighter-green: 110, 231, 183;
-  --dark-green: 6, 95, 70;      /* emerald-800 */
-  --very-dark-green: 6, 78, 59; /* emerald-900 */
-  --warning: 180, 83, 9;         /* amber-700 */
-  --danger: 220 38 38;          /* red-600 */
-  --slate: 15 23 42;
-  --dark-orange: 69 10 10;
+    --bg: 250 250 250;
+    --bg-surface: 244 244 245;
+    --text: 24 24 27;
+    --text-muted: 113 113 122;
+    --border: 228 228 231;
+    --primary-hover: 37 99 235;
+    --success: 5 150 105;         /* emerald-600 */
+    --lighter-green: 110, 231, 183;
+    --dark-green: 6, 95, 70;      /* emerald-800 */
+    --very-dark-green: 6, 78, 59; /* emerald-900 */
+    --warning: 180, 83, 9;         /* amber-700 */
+    --danger: 220 38 38;          /* red-600 */
+    --slate: 15 23 42;
+    --dark-orange: 69 10 10;
 }
 
 [data-theme="dark"] {
-  --bg: 24 24 27;            /* neutral-800 */
-  --lightest-gray: 82, 82, 82; /* neutral-600 */
-  --surface: 15 15 17;       /* neutral-900 */
-  --bg-lighter: 64 64 64;        /* neutral-700 */
-  --text: 250, 250, 250;       /* neutral-50 */
-  --text-muted: 161 161 170; /* neutral-400 */
-  --primary: 79, 70, 229;     /* indigo-600 */
-  --primary-blue: 59 130 246; /* blue-500 */
+	--bg: 24 24 27;            /* neutral-800 */
+	--lightest-gray: 82, 82, 82; /* neutral-600 */
+	--surface: 15 15 17;       /* neutral-900 */
+	--bg-lighter: 64 64 64;        /* neutral-700 */
+	--text: 250, 250, 250;       /* neutral-50 */
+	--text-muted: 161 161 170; /* neutral-400 */
+	--primary: 79, 70, 229;     /* indigo-600 */
+	--primary-blue: 59 130 246; /* blue-500 */
 }
 
 ul, ol {
-  list-style: none;
+  	list-style: none;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 img {
-  display: block;
+  	display: block;
 }
 
 .brown {
-  background-color: #a86828;
+  	background-color: #a86828;
 }
 
 .gold {
-  background-color: #d1aa2a;
-  color: white;
+	background-color: #d1aa2a;
+	color: white;
 }
