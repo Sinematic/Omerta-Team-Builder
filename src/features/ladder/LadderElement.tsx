@@ -1,8 +1,8 @@
 import clsx from "clsx"
-import type { playerLadderDataType } from "./Ladder"
+import type { PlayerLadderDataType } from "./Ladder"
 import type { LadderType } from "./LadderPage"
 
-export default function LadderElement({ player, ladderType } : { player: playerLadderDataType, ladderType: LadderType }) {
+export default function LadderElement({ player, ladderType } : { player: PlayerLadderDataType, ladderType: LadderType }) {
 
     const tearDrop = 
         <svg viewBox="0 0 31 39" fill="none" xmlns="http://www.w3.org/2000/svg">
