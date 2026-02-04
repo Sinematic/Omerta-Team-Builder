@@ -2,6 +2,7 @@ import type { LadderType } from "@/features/ladder/LadderPage"
 import { useStats } from "./useStats"
 import { useMemo } from "react"
 import type { SheetRow } from "@/features/stats/Rank"
+import type { PlayerDataType } from "@/features/stats/PlayerHistory"
 
 
 export type PlayerLadderDataType = {
@@ -48,7 +49,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
             allowedHotSpot: row[4] === "X",
             focusScore: Number(row[6] ?? 0)
         }))
-        .filter(p => p.name !== null)
+        .filter((p: PlayerDataType) => p.name !== null)
         // 2. Tri + limit
         const topPlayers = [...players]
         .sort((a, b) => b.score - a.score)

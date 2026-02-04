@@ -20,11 +20,13 @@ export default function RestrictedAreasPage() {
 
             <h1 className="text-center text-xl pb-8">Accès aux zones</h1>
 
-            {restrictedAreas ? <ol className=" w-full md:max-w-[450px] space-y-3 text-center mx-auto">
-                {restrictedAreasData.map(area => 
-                    <RestrictedElement area={area} />
-                )}
-            </ol> : null}
+            {restrictedAreas ? 
+                <ol className=" w-full md:max-w-[450px] space-y-3 text-center mx-auto">
+                    {restrictedAreasData.map(area => 
+                        <RestrictedElement area={area} />
+                    )}
+                </ol> 
+            : null}
 
         </div>
     )

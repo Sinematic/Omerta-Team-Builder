@@ -9,79 +9,9 @@ import useLadderData from "@/hooks/useLadderData"
 
 export default function Ladder({ page, setPage } : { page: LadderType, setPage: React.Dispatch<SetStateAction<"" | LadderType>> }) {
 
-    // const { data: ladderData, isLoading: isLoadingLadder } = useStats(page, "C3:M40", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
-    // const { data: metaData, isLoading: isLoadingMeta } = useStats("Données", "B22", "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY") 
-
-    // const totalMoney = page === "Ladder Classique" ? (Number(ladderData?.[12]?.[10]) || 20000000) : (Number(ladderData?.[4]?.[8]) || 10000000) // Donnée contenue dans K7 soit data[4][8]
-    // const period = metaData?.[0]?.[0] ?? "Période non renseignée" // Donnée contenue dans B22
-    // const limit = page === "Ladder Classique" ? (Number(ladderData?.[11]?.[9]) || 20) : 999
-
     const ref = useRef<HTMLDivElement | null>(null)
 
-    // const playersData: PlayerLadderDataType[] = useMemo(() => {
-
-    //     if (!ladderData) return []
-
-    //     return ladderData
-    //         .filter((row: SheetRow) => row[0])
-    //         .map((row : SheetRow) => {
-    //             return {
-    //                 name: typeof row[0] ==="string" ? row[0].replace(/-.*/, "") : null,
-    //                 score: row[1] ?? 0,
-    //                 perc: row[3],
-    //                 rank: 0,
-    //                 share: 0,
-    //                 allowedHotSpot: row[4] === "X"
-    //             }
-    //     })
-    // }, [ladderData])
-
-    // const topPlayers = useMemo(() => {
-    //     if (!playersData.length) return []
-
-    //     return [...playersData]
-    //         .sort((a, b) => b.score - a.score)
-    //         .slice(0, limit)
-    //     }, [playersData, limit]
-    // )
-
-    //     const totalScore = topPlayers.reduce((total, player) => total + Number(player.score), 0)
-
-    //     const players = topPlayers
-    //         .filter(player => player.name !== null)
-    //         .map(player => ({
-    //             ...player,
-    //             share: Math.round((totalMoney * (player.score / totalScore)) / 1000) * 1000
-    //         })
-    //     )
-
-    // const tempPlayers = useMemo(() => {
-
-    //     const sorted = [...players].sort((a, b) => b.score - a.score)
-
-    //     return sorted.reduce<PlayerLadderDataType[]>((acc, player, index) => {
-    //         const prev = acc[index - 1]
-
-    //         const rank =
-    //         index === 0
-    //             ? 1
-    //             : player.score === prev.score
-    //             ? prev.rank
-    //             : index + 1
-
-    //         acc.push({ ...player, rank })
-
-    //         return acc
-    //     }, [])
-
-    // }, [players])
-
-    // const rankedPlayers = tempPlayers.filter(player => player.rank <= limit)
-
-    const { isLoading,
-        period,
-        totalMoney,
-        rankedPlayers } = useLadderData(page, "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
+    const { isLoading, period, totalMoney, rankedPlayers } = useLadderData(page, "1oepSL-hQyxvzXHNL7BfKTKBG_8vIeB9TAxYtNBfGYMY")
 
     if(isLoading) return <Loader message="Chargement des données du Ladder" />
 
