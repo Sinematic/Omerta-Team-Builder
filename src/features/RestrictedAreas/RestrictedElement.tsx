@@ -9,10 +9,8 @@ export default function RestrictedElement({ area } : { area: AreaType }) {
 
 
     return (
-        <li key={area.name} onClick={() => setIsDone(prev => !prev)} className={clsx(
-            "py-2",
-            isDone ? "bg-[rgb(var(--very-dark-green))]" : "bg-[rgb(var(--slate))]"
-        )}>
+        <li key={area.name} onClick={() => setIsDone(prev => !prev)} 
+        className={clsx("py-2", isDone ? "bg-[rgb(var(--very-dark-green))]" : "bg-[rgb(var(--slate))]")}>
             {area.name}
         </li>
     )
