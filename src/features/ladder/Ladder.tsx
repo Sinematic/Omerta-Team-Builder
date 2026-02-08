@@ -35,7 +35,7 @@ export default function Ladder({ page, setPage } : { page: LadderType, setPage: 
 
             <div className="grid grid-cols-[105px_600px] gap-9">
                 <div className="w-[110px] scale-160">
-                    <img className="w-[100%]" src="favicon.png"  alt="Blason Omerta, Alliance PVP n°1 sur Draconiros" />
+                    <img className="w-[100%]" src="favicon.png" alt="Blason Omerta, Alliance PVP n°1 sur Draconiros" />
                 </div>
 
                 <div>
