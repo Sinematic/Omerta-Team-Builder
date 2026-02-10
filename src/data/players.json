@@ -16,7 +16,7 @@
     { "name": "Quasar", "classes": [ "Zobal", "Pandawa" ] },
     { "name": "Fecafe", "classes": [ "Féca", "Iop", "Xélor", "Huppermage" ] },
     { "name": "Dixite", "classes": [ "Féca", "Pandawa" ] },
-    { "name": "Vahalgrim", "classes": [ "Forgelance", "Iop" ] },
+    { "name": "Vahalgrim", "classes": [ "Forgelance", "Iop", "Pandawa" ] },
     { "name": "Kirito", "classes": [ "Iop", "Féca" ] },
     { "name": "Smoky", "classes": [ "Féca", "Iop" ] },
     { "name": "Tykouette", "classes": [ "Forgelance", "Eniripsa" ] },
