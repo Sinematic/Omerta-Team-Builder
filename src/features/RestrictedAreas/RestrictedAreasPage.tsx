@@ -1,11 +1,16 @@
 import restrictedAreasData from "@/data/restricted-areas.json"
 import { CategoryNode } from "./CategoryNode"
 
-export type AreaType = {
+
+export type Area = {
     name: string
-    category: string
-    subcategory?: string
     quest?: string
+}
+
+export type Category = {
+    name: string
+    items?: Area[]
+    subcategories?: Category[]
 }
 /* OLD JSON
 [
@@ -53,7 +58,7 @@ export type AreaType = {
 
 export default function RestrictedAreasPage() {
 
-    const restrictedAreas/*: AreaType[]*/ =  restrictedAreasData
+    const restrictedAreas : Category[] =  restrictedAreasData
 
 
     return (

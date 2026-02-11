@@ -1,15 +1,6 @@
+import type { Category } from "./RestrictedAreasPage"
 import RestrictedElement from "./RestrictedElement"
 
-export type ItemType = {
-	name: string
-	quest?: string
-}
-
-type Category = {
-	name: string
-	subcategories?: Category[]
-	items?: ItemType[]
-}
 
 export function CategoryNode({ category }: { category: Category }) {
 	return (

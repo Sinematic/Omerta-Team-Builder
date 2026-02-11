@@ -1,9 +1,9 @@
 import { useState } from "react"
 import clsx from "clsx"
-import { type ItemType } from "./CategoryNode"
+import type { Area } from "./RestrictedAreasPage"
 
 
-export default function RestrictedElement({ area } : { area: ItemType }) {
+export default function RestrictedElement({ area } : { area: Area }) {
 
     const [isDone, setIsDone] = useState<boolean>(false)
 

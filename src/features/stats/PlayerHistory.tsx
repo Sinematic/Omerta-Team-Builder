@@ -9,7 +9,7 @@ import Loader from "@/components/UI/Loader"
 import { useStats } from "@/hooks/useStats"
 import { useSeasons } from "@/hooks/useSeasons"
 //import { usePlayerHistory } from "@/hooks/usePlayerHistory"
-
+// /!\
 
 export type PlayerDataType = { name: string; matches : Match[] }
 
