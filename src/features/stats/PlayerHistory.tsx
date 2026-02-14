@@ -38,9 +38,11 @@ export default function PlayerHistory() {
     
     //const mergedData = usePlayerHistory()
 
+    //console.log(mergedData)
+
     if(!playerFound) return <NotFound message="Joueur introuvable !" />
     if(isLoading) return <Loader message={"Chargement des données du joueur " + pseudo} />
-    if (!data) return <NotFound message="Données introuvables !" />
+    if(!data) return <NotFound message="Données introuvables !" />
 
 
     const mergeSeasons = (pastSeasons: PlayerInfoType[][], currentSeason: PlayerInfoType[]): PlayerInfoType[] => {
