@@ -74,7 +74,6 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
                 }
 
             </p>
-
             
             {ladderType === "Ladder Classique" && <p className="flex justify-center"><span className="w-[16px] h-[16px]">{tearDrop}</span></p> }
             {ladderType === "Ladder Classique" && <p>{player.score}</p>}

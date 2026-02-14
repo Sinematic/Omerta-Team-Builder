@@ -3,6 +3,7 @@ import snakePickOrder from "@/data/snake-pick-order.json"
 import PlayerCard from "@/features/classesOfPlayers/PlayerCard";
 import playersData from "@/data/players.json"
 import type { Player } from "@/types/dofus";
+import clsx from "clsx";
 
 type PickerProps = {
     players: string[];
@@ -77,8 +78,12 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             <div className="player-in-teams">
                 <h2 className="text-xl font-semibold mb-4 text-[rgb(var(--text))]">Équipes</h2>
 
-                <div className="grid gap-4 mx-auto justify-center" 
-                style={{ gridTemplateColumns: `repeat(${captainsAmount}, minmax(0, 400px))` }}>
+                <div className={clsx(
+                    "grid gap-4 mx-auto justify-center grid-cols-2",
+                    captainsAmount === 2 && "md:grid-cols-2",
+                    captainsAmount === 3 && "md:grid-cols-3",
+                    captainsAmount === 4 && "md:grid-cols-4"
+                )} >
 
                     {teams.map((team, i) => (
                         <div key={i} className="bg-[rgb(var(--surface))] p-3 rounded text-[rgb(var(--text))] border-solid border-3 border-[rgb(var(--lightest-gray))]">
