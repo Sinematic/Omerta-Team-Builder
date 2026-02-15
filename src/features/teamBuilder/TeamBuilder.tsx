@@ -47,10 +47,10 @@ export default function TeamBuilder() {
             {phase === "format selection" && (
                 <div className="w-full h-[70vh] md:w-[70vh] md:h-[60vh] flex flex-cols justify-center gap-2 mx-auto p-2 md:mt-16">
 
-                    <Card text="Capitaines" image="/images/goultard.jpg" action={() => chooseFormat("captains")}
+                    <Card text="Capitaines" image="/images/wallpapers/goultard.jpg" action={() => chooseFormat("captains")}
                     description="1 capitaine par équipe, sélection des joueurs en semi-snakes" animated />
 
-                    <Card text="Aléatoire" image="/images/aventuriers-au-zaap.jpg" action={() => chooseFormat("random")}
+                    <Card text="Aléatoire" image="/images/wallpapers/aventuriers-au-zaap.jpg" action={() => chooseFormat("random")}
                     description="Composition aléatoire des équipes" animated />
 
                 </div>

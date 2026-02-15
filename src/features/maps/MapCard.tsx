@@ -1,12 +1,14 @@
 type MapCardProps = {
-    name: string;
-    image: string;
-    mapSetter?: (name: string, image: string) => void;
+    name: string
+    image: string
+    mapSetter?: (name: string, image: string) => void
+    excludeMap?: (name: string) => void
 }
 
-export default function MapCard({ name, image, mapSetter }: MapCardProps) {
+export default function MapCard({ name, image, mapSetter, excludeMap }: MapCardProps) {
 
-    const handleClick = () => mapSetter ? mapSetter(name, image) : console.log()
+    //const handleClick = () => mapSetter ? mapSetter(name, image) : console.log()
+    const handleClick = () => excludeMap ? excludeMap(name) : console.log()
 
     
     return (

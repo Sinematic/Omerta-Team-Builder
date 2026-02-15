@@ -18,9 +18,9 @@ export const isSmallScreen = () : boolean => {
     return window.innerWidth <= 640
 }
 
-export const setRandomMap = (selecter: (name: string, image:string) => void) => {
-    const randomIndex = (Math.floor(Math.random() * maps.length) -1)
-    selecter(maps[randomIndex].name, maps[randomIndex].image)
+export const setRandomMap = (selecter: (name: string, image:string) => void, setOfMaps=maps) => {
+    const randomIndex = (Math.floor(Math.random() * setOfMaps.length))
+    selecter(setOfMaps[randomIndex].name, setOfMaps[randomIndex].image)
 }
 
 export const parseMatch = (rawMatch: unknown): Match | null => {
