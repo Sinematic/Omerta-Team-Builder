@@ -16,7 +16,7 @@ export default function MapLister({ mapSelecter, randomMapButton } : MapListerPr
 
     const [mapsAllowed, setMapsAllowed] = useState(maps)
 
-    const excludeMap = (name: string) => setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
+    //const excludeMap = (name: string) => setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
 
 
     return (
@@ -33,7 +33,7 @@ export default function MapLister({ mapSelecter, randomMapButton } : MapListerPr
                     specifiedClasses={"absolute mx-auto center justify-center " + (smallScreen ? "top-20 right-30" : "top-25 right-80")} />
 
                 {mapsAllowed.map((mapItem) => 
-                    <MapCard key={mapItem.name} name={mapItem.name} image={mapItem.image} mapSetter={mapSelecter} excludeMap={excludeMap} />
+                    <MapCard key={mapItem.name} name={mapItem.name} image={mapItem.image} mapSetter={mapSelecter} /*excludeMap={excludeMap}*/ />
                 )}
             </ul>
         </div>
