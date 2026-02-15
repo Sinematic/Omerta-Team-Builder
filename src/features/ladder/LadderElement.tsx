@@ -62,7 +62,6 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
                     )
                 })
 
-
                 : player.perc &&
                     <span className="p-0.5 max-w-[26px]">
                         <img src={PERCEPTOR_ICONS.golden} alt="Percepteur obtenu via le Ladder Focus" />
