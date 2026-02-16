@@ -27,10 +27,9 @@ export default function useLadderData(page: LadderType, sheetID: string) {
         ? Number(ladderData?.[12]?.[10]) || 20000000
         : Number(ladderData?.[4]?.[8]) || 10000000
 
-    const limit =
-        page === "Ladder Classique"
-        ? Number(ladderData?.[11]?.[9]) || 20
-        : 999
+    const limit = 
+        page === "Ladder Classique" ? Number(ladderData?.[11]?.[10]) || 20
+        : (page === "Ladder Focus" ? Number(ladderData?.[3]?.[8]) : 999)
 
     const period = metaData?.[0]?.[0] ?? "Période non renseignée"
 

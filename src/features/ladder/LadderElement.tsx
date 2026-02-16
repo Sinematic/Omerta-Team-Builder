@@ -27,15 +27,16 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
 
     return (
         <>
-         <li className={clsx(gridWdith[ladderType],
+         <li className={clsx(
+            gridWdith[ladderType],
             "w-[465px] h-full relative grid items-center font-semibold border-b border-solid border-[rgb(var(--lightest-gray))] text-sm pl-2 pr-3 text-white",
-            player.rank as number <= 3 ? "bg-[#121212]" : "bg-[#212121]/50"
-        )}>
+            player.rank as number <= 3 ? "bg-[#121212]" : "bg-[#212121]/50")
+        }>
             <p className={clsx("font-bold text-lg flex-shrink-0 text-left",
                 player.rank === 1 ? "text-[#FFAA11]" : "", 
                 player.rank === 2 ? "text-[#7A7A7A]" : "", 
-                player.rank === 3 ? "text-[#754200]" : ""
-            )}>
+                player.rank === 3 ? "text-[#754200]" : "")
+            }>
                 {player.rank as number > 9 ? player.rank  as number : ("0" + (player.rank))}
             </p>
 
@@ -81,6 +82,6 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
 
         </li>
 
-</>
-    )
-}
+    </>
+        )
+    }
