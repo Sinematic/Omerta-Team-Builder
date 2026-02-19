@@ -17,8 +17,6 @@ export type MatchDataType = { index: number; participants: ParticipantType[] }
 
 export type ParticipantType = { name: string; match: Match }
 
-export type PlayerData = { name: string; matches: Match[] }
-
 
 export default function PlayerHistory() {
 
@@ -36,14 +34,13 @@ export default function PlayerHistory() {
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
     
-    //const mergedData = usePlayerHistory()
+    // const mergedData = usePlayerHistory()
 
-    //console.log(mergedData)
+    // console.log(mergedData)
 
     if(!playerFound) return <NotFound message="Joueur introuvable !" />
     if(isLoading) return <Loader message={"Chargement des données du joueur " + pseudo} />
     if(!data) return <NotFound message="Données introuvables !" />
-
 
     const mergeSeasons = (pastSeasons: PlayerInfoType[][], currentSeason: PlayerInfoType[]): PlayerInfoType[] => {
 

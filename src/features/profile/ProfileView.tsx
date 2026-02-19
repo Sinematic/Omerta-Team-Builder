@@ -2,7 +2,6 @@ import Button from "@/components/UI/Button"
 import type { Player } from "@/types/dofus"
 import classesRawData from "@/data/classes.json"
 import type { DofusClasses } from "@/types/dofus"
-import { isSmallScreen } from "@/utils/players"
 
 
 export default function ProfileView({ profileData, deleteProfile } : { profileData: Player, deleteProfile: () => void }) {
@@ -10,8 +9,6 @@ export default function ProfileView({ profileData, deleteProfile } : { profileDa
     const whoAmI = localStorage.getItem("whoAmI")
     
     const classesData : DofusClasses = classesRawData
-    const smallScreen = isSmallScreen()
-
     if (!whoAmI) return
 
 
@@ -30,7 +27,7 @@ export default function ProfileView({ profileData, deleteProfile } : { profileDa
             </div>
 
             <Button text="Se déconnecter" action={deleteProfile} color="bg-[rgb(var(--warning))]" 
-            specifiedClasses="mx-auto" padding={smallScreen ? "p-2" : ""} />
+            specifiedClasses="mx-auto" />
 
         </div>
     )

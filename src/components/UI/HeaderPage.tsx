@@ -29,11 +29,12 @@ export default function HeaderPage() {
     const mobileBottomNavLinks = [...navLinks].filter(link => link.position === "bottom")
 
 
-    return (
+    return smallScreen ? (
         <>
-            {!smallScreen && <HeaderDesktop linksClasses={linksClasses} links={navLinks} /> }
-            { smallScreen && <HeaderMobileTopNav linksClasses={linksClasses} links={mobileTopNavLinks} /> }
-            { smallScreen && <HeaderMobileBottomNav linksClasses={linksClasses} links={mobileBottomNavLinks} /> }
+            <HeaderMobileTopNav linksClasses={linksClasses} links={mobileTopNavLinks} />
+            <HeaderMobileBottomNav linksClasses={linksClasses} links={mobileBottomNavLinks} />
         </>
+    ) : (
+        <HeaderDesktop linksClasses={linksClasses} links={navLinks} />
     )
 }

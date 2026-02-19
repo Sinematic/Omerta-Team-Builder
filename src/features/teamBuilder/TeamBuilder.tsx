@@ -62,7 +62,7 @@ export default function TeamBuilder() {
             )}
 
             {phase === "map selection" && (
-                <MapLister mapSelecter={(name, image) => selectMap(name, image)} randomMapButton />
+                <MapLister mapSelecter={(name, image) => selectMap(name, image)} randomMapButton resetOptions />
             )}
 
             {phase === "summary" && <Summary map={mapUsed} teams={teams} /> }
