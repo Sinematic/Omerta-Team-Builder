@@ -98,6 +98,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
                     : 0,
             }))
             .filter((p: PlayerDataType) => p.name !== null)
+            .filter((p: PlayerLadderDataType) => p.score > 0)
             // 2. Tri + limit
             const topPlayers = [...players]
                 .sort((a, b) => b.score - a.score)
