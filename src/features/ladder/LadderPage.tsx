@@ -2,13 +2,14 @@ import Card from "@/components/UI/Card"
 import { useState } from "react"
 import Ladder from "./Ladder"
 
-export type LadderType = ("Ladder Classique" | "Ladder Focus")
+export type LadderType = ("Ladder Classique" | "Ladder Focus" | "Ladder Event")
 
 
 export default function LadderPage() {
 
 	const [title, setTitle] = useState< LadderType | "">("")
     
+
     return (
 		<div className="h-screen grid place-items-center">
 
@@ -19,6 +20,9 @@ export default function LadderPage() {
 					borderColor="border-[rgb(var(--lightest-gray))]" bgColor="bg-[rgb(var(--lightest-gray))]" />
 
 					<Card text="Ladder Focus" image="/images/wallpapers/guerre.webp" action={() => setTitle("Ladder Focus")} 
+					borderColor="border-[rgb(var(--lightest-gray))]" bgColor="bg-[rgb(var(--lightest-gray))]" />
+
+					<Card text="Ladder Event" image="/images/wallpapers/pretresse-de-kao.png" action={() => setTitle("Ladder Event")} 
 					borderColor="border-[rgb(var(--lightest-gray))]" bgColor="bg-[rgb(var(--lightest-gray))]" />
 
 				</div> 

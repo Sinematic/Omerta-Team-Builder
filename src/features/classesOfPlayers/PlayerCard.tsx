@@ -37,8 +37,8 @@ export default function PlayerCard({ playerInfo, action, minified=false } : Play
                         "flex items-center gap-1 py-1 rounded-full font-medium leading-none"
                     )}>
                         <span className={isMinified ? "hidden" : ""}>{classesInfo[cls].emoji}</span>
-                        <span className={"hidden sm:inline"}>{classesInfo[cls].short}</span>
-                        <span className={"sm:hidden md:inline"}>{classesInfo[cls].name}</span>
+                        <span className={"inline sm:hidden"}>{classesInfo[cls].short}</span>
+                        <span className={"hidden md:inline"}>{classesInfo[cls].name}</span>
                     </span>
                 ))}
             </div>

@@ -16,7 +16,7 @@ export default function MapLister({ mapSelecter, randomMapButton=false, resetOpt
 
     const [mapsAllowed, setMapsAllowed] = useState(maps)
 
-    //const excludeMap = (name: string) => setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
+    const excludeMap = (name: string) => setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
 
 
     return (
@@ -34,10 +34,9 @@ export default function MapLister({ mapSelecter, randomMapButton=false, resetOpt
                 }
 
                 {mapsAllowed.map((mapItem) => 
-                    <MapCard key={mapItem.name} name={mapItem.name} image={mapItem.image} mapSetter={mapSelecter} /*excludeMap={excludeMap}*/ />
+                    <MapCard key={mapItem.name} name={mapItem.name} image={mapItem.image} /*mapSetter={mapSelecter}*/ excludeMap={excludeMap} />
                 )}
             </ul>
         </div>
-
     )
 }

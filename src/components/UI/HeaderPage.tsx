@@ -3,7 +3,6 @@ import HeaderDesktop from "./HeaderDesktop"
 import { isSmallScreen } from "@/utils/players"
 import HeaderMobileTopNav from "./HeaderMobileTopNav"
 
-
 export type NavLinkType = { 
     path: string
     label: string

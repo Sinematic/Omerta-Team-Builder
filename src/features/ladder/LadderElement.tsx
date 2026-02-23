@@ -12,14 +12,21 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
         </svg>
 
     const PERCEPTOR_ICONS = {
-        red: "/images/icons/perceptor-icon-red.png",
-        golden: "/images/icons/perceptor-icon-golden.png",
-        muted: "/images/icons/perceptor-icon-muted.png",
+        red: "/images/icons/percepteur-rouge.png",
+        golden: "/images/icons/percepteur-golden.png",
+        muted: "/images/icons/percepteur-muted.png",
     } as const
+
+    const returnImageLink = (reward:string) => {
+        if(reward === "abo7") return "/images/icons/abonnement-7-jours.png"
+        if(reward === "abo1") return "/images/icons/abonnement-1-mois.png"
+        if(reward === "parcho") return "/images/icons/kit-de-parchemins.png"
+    }
 
     const gridWdith = {
         "Ladder Classique":  "grid-cols-[55px_80px_124px_60px_1fr_1fr]",
-        "Ladder Focus": "grid-cols-[65px_120px_0.8fr_1.4fr_1fr]"
+        "Ladder Focus": "grid-cols-[65px_120px_0.8fr_1.4fr_1fr]",
+        "Ladder Event": "grid-cols-[65px_80px_1fr_0.8fr_0.8fr]"
     }
 
     const lineThrough = (ladderType === "Ladder Focus" && player.perc) ? "line-through" : ""
@@ -42,7 +49,8 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
 
             <p className="flex-shrink-0">{player.name}</p>
 
-            <p className={clsx("flex align-middle flex-shrink-0 pl-4", ladderType === "Ladder Focus" ? "justify-center" : "")}>
+            <p className={clsx(
+                "flex align-middle flex-shrink-0 pl-4", ladderType !== "Ladder Classique" ? "justify-center" : "")}>
 
                 {ladderType === "Ladder Classique" ? 
                     Array.from({ length: 4 }).map((_, i) => {
@@ -63,18 +71,23 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
                     )
                 })
 
-                : player.perc &&
+                : ladderType === "Ladder Focus" && player.perc &&
                     <span className="p-0.5 max-w-[26px]">
                         <img src={PERCEPTOR_ICONS.golden} alt="Percepteur obtenu via le Ladder Focus" />
                     </span>
                 }
 
+                {ladderType === "Ladder Event" && player.rank < 4 && typeof player.perc === "string" ?
+                    <span className="max-w-[42px]">
+                        <img src={returnImageLink(player.perc)} alt="Récompense obtenue via le Ladder Event" />
+                    </span>
+                : null}
             </p>
             
             {ladderType === "Ladder Classique" && <p className="flex justify-center"><span className="w-[16px] h-[16px]">{tearDrop}</span></p> }
-            {ladderType === "Ladder Classique" && <p>{player.score}</p>}
 
-            {ladderType === "Ladder Focus" && <p className="text-center">{player.score}</p>}
+            {ladderType === "Ladder Classique" && <p>{player.score}</p>}
+            {(ladderType === "Ladder Focus" || ladderType === "Ladder Event") && <p className="text-center">{player.score}</p>}
 
             <p className={clsx( "text-end", lineThrough )}>
                 {new Intl.NumberFormat("fr-FR").format(player.share)}

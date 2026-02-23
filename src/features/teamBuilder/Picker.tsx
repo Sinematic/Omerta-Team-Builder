@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react"
 import snakePickOrder from "@/data/snake-pick-order.json"
-import PlayerCard from "@/features/classesOfPlayers/PlayerCard";
+import PlayerCard from "@/features/classesOfPlayers/PlayerCard"
 import playersData from "@/data/players.json"
-import type { Player } from "@/types/dofus";
-import clsx from "clsx";
+import type { Player } from "@/types/dofus"
+import clsx from "clsx"
 
 type PickerProps = {
-    players: string[];
-    captainsAmount: number;
-    teamsHandler: (array: string[][]) => void;
-    phaseHandler: () => void;
+    players: string[]
+    captainsAmount: number
+    teamsHandler: (array: string[][]) => void
+    phaseHandler: () => void
 }
+
 
 export default function Picker({ players, captainsAmount, teamsHandler, phaseHandler }: PickerProps) {
 
@@ -80,7 +81,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
 
                 <div className={clsx(
                     "grid gap-4 mx-auto justify-center grid-cols-2",
-                    captainsAmount === 2 && "md:grid-cols-2",
+                    captainsAmount === 2 && "md:grid-cols-2 md:max-w-2/3 ",
                     captainsAmount === 3 && "md:grid-cols-3",
                     captainsAmount === 4 && "md:grid-cols-4"
                 )} >
