@@ -85,9 +85,13 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
             
             {ladderType === "Ladder Classique" && <p className="flex justify-center"><span className="w-[16px] h-[16px]">{tearDrop}</span></p> }
 
-            {ladderType === "Ladder Classique" && <p>{player.score}</p>}
-            {(ladderType === "Ladder Focus" || ladderType === "Ladder Event") && <p className="text-center">{player.score}</p>}
+            {/* {ladderType === "Ladder Classique" && <p>{player.score}</p>}
+            {(ladderType === "Ladder Focus" || ladderType === "Ladder Event") && <p className="text-center">{player.score}</p>} */}
 
+            <p className={clsx({"text-center": ladderType !== "Ladder Classique"})}>
+                {player.score}
+            </p>
+            
             <p className={clsx( "text-end", lineThrough )}>
                 {new Intl.NumberFormat("fr-FR").format(player.share)}
             </p>

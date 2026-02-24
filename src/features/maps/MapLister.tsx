@@ -16,7 +16,10 @@ export default function MapLister({ mapSelecter, randomMapButton=false, resetOpt
 
     const [mapsAllowed, setMapsAllowed] = useState(maps)
 
-    const excludeMap = (name: string) => setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
+    const excludeMap = (name: string) => {
+        if(mapsAllowed.length === 1) return
+        setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
+    }
 
 
     return (
@@ -29,7 +32,7 @@ export default function MapLister({ mapSelecter, randomMapButton=false, resetOpt
                     
                 : null}
 
-                {resetOptions && <Button action={() => setMapsAllowed(maps)} color="bg-[rgb(var(--primary))] text-[rgb(var(--text))]" text="Recharger" 
+                {resetOptions && mapsAllowed.length !== maps.length && <Button action={() => setMapsAllowed(maps)} color="bg-[rgb(var(--primary))] text-[rgb(var(--text))]" text="Recharger" 
                     specifiedClasses={"absolute mx-auto center justify-center top-20 right-35 md:top-25 md:right-70"} />
                 }
 
