@@ -77,7 +77,7 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
                 }
 
                 {ladderType === "Ladder Event" && player.rank < 4 && typeof player.perc === "string" ?
-                    <span className="max-w-[42px]">
+                    <span className="max-w-[48px]">
                         <img src={returnImageLink(player.perc)} alt="Récompense obtenue via le Ladder Event" />
                     </span>
                 : null}
