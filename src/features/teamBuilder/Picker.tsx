@@ -57,7 +57,12 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
 
     if(freePlayers.length === 1) addToTeam(freePlayers[0])
 
-        
+    /* /!\ 
+        Pouvoir reroll un capitaine au clic
+        Reroll carte / modale 
+        Recherche avancée -> abandon ?
+        Filtres sur les joueurs / classes
+    */  
     return (
         <div className="px-4 space-y-6 mx-auto text-center select-none md:w-2/3 md:p-6">
 

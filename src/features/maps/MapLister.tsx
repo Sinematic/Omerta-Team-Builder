@@ -3,24 +3,27 @@ import MapCard from "@/features/maps/MapCard"
 import Button from "@/components/UI/Button"
 import { setRandomMap } from "@/utils/players"
 import { useState } from "react"
+import { useLocation } from "react-router"
 
 type MapListerProps = {
     mapSelecter?: (name: string, image:string) => void
     randomMapButton?: boolean
     resetOptions?: boolean
+    mapsSet?: "maps" | "koloMaps"
 }
 
-export default function MapLister({ mapSelecter, randomMapButton=false, resetOptions=false } : MapListerProps) {
+export default function MapLister({ mapSelecter, randomMapButton=false, resetOptions=false, mapsSet="maps" } : MapListerProps) {
 
-    const maps = mapsData.maps
+    const maps = mapsData[mapsSet]
 
+    const location = useLocation()
     const [mapsAllowed, setMapsAllowed] = useState(maps)
 
     const excludeMap = (name: string) => {
-        if(mapsAllowed.length === 1) return
+        if(mapsAllowed.length === 1 || location.pathname === "/maps") return
         setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
     }
-
+    // top = #3c3e44 bottom = #2b2c31
 
     return (
         <div>

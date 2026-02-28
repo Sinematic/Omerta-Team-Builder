@@ -10,6 +10,7 @@ import LadderPage from "./features/ladder/LadderPage"
 import { handleTheme } from "./utils/theme"
 import { LayoutNoHeader, LayoutWithHeader } from "./features/layout/Layouts"
 import RestrictedAreasPage from "./features/RestrictedAreas/RestrictedAreasPage"
+import TournamentMaps from "./features/tournament/TournamentMaps"
 handleTheme()
 
 
@@ -25,6 +26,7 @@ export default function App() {
 				<Route path="/stats/:pseudo" element={<PlayerHistory />} />        
 				<Route path="/classement" element={<RankPage />} />
 				<Route path="/acces" element={<RestrictedAreasPage />} />
+				<Route path="/tournoi-2v2" element={<TournamentMaps />} />
 				<Route path="/" element={<Profile />} />
 				<Route path="/*" element={<NotFound message="Page non trouvée!" />} />
 			</Route>

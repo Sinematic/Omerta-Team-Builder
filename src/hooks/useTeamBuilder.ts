@@ -28,13 +28,6 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
     const [teams, setTeams] = useState<string[][]>([])
     const [mapUsed, setMapUsed] = useState({ name: "", image: "" })
 
-    // const phases : { name : PhaseName, message : string }[] = [
-    //     { name : "registration", message: "Sélection des joueurs en cours ..." },
-    //     { name : "format selection", message: "Sélection du format de composition d'équipes ..." },
-    //     { name : "team allocation", message: "Sélection des joueurs par les capitaines ..." },
-    //     { name : "map selection", message: "Sélection de la carte ..." },
-    //     { name : "summary", message: "" }
-    // ]
 
     const messagePhase = useMemo(() => {
         switch (phase) {
@@ -86,7 +79,6 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
             break
         }
     }
-
     // Priorité à la composition d'équipes à 5, si indisponible, composition par 4
     const countCaptains = (players: string[]) => players.length % 5 === 0 ? players.length / 5 : players.length / 4
 
