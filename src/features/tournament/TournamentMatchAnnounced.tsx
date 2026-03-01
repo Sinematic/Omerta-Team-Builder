@@ -1,4 +1,5 @@
 import Button from "@/components/UI/Button"
+import Card from "@/components/UI/Card"
 import tournamentTeams from "@/data/tournament-teams.json"
 import { useMemo, useState } from "react"
 
@@ -12,22 +13,23 @@ type TeamInTournament = {
 
 export default function TournamentMatchAnnounced() {
 
-    const [teamsData, setTeamsData] = useState<[] | TeamInTournament[]>(tournamentTeams.teams)
+    const [teamsData, setTeamsData] = useState<TeamInTournament[]>(tournamentTeams.teams)
 
-    const [teams, setTeams] = useState<[] | TeamInTournament[]>([])
+    const [teams, setTeams] = useState<TeamInTournament[]>([])
     const [visible, setVisible] = useState(false)
 
     const handleTeamClick = (teamClicked: TeamInTournament) => {
         const availableTeams = teamsData.filter(team => team.name !== teamClicked.name)
         setTeamsData(availableTeams)
-        setTeams([...teams, teamClicked])
+        setTeams(prev => [...prev, teamClicked])
     }
 
     const handleCopy = async (message: string) => {
         await navigator.clipboard.writeText(message)
+        setVisible(true)
         setTimeout(() => {
-            setVisible(true)
-        }, 10000) 
+            setVisible(false)
+        }, 6000) 
     }
 
 
@@ -37,19 +39,25 @@ export default function TournamentMatchAnnounced() {
     }, [teams])
 
 
-    return (<div className="mx-auto max-w-[1080px] p-8 my-8 text-[rgb(var(--text))] text-center">
+    return (<div className="max-w-[1080px] mx-auto my-4 p-8 flex flex-col gap-8 text-[rgb(var(--text))] text-center place-items-center">
 
         {teams.length < 2 ?  <>
 
-            {teamsData.map((team, index) => 
-                <p onClick={() => handleTeamClick(team)} key={index} className=" hover:cursor-pointer">{team.name}</p>
-            )}
+            <h1 className="text-3xl font-semibold">Inscription de deux équipes à un match</h1>
+
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                {teamsData.map((team) => 
+                    <Card text={team.name} image={team.image} action={() => handleTeamClick(team)} key={team.name} 
+                    borderColor="border-[rgb(var(--lightest-gray))]" />
+                )} 
+            </div>
+
 
         </> : <>
 
-            <Button text="Copier le message Discord" action={() => handleCopy(discordMessage)} />
+            <Button text="Copier le message Discord" action={() => handleCopy(discordMessage)} specifiedClasses="mx-auto" />
         
-            <div className="w-full relative flex flex-rows mx-auto mt-8">
+            <div className="w-full relative flex flex-row mx-auto mt-4">
                 <img src="/images/tournament_match_background.webp" />
 
                 <div className="absolute w-[300px] h-[300px] rounded-full overflow-hidden z-20 top-[220px] left-[130px] bg-white">
@@ -61,7 +69,11 @@ export default function TournamentMatchAnnounced() {
                 </div>
             </div>
 
-            {visible && <p className="rounded-xl bg-[rgb(var(--success))] text-[rgb-(var(--text))] absolute bottom-4 z-50">Message copié dans le presse-papiers !</p>}
+            {visible && 
+                <p className="rounded-xl bg-[rgb(var(--success))] text-[rgb-(var(--text))] absolute bottom-4 z-50 p-2">
+                    Message copié dans le presse-papiers !
+                </p>
+            }
 
         </>}
 

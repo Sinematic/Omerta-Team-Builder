@@ -3,7 +3,7 @@
         { 
             "name": "Children of Blood",
             "image": "/images/teamsLogos/children_of_blood.png",
-            "discordTags": "<@660709458120540196> <@415958540134645764>"
+            "discordTags": "<@660709458120540196> <@268484261022138368>"
         },
         { 
             "name": "Team Rocket",
@@ -44,6 +44,11 @@
             "name": "Lorem Ipsum Dolor",
             "image":"/images/teamsLogos/lorem_ipsum_dolor.png",
             "discordTags": "<@1157444280143597649> <@742320317468246057>"
+        },
+        { 
+            "name": "On verra bien",
+            "image":"/images/teamsLogos/team_rocket.png",
+            "discordTags": "<@204323474972475392> <@301114598520520716>"
         }
     ]
 }
