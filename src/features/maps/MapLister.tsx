@@ -15,15 +15,15 @@ type MapListerProps = {
 export default function MapLister({ mapSelecter, randomMapButton=false, resetOptions=false, mapsSet="maps" } : MapListerProps) {
 
     const maps = mapsData[mapsSet]
-
-    const location = useLocation()
     const [mapsAllowed, setMapsAllowed] = useState(maps)
+    
+    const location = useLocation()
 
     const excludeMap = (name: string) => {
         if(mapsAllowed.length === 1 || location.pathname === "/maps") return
         setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
     }
-    // top = #3c3e44 bottom = #2b2c31
+
 
     return (
         <div>

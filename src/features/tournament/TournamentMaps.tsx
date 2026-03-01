@@ -9,7 +9,7 @@ export default function TournamentMaps() {
 
 
     return (
-        <div className="w-full h-full min-h-[75vh] flex items-center flex-col mt-16">
+        <div className="w-full h-full min-h-[75vh] flex items-center flex-col my-16">
             <h1 className="text-[rgb(var(--text))] text-3xl font-semibold">Tournoi 2v2</h1>
 
             {!mapUsed.name 

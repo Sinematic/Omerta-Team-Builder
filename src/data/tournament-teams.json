@@ -1,0 +1,49 @@
+{
+    "teams": [
+        { 
+            "name": "Children of Blood",
+            "image": "/images/teamsLogos/children_of_blood.png",
+            "discordTags": "<@660709458120540196> <@415958540134645764>"
+        },
+        { 
+            "name": "Team Rocket",
+            "image":"/images/teamsLogos/team_rocket.png",
+            "discordTags": "<@684008651664785441> <@540253461170880533>"
+        },
+        { 
+            "name": "Les Tontons Flingueurs",
+            "image":"/images/teamsLogos/les_tontons_flingueurs.png",
+            "discordTags": "<@373022355129368588> <@494901864525987840>"
+        },
+        { 
+            "name": "Deux Narvalos de Grenoble",
+            "image":"/images/teamsLogos/deux_narvalos_de_grenoble.png",
+            "discordTags": "<@347120570648887296> <@527177797693865995>"
+        },
+        { 
+            "name": "Dragon's Parents", 
+            "image":"/images/teamsLogos/dragons_parents.png",
+            "discordTags": "<@733726215315259454> <@302336626321915914>"
+        },
+        { 
+            "name": "Les Minos",
+            "image":"/images/teamsLogos/les_minos.png",
+            "discordTags": "<@401771464011022338> <@302336626321915914>"
+        },
+        { 
+            "name": "Les Princes de la ville",
+            "image":"/images/teamsLogos/les_princes_de_la_ville.png",
+            "discordTags": "<@185026696842313728> <@565186440921874482>"
+        },
+        { 
+            "name": "Krikriks Zdouf",
+            "image":"/images/teamsLogos/krikriks_zdouf.png",
+            "discordTags": "<@284697257339650048> <@302467473175740426>"
+        },
+        { 
+            "name": "Lorem Ipsum Dolor",
+            "image":"/images/teamsLogos/lorem_ipsum_dolor.png",
+            "discordTags": "<@1157444280143597649> <@742320317468246057>"
+        }
+    ]
+}

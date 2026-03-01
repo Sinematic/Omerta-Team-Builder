@@ -121,7 +121,7 @@
     { "name": "Koalaks", "image": "/images/koloMaps/49-Koalaks.png" },
     { "name": "Sylargh", "image": "/images/koloMaps/50-Sylargh.png" },
     { "name": "Solary", "image": "/images/koloMaps/51-Solary.png" },
-    { "name": "Gargandyas 1", "image": "/images/koloMaps/52-Gargandyas-1.png" },
-    { "name": "Gargandyas 2", "image": "/images/koloMaps/53-Gargandyas-2.png" }
+    { "name": "Gargandyas I", "image": "/images/koloMaps/52-Gargandyas-1.png" },
+    { "name": "Gargandyas II", "image": "/images/koloMaps/53-Gargandyas-2.png" }
   ]
 }

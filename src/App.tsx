@@ -11,6 +11,7 @@ import { handleTheme } from "./utils/theme"
 import { LayoutNoHeader, LayoutWithHeader } from "./features/layout/Layouts"
 import RestrictedAreasPage from "./features/RestrictedAreas/RestrictedAreasPage"
 import TournamentMaps from "./features/tournament/TournamentMaps"
+import TournamentMatchAnnounced from "./features/tournament/TournamentMatchAnnounced"
 handleTheme()
 
 
@@ -33,6 +34,7 @@ export default function App() {
 			
 			<Route element={<LayoutNoHeader />}>
 				<Route path="/generate-ladder" element={<LadderPage />} />
+				<Route path="/tournoi-2v2/gestion" element={<TournamentMatchAnnounced />} />
 			</Route>
 
 		</Routes>
