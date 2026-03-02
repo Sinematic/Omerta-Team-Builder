@@ -6,7 +6,7 @@
     { "name": "Idhao", "classes": [ "Féca", "Eniripsa", "Ouginak" ] },
     { "name": "Dahlma", "classes": [ "Eliotrope", "Ouginak" ] },
     { "name": "Onnyps", "classes": [ "Pandawa", "Eniripsa", "Forgelance", "Iop" ] },
-    { "name": "Shanks", "classes": [ "Enutrof", "Féca" ] },
+    { "name": "Shanks", "classes": [ "Enutrof", "Féca", "Iop", "Eniripsa", "Crâ", "Pandawa", "Xélor" ] },
     { "name": "Zenio", "classes": [ "Sacrieur", "Iop" ] },
     { "name": "Shambala", "classes": [ "Ecaflip" ] },
     { "name": "Mojo", "classes": [ "Roublard", "Forgelance", "Iop"] },
@@ -34,7 +34,6 @@
     { "name": "Cullinan", "classes": [ "Iop" ] },
     { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Ecaflip", "Iop", "Forgelance" ] },
     { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa" ] },
-    { "name": "Saiyan", "classes": [ "Forgelance", "Iop", "Pandawa" ] },
     { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
     { "name": "Fumeuze", "classes": [ "Iop" ] },
     { "name": "Iopinambour", "classes": [ "Iop" ] }
