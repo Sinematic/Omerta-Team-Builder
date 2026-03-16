@@ -28,7 +28,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
         "Ladder Classique": {
             coords: [12, 10],
             defaultValue: 20000000,
-            limitCoords: [11, 10]
+            limitCoords: [11, 10],
         },
         "Ladder Focus": {
             coords: [4, 8],
@@ -91,7 +91,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
                 rank: 0,
                 share: 0,
 
-                allowedHotSpot: row[4] === "X",
+                allowedHotSpot:/* ( Number(row[structure.scoreIndex] ?? 0) > ladderData[5][10])*/ row[4] === "X",
 
                 focusScore: structure.focusIndex !== undefined && structure.focusIndex !== null
                     ? Number(row[structure.focusIndex] ?? 0)
