@@ -91,7 +91,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
                 rank: 0,
                 share: 0,
 
-                allowedHotSpot:/* ( Number(row[structure.scoreIndex] ?? 0) > ladderData[5][10])*/ row[4] === "X",
+                allowedHotSpot: row[4] === "X",
 
                 focusScore: structure.focusIndex !== undefined && structure.focusIndex !== null
                     ? Number(row[structure.focusIndex] ?? 0)
