@@ -88,7 +88,7 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
                     {player.allowedHotSpot ? tearDrop : ""}</span>
             </p> }
 
-            <p className="w-[30px] text-end" >
+            <p className={ladderType === "Ladder Classique" ? "w-[30px] text-end" : "text-center"} >
                 {player.score}
             </p>
             
