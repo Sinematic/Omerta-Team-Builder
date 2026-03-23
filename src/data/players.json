@@ -32,7 +32,7 @@
     { "name": "Sponge", "classes": ["Eniripsa", "Huppermage" ] },
     { "name": "Kulinaire", "classes": [ "Pandawa"] },
     { "name": "Cullinan", "classes": [ "Iop" ] },
-    { "name": "Gump", "classes": [ "Xélor", "Eniripsa", "Ecaflip", "Iop", "Forgelance" ] },
+    { "name": "Gump", "classes": [ "Xélor", "Ecaflip", "Iop", "Forgelance", "Ouginak" ] },
     { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa" ] },
     { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
     { "name": "Iopinambour", "classes": [ "Iop" ] }

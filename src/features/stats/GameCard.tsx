@@ -16,11 +16,11 @@ export default function GameCard({ matchData, pseudo } : { matchData : MatchData
 
     
     return (
-        <div className={clsx("w-full overflow-hidden px-8 py-4 flex flex-col md:flex-row rounded-xl justify-between items-center border-solid border-3 select-none shadow-lg  " +
+        <div className={clsx("w-full overflow-hidden px-8 py-4 flex flex-col md:flex-row rounded-xl justify-between items-center border-solid border-3 select-none shadow-lg",
         (targetData.match!.result === "W" 
             ? "bg-[rgb(var(--slate))] border-[rgb(var(--primary-blue))]" 
             : "bg-[rgb(var(--dark-orange))] border-[rgb(var(--danger))]"),
-            )}>
+        )}>
 
             <ul className="flex-1">
                 {teams.playerSide.map(player => (

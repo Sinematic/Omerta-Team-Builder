@@ -96,6 +96,6 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
                 {new Intl.NumberFormat("fr-FR").format(player.share)}
             </p>
 
-        </li>
-        )
-    }
+        </li>    
+    )
+}
