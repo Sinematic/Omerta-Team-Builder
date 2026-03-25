@@ -15,7 +15,7 @@ export default function PlayerElement({ player, target, reverse } : { player : P
 
     return (
 
-        <li role="button" key={player.name} onClick={() => navigate("/stats/" + player.name.toLowerCase())}className={clsx(
+        <li role="button" key={player.name} onClick={() => navigate("/stats/" + player.name.toLowerCase())} className={clsx(
             "text-lg flex gap-2 cursor-pointer",
             (reverse ? " flex-row-reverse" : "")
         )}>
@@ -29,7 +29,7 @@ export default function PlayerElement({ player, target, reverse } : { player : P
                 className="w-full h-full object-cover" />
             </div>
             
-            <p className="inline-block align-text-bottom text-xl">{player.match?.details}</p>
+            <p className="inline-block text-sm self-center">{player.match?.details}</p>
 
         </li>
     )

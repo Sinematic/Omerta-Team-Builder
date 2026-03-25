@@ -10,7 +10,6 @@ export function usePlayerHistory() {
 
     if (isLoading || isError || !data) return { data: undefined, isLoading, isError }
 
-
     const mergeSeasons = (pastSeasons: PlayerInfoType[][], currentSeason: PlayerInfoType[] ): PlayerInfoType[] => {
 
         const playerMap: Record<string, (string | null)[]> = {}
