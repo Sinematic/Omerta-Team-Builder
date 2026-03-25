@@ -4,6 +4,7 @@ import Rank from "./Rank"
 import Button from "@/components/UI/Button"
 import rankSeasonOne from "@/data/seasons/season-1-rank.json"
 import rankSeasonTwo from "@/data/seasons/season-2-rank.json"
+import clsx from "clsx"
 
 
 type Season =
@@ -31,9 +32,11 @@ export default function RankPage() {
 
     return (<>
 
-        {isLoading && <p className="text-[rgb(var(--text))] text-center text-xl mb-8">Chargement...</p>}
+        {isLoading && <p className="text-[rgb(var(--text))] text-center text-xl my-8">Chargement...</p>}
         
-        <div className="flex flex-cols-1 gap-2 mt-8 w-fit mx-auto">
+        <div className={clsx("flex flex-cols-1 gap-2 w-fit mx-auto",
+            isLoading ? "mt-9" : "mt-24"
+        )}>
             {Array.from({ length: currentSeason }, (_, i) => {
                 const seasonNumber = i + 1
                 const isActive = seasonDisplayed === seasonNumber

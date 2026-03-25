@@ -21,6 +21,7 @@ export type ParticipantType = { name: string; match: Match }
 export default function PlayerHistory() {
 
     const seasons = useSeasons()
+    console.log(seasons)
 
     const { pseudo } = useParams<{ pseudo: string }>()
 
@@ -29,7 +30,7 @@ export default function PlayerHistory() {
         .join("-")
     : ""
 
-    const { data, isLoading } = useStats("Matchs", "B6:N40")
+    const { data, isLoading } = useStats("Matchs", "B6:N30")
 
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
