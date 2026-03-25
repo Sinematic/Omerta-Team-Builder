@@ -17,6 +17,7 @@ export type UseTeamBuilderReturn = {
     selectMap: (name: string, image: string) => void
     messagePhase: string
     isValidAmountOfPlayers: boolean
+    progress: number
 }
 
 
@@ -28,14 +29,21 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
     const [teams, setTeams] = useState<string[][]>([])
     const [mapUsed, setMapUsed] = useState({ name: "", image: "" })
 
+    const messagePhase = {
+        "registration": "Sélection des joueurs en cours ...",
+        "format selection": "Sélection du format...",
+        "team allocation": "Sélection des joueurs...",
+        "map selection": "Sélection de la carte...",
+        "summary": ""
+    }[phase]
 
-    const messagePhase = useMemo(() => {
+    const progress = useMemo(() => {
         switch (phase) {
-            case "registration": return "Sélection des joueurs en cours ..."
-            case "format selection": return "Sélection du format de composition d'équipes ..."
-            case "team allocation": return "Sélection des joueurs par les capitaines ..."
-            case "map selection": return "Sélection de la carte ..."
-            default: return ""
+            case "registration": return 5
+            case "format selection": return 25
+            case "team allocation": return 50
+            case "map selection": return 75
+            case "summary": return 99
         }
     }, [phase])
 
@@ -108,6 +116,7 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         nextPhase,
         selectMap,
         messagePhase,
-        isValidAmountOfPlayers
+        isValidAmountOfPlayers,
+        progress
     }
 }

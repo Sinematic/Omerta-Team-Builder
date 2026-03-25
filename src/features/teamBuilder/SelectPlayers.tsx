@@ -15,8 +15,8 @@ export default function SelectPlayers({ selected, action, players, message } : S
 
     const defaultMessage = ((length: number) => {
         if (length === 0) return "Aucun joueur n'a été sélectionné";
-        if (length === 1) return "1 joueur a été sélectionné";
-        return length + " joueurs ont été sélectionnés";
+        if (length === 1) return "1 joueur sélectionné";
+        return length + " joueurs sélectionnés";
     })
 
 

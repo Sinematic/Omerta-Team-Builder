@@ -8,6 +8,7 @@ import { getAllPlayers } from "@/utils/players"
 import { type Player } from "@/types/dofus"
 import Card from "@/components/UI/Card"
 import { useTeamBuilder } from "@/hooks/useTeamBuilder"
+import ProgressBar from "@/components/UI/ProgressBar"
 
 export default function TeamBuilder() {
 
@@ -25,14 +26,17 @@ export default function TeamBuilder() {
         selectMap,
         messagePhase,
         isValidAmountOfPlayers,
+        progress
     } = useTeamBuilder()
 
 
     return (
         <div className="flex justify-center flex-col pb-[70px]">
 
+            <ProgressBar progress={progress} />
+
             {phase !== "summary" && 
-                <p className="px-4 pt-7 text-center italic text-[rgb(var(--text))] animate-pulse text-lg">
+                <p className="px-4 pt-3 text-center italic text-[rgb(var(--text))] animate-pulse text-lg">
                     {messagePhase}
                 </p>
             }
