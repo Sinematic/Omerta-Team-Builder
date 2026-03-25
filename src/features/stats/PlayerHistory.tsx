@@ -29,7 +29,7 @@ export default function PlayerHistory() {
         .join("-")
     : ""
 
-    const { data, isLoading } = useStats("Matchs", "A2:M33")
+    const { data, isLoading } = useStats("Matchs", "B6:N40")
 
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)

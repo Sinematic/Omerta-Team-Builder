@@ -5,9 +5,11 @@ import Button from "@/components/UI/Button"
 import rankSeasonOne from "@/data/seasons/season-1-rank.json"
 import rankSeasonTwo from "@/data/seasons/season-2-rank.json"
 
+
 type Season =
   | { title: string; file: (string | number | null)[][]; range?: never }
-  | { title: string; range: string; file?: never };
+  | { title: string; range: string; file?: never }
+
 
 export default function RankPage() {
 
@@ -24,7 +26,7 @@ export default function RankPage() {
         3: { title: `Classement S3 (en cours)`, range: "B2:G25" },
     }
     
-    const season = seasons[seasonDisplayed];
+    const season = seasons[seasonDisplayed]
     
 
     return (<>
