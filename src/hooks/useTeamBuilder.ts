@@ -37,15 +37,13 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         "summary": ""
     }[phase]
 
-    const progress = useMemo(() => {
-        switch (phase) {
-            case "registration": return 5
-            case "format selection": return 25
-            case "team allocation": return 50
-            case "map selection": return 75
-            case "summary": return 99
-        }
-    }, [phase])
+    const progress = {
+        "registration": 5,
+        "format selection": 25,
+        "team allocation": 50,
+        "map selection": 75,
+        "summary": 99
+    }[phase]
 
     const togglePlayer = (player: string) => {
         setPlayersParticipating(prev =>
@@ -73,19 +71,19 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         }
     }
 
+    const nextPhaseMap: Partial<Record<PhaseName, PhaseName>> = {
+        "registration": "format selection",
+        "team allocation": "map selection",
+        "map selection": "summary",
+    }
+
     const nextPhase = () => {
-        switch (phase) {
-        case "registration":
-            setPlayersParticipating(shuffleArray(playersParticipating))
-            setPhase("format selection")
-            break
-        case "team allocation":
-            setPhase("map selection")
-            break
-        case "map selection":
-            setPhase("summary")
-            break
-        }
+
+        if (phase === "registration") setPlayersParticipating(shuffleArray(playersParticipating))
+    
+        const next = nextPhaseMap[phase]
+        if (next) setPhase(next)
+        
     }
     // Priorité à la composition d'équipes à 5, si indisponible, composition par 4
     const countCaptains = (players: string[]) => players.length % 5 === 0 ? players.length / 5 : players.length / 4
