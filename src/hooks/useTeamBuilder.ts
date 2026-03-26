@@ -1,5 +1,5 @@
 import { shuffleArray } from "@/utils/players"
-import { useState, useMemo } from "react"
+import { useState, useMemo  } from "react"
 
 
 export type PhaseName = "registration" | "format selection" | "team allocation" | "map selection" | "summary"
@@ -10,14 +10,19 @@ export type UseTeamBuilderReturn = {
     format?: "captains" | "random"
     teams: string[][]
     updateTeams: (newTeams: string[][]) => void
-    mapUsed: { name: string; image: string }
+    mapUsed: MapType | null
     togglePlayer: (player: string) => void
     chooseFormat: (format: "captains" | "random") => void
     nextPhase: () => void
-    selectMap: (name: string, image: string) => void
+    selectMap: (map: MapType) => void
     messagePhase: string
     isValidAmountOfPlayers: boolean
     progress: number
+}
+
+export type MapType = { 
+    name: string
+    image: string 
 }
 
 
@@ -27,7 +32,8 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
     const [playersParticipating, setPlayersParticipating] = useState<string[]>([])
     const [format, setFormat] = useState<"captains" | "random">()
     const [teams, setTeams] = useState<string[][]>([])
-    const [mapUsed, setMapUsed] = useState({ name: "", image: "" })
+    const [mapUsed, setMapUsed] = useState<MapType | null>(null)
+
 
     const messagePhase = {
         "registration": "Sélection des joueurs en cours ...",
@@ -59,9 +65,7 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         const emptyTeams: string[][] = Array.from({ length: numberOfTeams }, () => [])
 
         if (chosenFormat === "random") {
-            playersParticipating.forEach((p, i) => {
-            emptyTeams[i % numberOfTeams].push(p)
-            })
+            playersParticipating.forEach((p, i) => { emptyTeams[i % numberOfTeams].push(p) })
 
             setTeams(emptyTeams)
             setPhase("map selection")
@@ -92,8 +96,8 @@ export function useTeamBuilder() : UseTeamBuilderReturn {
         setTeams(newTeams)
     }
 
-    const selectMap = (name: string, image: string) => {
-        setMapUsed({ name, image })
+    const selectMap = (map : MapType) => {
+        setMapUsed(map)
         setPhase("summary")
     }
 

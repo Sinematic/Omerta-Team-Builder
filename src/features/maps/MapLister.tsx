@@ -4,23 +4,26 @@ import Button from "@/components/UI/Button"
 import { setRandomMap } from "@/utils/players"
 import { useState } from "react"
 import { useLocation } from "react-router"
+import type { MapType } from "@/hooks/useTeamBuilder"
+
 
 type MapListerProps = {
-    mapSelecter?: (name: string, image:string) => void
+    mapSetter?: (map: MapType) => void
     randomMapButton?: boolean
     resetOptions?: boolean
-    mapsSet?: "maps" | "koloMaps"
+    mapsSet?: ("maps" | "koloMaps")
 }
 
-export default function MapLister({ mapSelecter, randomMapButton=false, resetOptions=false, mapsSet="maps" } : MapListerProps) {
+
+export default function MapLister({ mapSetter, randomMapButton=false, resetOptions=false, mapsSet="maps" } : MapListerProps) {
 
     const maps = mapsData[mapsSet]
     const [mapsAllowed, setMapsAllowed] = useState(maps)
     
-    const location = useLocation()
+    const canSortMaps = useLocation().pathname !== "/maps"
 
     const excludeMap = (name: string) => {
-        if(mapsAllowed.length === 1 || location.pathname === "/maps") return
+        if(mapsAllowed.length === 1) return
         setMapsAllowed([...mapsAllowed.filter(map => map.name !== name)])
     }
 
@@ -29,8 +32,8 @@ export default function MapLister({ mapSelecter, randomMapButton=false, resetOpt
         <div>
             <ul className="grid grid-cols-1 gap-4 justify-center px-4 py-8 pb-[70px] select-none md:grid-cols-3 md:p-20 md:pb-20">
 
-                {randomMapButton && mapSelecter ? 
-                    <Button action={() => setRandomMap(mapSelecter, mapsAllowed)} color="bg-[rgb(var(--primary))] text-[rgb(var(--text))]" text="Aléatoire" 
+                {randomMapButton && mapSetter ? 
+                    <Button action={() => setRandomMap(mapSetter, mapsAllowed)} color="bg-[rgb(var(--primary))] text-[rgb(var(--text))]" text="Aléatoire" 
                     specifiedClasses={"absolute mx-auto center justify-center top-20 right-4 md:top-25 md:right-40"} />
                     
                 : null}
@@ -40,7 +43,10 @@ export default function MapLister({ mapSelecter, randomMapButton=false, resetOpt
                 }
 
                 {mapsAllowed.map((mapItem) => 
-                    <MapCard key={mapItem.name} name={mapItem.name} image={mapItem.image} /*mapSetter={mapSelecter}*/ excludeMap={excludeMap} />
+                    <MapCard key={mapItem.name} map={mapItem}
+                        mapSetter={canSortMaps ? mapSetter : undefined}
+                        excludeMap={canSortMaps ? excludeMap : undefined} 
+                    />
                 )}
             </ul>
         </div>

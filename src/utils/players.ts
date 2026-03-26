@@ -1,6 +1,7 @@
 import playersData from "@/data/players.json"
 import mapsData from "@/data/maps.json"
 import { type Player, type Match } from "@/types/dofus"
+import type { MapType } from "@/hooks/useTeamBuilder"
 
 
 const maps = mapsData.maps
@@ -18,9 +19,9 @@ export const isSmallScreen = () : boolean => {
     return window.innerWidth <= 640
 }
 
-export const setRandomMap = (selecter: (name: string, image:string) => void, setOfMaps=maps) => {
+export const setRandomMap = (selecter: (map : MapType) => void, setOfMaps=maps) => {
     const randomIndex = (Math.floor(Math.random() * setOfMaps.length))
-    selecter(setOfMaps[randomIndex].name, setOfMaps[randomIndex].image)
+    selecter({ name: setOfMaps[randomIndex].name, image: setOfMaps[randomIndex].image })
 }
 
 export const parseMatch = (rawMatch: unknown): Match | null => {

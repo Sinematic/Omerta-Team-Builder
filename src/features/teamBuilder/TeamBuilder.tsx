@@ -7,7 +7,7 @@ import Button from "@/components/UI/Button"
 import { getAllPlayers } from "@/utils/players"
 import { type Player } from "@/types/dofus"
 import Card from "@/components/UI/Card"
-import { useTeamBuilder } from "@/hooks/useTeamBuilder"
+import { useTeamBuilder, type MapType } from "@/hooks/useTeamBuilder"
 import ProgressBar from "@/components/UI/ProgressBar"
 
 export default function TeamBuilder() {
@@ -66,10 +66,10 @@ export default function TeamBuilder() {
             )}
 
             {phase === "map selection" && (
-                <MapLister mapSelecter={(name, image) => selectMap(name, image)} randomMapButton resetOptions />
+                <MapLister mapSetter={(mapElement : MapType) => selectMap(mapElement)} randomMapButton resetOptions />
             )}
 
-            {phase === "summary" && <Summary map={mapUsed} teams={teams} /> }
+            {phase === "summary" && mapUsed && <Summary map={mapUsed} teams={teams} /> }
 
         </div>
     )

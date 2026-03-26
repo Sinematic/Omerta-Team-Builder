@@ -13,9 +13,9 @@ export default function TournamentMaps() {
             <h1 className="text-[rgb(var(--text))] text-3xl font-semibold">Tournoi 2v2</h1>
 
             {!mapUsed.name 
-                ? <MapLister mapSelecter={(name, image) => setMapUsed({name, image})} randomMapButton resetOptions mapsSet="koloMaps" />
+                ? <MapLister mapSetter={({ name, image }) => setMapUsed({name, image})} randomMapButton resetOptions mapsSet="koloMaps" />
                 : <div className="w-full max-w-[720px] mx-auto mt-16">
-                    <MapCard name={mapUsed.name} image={mapUsed.image} />
+                    <MapCard map={mapUsed} />
                 </div>
             }
         </div>

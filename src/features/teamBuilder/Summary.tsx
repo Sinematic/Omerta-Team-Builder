@@ -4,14 +4,12 @@ import Card from "@/components/UI/Card"
 import classesData from "@/data/classes.json"
 import type { Player } from "@/types/dofus"
 import { getAllPlayers } from "@/utils/players"
+import type { MapType } from "@/hooks/useTeamBuilder"
 
 
 type SummaryProps = {
-    map: {
-        name: string;
-        image: string;
-    };
-    teams: string[][];
+    map: MapType
+    teams: string[][]
 }
 
 
@@ -64,7 +62,7 @@ export default function Summary({ map, teams }: SummaryProps) {
             </div>
 
             <div className="flex justify-center md:w-[50vw] m-6">
-                <MapCard name={map.name} image={map.image} />
+                <MapCard map={map} />
             </div>
 
         </div>
