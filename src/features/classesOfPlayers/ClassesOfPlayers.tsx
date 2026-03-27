@@ -18,8 +18,8 @@ export default function ClassesOfPlayers({ participants = [] } : ClassesType ) {
 	}))
 	
 	const players = participants.length 
-	? data.filter((player) => participants.includes(player.name)) 
-	: sortPlayersByName()
+		? data.filter((player) => participants.includes(player.name)) 
+		: sortPlayersByName()
 
 	const navigate = useNavigate()
 

@@ -2,12 +2,10 @@ import HeaderPage from '@/components/UI/HeaderPage'
 import { Outlet } from "react-router-dom"
 
 export function LayoutWithHeader() {
-	return (
-		<>
+	return (<>
 		<HeaderPage />
 		<Outlet />
-		</>
-	)
+	</>)
 }
 
 export function LayoutNoHeader() {

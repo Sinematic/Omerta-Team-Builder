@@ -1,7 +1,7 @@
 import { useState } from "react"
 import trashIcon from "/images/icons/trash.png"
 import type { MapType } from "@/hooks/useTeamBuilder"
-import Button from "@/components/UI/Button"
+import Overlay from "@/components/UI/Overlay"
 
 
 type MapCardProps = {
@@ -18,7 +18,12 @@ export default function MapCard({ map, mapSetter, excludeMap }: MapCardProps) {
     // top = #3c3e44 bottom = #292b2f
     const handleClick = () => { 
         if(!mapSetter) return
-        if(!confirmOpen) setConfirmOpen(true)
+        if(!confirmOpen) {
+            setConfirmOpen(true)
+            return
+        }
+
+        mapSetter(map)
     }
 
 
@@ -39,15 +44,9 @@ export default function MapCard({ map, mapSetter, excludeMap }: MapCardProps) {
             }
 
             {confirmOpen && mapSetter && (
-                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center rounded-lg z-10"
-                onClick={(e) => e.stopPropagation()}>
-                    <p className="text-white text-md mb-2">Sélectionner <span className="font-bold">{map.name}</span> ?</p>
-
-                    <div className="flex gap-2">
-                        <Button text="Valider" action={() => mapSetter(map)} />
-                        <Button text="Annuler" action={() => setConfirmOpen(false)} color="bg-[rgb(var(--warning))]"/>
-                    </div>
-                </div>
+                <Overlay onConfirm={handleClick} onCancel={() => setConfirmOpen(false)}
+                message={<p className="text-white text-md mb-2">Sélectionner <span className="font-bold">{map.name}</span> ?</p>}
+                />
             )}
         </li>
     )
