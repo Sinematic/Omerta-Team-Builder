@@ -34,14 +34,14 @@ export default function MapCard({ map, mapSetter, excludeMap }: MapCardProps) {
                 <img src={map.image} alt={map.name} className="w-full object-cover rounded-lg shadow-md" />
             </div>
 
-            {excludeMap && 
+            {excludeMap && (
                 <div className="w-[36px] p-[2px] bg-[rgb(var(--slate))] absolute top-2 right-2 rounded-md" onClick={(e) => {
                     e.stopPropagation()
                     excludeMap?.(map.name)
                 }} >
                     <img src={trashIcon} alt="Supprimer carte" />
                 </div>
-            }
+            )}
 
             {confirmOpen && mapSetter && (
                 <Overlay onConfirm={handleClick} onCancel={() => setConfirmOpen(false)}

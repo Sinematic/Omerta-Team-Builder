@@ -35,5 +35,6 @@
     { "name": "Gump", "classes": [ "Xélor", "Ecaflip", "Iop", "Forgelance", "Ouginak" ] },
     { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa" ] },
     { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
-    { "name": "Iopinambour", "classes": [ "Iop" ] }
+    { "name": "Iopinambour", "classes": [ "Iop" ] },
+    { "name": "Rymada", "classes": [ "Iop", "Eliotrope" ] }
 ]
