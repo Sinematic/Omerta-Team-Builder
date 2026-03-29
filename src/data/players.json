@@ -14,7 +14,7 @@
     { "name": "Agaleh", "classes": [ "Iop" ] },
     { "name": "Athanor", "classes": ["Féca", "Pandawa"] },
     { "name": "Quasar", "classes": [ "Zobal", "Pandawa" ] },
-    { "name": "Fecafe", "classes": [ "Féca", "Iop", "Xélor", "Huppermage" ] },
+    { "name": "Fecafe", "classes": [ "Féca", "Iop", "Xélor", "Huppermage", "Forgelance" ] },
     { "name": "Dixite", "classes": [ "Féca", "Pandawa", "Iop" ] },
     { "name": "Vahalgrim", "classes": [ "Forgelance", "Iop", "Pandawa", "Xélor" ] },
     { "name": "Kirito", "classes": [ "Iop", "Féca" ] },
@@ -23,7 +23,7 @@
     { "name": "Terahertz", "classes": [ "Ecaflip", "Roublard", "Sacrieur", "Féca" ] },
     { "name": "Vodar", "classes": [ "Forgelance" ] },
     { "name": "Coucougnou", "classes": [ "Steamer" ] },
-    { "name": "Bilbs", "classes": [ "Féca" ] },
+    { "name": "Bilbs", "classes": [ "Féca", "Forgelance" ] },
     { "name": "Harbat", "classes": [ "Huppermage", "Forgelance", "Iop", "Pandawa", "Ouginak", "Sacrieur", "Zobal", "Eniripsa", "Féca", "Ecaflip", "Xélor", "Osamodas", "Eliotrope" ] },
     { "name": "Eragorn", "classes": [ "Eniripsa" ] },
     { "name": "Yougovitch", "classes": [ "Forgelance" ] },
@@ -35,6 +35,6 @@
     { "name": "Gump", "classes": [ "Xélor", "Ecaflip", "Iop", "Forgelance", "Ouginak" ] },
     { "name": "Neithya", "classes": [ "Eliotrope", "Eniripsa" ] },
     { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
-    { "name": "Iopinambour", "classes": [ "Iop" ] },
+    { "name": "Iopinambour", "classes": [ "Iop", "Ouginak", "Sacrieur" ] },
     { "name": "Rymada", "classes": [ "Iop", "Eliotrope" ] }
 ]
