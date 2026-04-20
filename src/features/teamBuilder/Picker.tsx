@@ -6,6 +6,7 @@ import playersData from "@/data/players.json"
 import type { Player } from "@/types/dofus"
 import clsx from "clsx"
 import Button from "@/components/UI/Button"
+import ResetIcon from "@/../public/images/icons/reset.svg?react"
 
 type PickerProps = {
     players: string[]
@@ -50,8 +51,8 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
             if (!newTeams[currentTeamIndex]) return prev
             newTeams[currentTeamIndex].push(player)
 
-            // Auto-pick si il reste exactement 1 joueur après ce pick
             const remaining = players.filter(p => !newTeams.flat().includes(p))
+            
             if (remaining.length === 1) {
                 const lastTeamIndex = pickOrder?.[pickIndex + 1] ?? (pickIndex + 1) % captainsAmount
                 if (newTeams[lastTeamIndex]) newTeams[lastTeamIndex].push(remaining[0])
@@ -81,7 +82,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
 
             <div className="free-players md:w-2/3 mx-auto ">
                 <h2 className="text-xl font-medium mb-4 text-[rgb(var(--text))]">Joueurs sans équipe</h2>
-
+    
                 <Button text="Reset capitaines" action={resetCaptains} color="bg-[rgb(var(--primary))]" specifiedClasses="absolute top-0 right-5" />
 
                 <ul className="rounded-lg mx-auto">
@@ -107,14 +108,15 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                 )} >
 
                     {teams.map((team, i) => (
-                        <div key={i} className="bg-[rgb(var(--surface))] p-3 rounded text-[rgb(var(--text))] border-solid border-3 border-[rgb(var(--lightest-gray))]">
-                            <h3 className="font-bold mb-2" onClick={() => changeOneCaptain(i)}>
-                                💀 Capitaine : {team[0]}
-                            </h3>
+                        <div key={i} className="relative bg-[rgb(var(--surface))] py-2 px-1 rounded text-[rgb(var(--text))] border-solid border-1 border-[rgb(var(--lightest-gray))] md:p-3 md:border-3">
+                            
+                            <h3 className="font-bold mb-2">💀 Capitaine : {team[0]}</h3>
+
+                            <ResetIcon className="w-4 h-4 fill-current text-white absolute top-0.5 right-0.5 md:top-2 md:right-2" style={{ width: 24, height: 24 }} onClick={() => changeOneCaptain(i)} />
 
                             <ul className="space-y-1">
                                 {team.slice(1).map(member => (
-                                    <li key={member} className="bg-[rgb(var(--bg))] p-2 rounded">
+                                    <li key={member} className="bg-[rgb(var(--bg))] p-1 rounded md:p-2 ">
                                         {member}
                                     </li>
                                 ))}
