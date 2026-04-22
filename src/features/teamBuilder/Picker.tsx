@@ -8,6 +8,7 @@ import clsx from "clsx"
 import Button from "@/components/UI/Button"
 import ResetIcon from "@/../public/images/icons/reset.svg?react"
 
+
 type PickerProps = {
     players: string[]
     captainsAmount: number
@@ -22,7 +23,6 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
         Array.from({ length: captainsAmount }, (_, i) => [players[i]])
     )
     const [pickIndex, setPickIndex] = useState<number>(0)
-
     const pickOrder = snakePickOrder[captainsAmount.toString() as "2" | "3" | "4"]?.[players.length % 4 === 0 ? '4' : '5']
     const freePlayers = players.filter(p => !teams.flat().includes(p))
 
@@ -72,7 +72,6 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
     }, [freePlayers, addToTeam, teamsHandler, phaseHandler, teams])
 
     /* /!\ 
-        Pouvoir reroll un capitaine au clic
         Reroll carte / modale 
         Recherche avancée -> abandon ?
         Filtres sur les joueurs / classes
@@ -92,7 +91,6 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
 
                         return <PlayerCard key={playerName} playerInfo={playerInfo as Player} action={() => addToTeam(playerName)} minified={true} />
                     })}
-
                 </ul>                 
 
             </div>
@@ -112,7 +110,7 @@ export default function Picker({ players, captainsAmount, teamsHandler, phaseHan
                             
                             <h3 className="font-bold mb-2">💀 Capitaine : {team[0]}</h3>
 
-                            <ResetIcon className="w-4 h-4 fill-current text-white absolute top-0.5 right-0.5 md:top-2 md:right-2" style={{ width: 24, height: 24 }} onClick={() => changeOneCaptain(i)} />
+                            <ResetIcon className="fill-current text-white absolute top-0.5 right-0.5 p-1 bg-[rgb(var(--dark-green))] rounded cursor-pointer md:top-2 md:right-2" style={{ width: 32, height: 32 }} onClick={() => changeOneCaptain(i)} />
 
                             <ul className="space-y-1">
                                 {team.slice(1).map(member => (
