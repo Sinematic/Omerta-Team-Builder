@@ -14,13 +14,22 @@ export default function PlayerElement({ player, target, reverse } : { player : P
     const details = player.match?.details
     const match = player.match!
 
-    const MVP_EMOJIS = ["👑", "🥇", "🥈"];
+    const MVP_EMOJIS = ["👑", "🥇", "🥈"]
 
-    const containsMVPEmoji = (arr: string[]) => Array.from(arr.join("")).find(emoji => MVP_EMOJIS.includes(emoji))
+    const segmenter = new Intl.Segmenter()
+
+    const segmentEmojis = (arr: string[]) =>
+    [...segmenter.segment(arr.join(""))].map(s => s.segment)
+
+    const nonMvpDetails = details
+    ? segmentEmojis(details).filter(emoji => !MVP_EMOJIS.includes(emoji))
+    : []
+
+    const containsMVPEmoji = (arr: string[]) => segmentEmojis(arr).find(emoji => MVP_EMOJIS.includes(emoji))
 
     const mvpEmoji = details ? containsMVPEmoji(details) ?? null : null
 
-
+    
     return (
 
         <li role="button" onClick={() => navigate("/stats/" + player.name.toLowerCase())} className={clsx(
@@ -44,9 +53,10 @@ export default function PlayerElement({ player, target, reverse } : { player : P
             </div>
             
             {details && <p title="🔥 Échauffement remporté: +3 / ⌛ Tour inachevé: -5 / ❌ Erreur: -10" className="inline-block text-sm self-center">
-                {mvpEmoji ? details.filter(emoji => emoji === mvpEmoji) : details}
-                </p>
-            }
+                {/* {mvpEmoji ? details.filter(emoji => emoji === mvpEmoji) : details} */}
+                {nonMvpDetails}
+            </p>}
+            
 
         </li>
     )

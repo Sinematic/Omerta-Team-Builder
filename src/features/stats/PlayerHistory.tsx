@@ -28,8 +28,8 @@ export default function PlayerHistory() {
         .map(s => s.charAt(0).toUpperCase() + s.slice(1))
         .join("-")
     : ""
-
-    const { data, isLoading } = useStats("Matchs", "B6:N33")
+// /!\ BUG ICI : AVANT B6:N30 et ne récupère pas tous les joueurs, maintenant problème de lecture des différents matchs, certains matchs ont disparu 
+    const { data, isLoading } = useStats("Matchs", "B6:N34")
 
     const playersList = playersData
     const playerFound = playersList.some(player => player.name.toLowerCase() === pseudo)
