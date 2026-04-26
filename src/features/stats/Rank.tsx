@@ -20,8 +20,6 @@ export default function Rank({ page, range, title, file }: RankProps) {
     const { data, isLoading } = useStats(page as string, range)
     const sourceData: SheetData | undefined = file ?? data
 
-    console.log(data)
-
     if (!sourceData || isLoading) return null
 
     const sortedRows = [...sourceData].sort((a, b) => (b[0] as number) - (a[0] as number))

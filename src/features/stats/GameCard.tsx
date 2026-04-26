@@ -8,16 +8,18 @@ export default function GameCard({ matchData, pseudo } : { matchData : MatchData
     if (!matchData) return
 
     const targetData = matchData.participants.find(p => p.name === pseudo) as ParticipantType
+    const { result, points, side } = targetData.match!
+    const isWin = result === "W"
 
-    const playerSide = matchData.participants.filter(p => p.match!.side === targetData.match!.side)
-    const ennemiesSide = matchData.participants.filter(p => p.match!.side !== targetData.match!.side)
+    const playerSide = matchData.participants.filter(p => p.match!.side === side)
+    const ennemiesSide = matchData.participants.filter(p => p.match!.side !== side)
 
     const teams = { playerSide, ennemiesSide }
 
     
     return (
         <div className={clsx("w-full overflow-hidden px-8 py-4 flex flex-col md:flex-row rounded-xl justify-between items-center border-solid border-3 select-none shadow-lg",
-        (targetData.match!.result === "W" 
+        (result === "W" 
             ? "bg-[rgb(var(--slate))] border-[rgb(var(--primary-blue))]" 
             : "bg-[rgb(var(--dark-orange))] border-[rgb(var(--danger))]"),
         )}>
@@ -29,15 +31,15 @@ export default function GameCard({ matchData, pseudo } : { matchData : MatchData
             </ul>
 
             <h3 className={clsx("text-3xl flex-shrink-0 py-2 md:pb-0 font-bold flex-col md:flex-row " 
-            + (targetData.match!.result === "W" ? "text-[rgb(var(--primary-blue))]" : "text-red-600")
+            + (result === "W" ? "text-[rgb(var(--primary-blue))]" : "text-red-600")
             )}>
-                {targetData.match!.result === "W" ? "VICTOIRE" : "DÉFAITE"}
-                <p className="text-xl">{"+" + targetData.match!.points}</p>
+                {isWin ? "VICTOIRE" : "DÉFAITE"}
+                <span className="text-xl block">{"+" + points}</span>
             </h3>
 
             <ul className="flex-1 flex flex-col items-end">
                 {teams.ennemiesSide.map(player => (
-                    <PlayerElement player={player} target={teams.playerSide[0].name === player.name} reverse={true} key={player.name} /> 
+                    <PlayerElement player={player} target={false} reverse={true} key={player.name} /> 
                 ))}
             </ul>
         </div>
