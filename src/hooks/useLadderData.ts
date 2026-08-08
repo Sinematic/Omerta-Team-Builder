@@ -130,7 +130,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
         if (!rankedPlayers.length) return rankedPlayers
 
         const bonusWinners = [...rankedPlayers]
-            .filter(p => Number(p.perc ?? 0) < 6)
+            .filter(p => Number(p.perc ?? 0) < 6) // Limite de percepteurs autorisés
             .sort((a, b) => {
             if (b.focusScore !== a.focusScore) return b.focusScore - a.focusScore
             return b.score - a.score

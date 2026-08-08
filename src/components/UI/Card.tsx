@@ -9,10 +9,11 @@ type CardProps = {
     borderColor?: string
     bgColor?: string
     translate?: string
+    oversize?: string
 }
 
 
-export default function Card({ text, image, description, animated=false, action, borderColor, bgColor, translate }: CardProps) {
+export default function Card({ text, image, description, animated=false, action, borderColor, bgColor, translate, oversize }: CardProps) {
 
     return (
         <button onClick={action}className={clsx(
@@ -23,6 +24,7 @@ export default function Card({ text, image, description, animated=false, action,
         )}>
             <img alt={description} src={image} className={clsx("w-full h-full object-cover", 
                 animated ? "md:grayscale md:saturate-0 md:brightness-75" : "", 
+                oversize || "",
                 translate || "",
                 "transition-all duration-300 ease-out group-hover:grayscale-0 group-hover:saturate-100 group-hover:brightness-100"
             )} />
