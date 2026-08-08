@@ -26,7 +26,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
 
     const ladderConfig = {
         "Ladder Classique": {
-            coords: [12, 10],
+            coords: [14, 10],
             defaultValue: 20000000,
             limitCoords: [13, 10],
         },
@@ -130,7 +130,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
         if (!rankedPlayers.length) return rankedPlayers
 
         const bonusWinners = [...rankedPlayers]
-            .filter(p => Number(p.perc ?? 0) < 4)
+            .filter(p => Number(p.perc ?? 0) < 6)
             .sort((a, b) => {
             if (b.focusScore !== a.focusScore) return b.focusScore - a.focusScore
             return b.score - a.score
