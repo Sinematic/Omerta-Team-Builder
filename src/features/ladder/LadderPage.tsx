@@ -23,7 +23,7 @@ export default function LadderPage() {
 					borderColor="border-[rgb(var(--lightest-gray))]" bgColor="bg-[rgb(var(--lightest-gray))]" />
 
 					<Card text="Ladder Event" image="/images/wallpapers/pretresse-de-kao.png" action={() => setTitle("Ladder Event")} 
-					borderColor="border-[rgb(var(--lightest-gray))]" bgColor="bg-[rgb(var(--lightest-gray))]" oversize="scale-110" />
+					borderColor="border-[rgb(var(--lightest-gray))]" bgColor="bg-[rgb(var(--lightest-gray))]" oversize="scale-110 -translate-x-3" />
 
 				</div> 
 
