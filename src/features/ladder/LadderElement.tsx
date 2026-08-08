@@ -25,9 +25,8 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
 
     const lineThrough = (ladderType === "Ladder Focus" && player.perc) ? "line-through" : ""
 
-
     return (
-         <li className={clsx(
+        <li className={clsx(
             gridWdith[ladderType],
             "w-[465px] h-full relative grid items-center font-semibold border-b border-solid border-[rgb(var(--lightest-gray))] text-sm pl-2 pr-3 text-white",
             player.rank as number <= 3 ? "bg-[#121212]" : "bg-[#212121]/50"
@@ -77,7 +76,6 @@ export default function LadderElement({ player, ladderType } : { player: PlayerL
                 : null}
             </p>
             
-
             <p className={ladderType === "Ladder Classique" ? "w-[30px] text-end" : "text-center"} >
                 {player.score}
             </p>

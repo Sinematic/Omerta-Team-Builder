@@ -28,7 +28,7 @@ export default function useLadderData(page: LadderType, sheetID: string) {
         "Ladder Classique": {
             coords: [12, 10],
             defaultValue: 20000000,
-            limitCoords: [11, 10],
+            limitCoords: [13, 10],
         },
         "Ladder Focus": {
             coords: [4, 8],
@@ -41,6 +41,8 @@ export default function useLadderData(page: LadderType, sheetID: string) {
             limitCoords: [3, 7]
         },
     } as const
+
+    console.log(ladderConfig)
 
 
     const config = ladderConfig[page]
