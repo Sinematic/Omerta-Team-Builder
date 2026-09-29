@@ -20,21 +20,12 @@
     { "name": "Tykouette", "classes": [ "Forgelance", "Eniripsa" ] },
     { "name": "Terahertz", "classes": [ "Ecaflip", "Roublard", "Sacrieur", "Féca" ] },
     { "name": "Vodar", "classes": [ "Forgelance" ] },
-    { "name": "Coucougnou", "classes": [ "Steamer" ] },
     { "name": "Bilbs", "classes": [ "Féca", "Forgelance" ] },
-    { "name": "Harbat", "classes": [ "Huppermage", "Forgelance", "Iop", "Pandawa", "Ouginak", "Sacrieur", "Zobal", "Eniripsa", "Féca", "Ecaflip", "Xélor", "Osamodas", "Eliotrope" ] },
     { "name": "Eragorn", "classes": [ "Eniripsa" ] },
     { "name": "Yougovitch", "classes": [ "Forgelance" ] },
-    { "name": "Zobalcolique", "classes": [ "Zobal" ] },
     { "name": "Sponge", "classes": ["Eniripsa", "Huppermage" ] },
-    { "name": "Kulinaire", "classes": [ "Pandawa"] },
-    { "name": "Cullinan", "classes": [ "Iop" ] },
     { "name": "Hoummous", "classes": [ "Xélor", "Steamer", "Osamodas", "Ouginak", "Eniripsa" ] },
-    { "name": "Iopinambour", "classes": [ "Iop", "Ouginak", "Sacrieur" ] },
     { "name": "Pheureveur", "classes": [ "Xélor", "Iop", "Roublard", "Eniripsa", "Forgelance" ] },
-    { "name": "Daugistan", "classes": [ "Iop", "Forgelance" ] },
     { "name": "Asrie", "classes": [ "Féca" ] },
-    { "name": "Lecteurs", "classes": [ "Steamer", "Iop" ] },
-    { "name": "Crb", "classes": [ "Féca", "Sadida" ] }
-
+    { "name": "Lecteurs", "classes": [ "Steamer", "Iop" ] }
 ]
